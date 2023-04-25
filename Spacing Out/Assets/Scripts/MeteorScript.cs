@@ -29,11 +29,25 @@ public class MeteorScript : MonoBehaviour
         transform.rotation = Quaternion.Euler(newR);
     }
 
+    private void OnTriggerEnter2D(Collider2D other) 
+    {
+        if (other.gameObject.tag == "Bullet")
+        {
+            DestroyMeteor(other);
+        }
+    }
+
     private void MoveMeteor()
     {
         float newX = transform.position.x + (Speed.x * Time.deltaTime);
         float newY = transform.position.y + (Speed.y * Time.deltaTime);
         transform.position = new Vector2(newX, newY); 
+    }
+
+    private void DestroyMeteor(Collider2D bullet)
+    {
+        Destroy(bullet.gameObject);
+        Destroy(this.gameObject);
     }
 
 }

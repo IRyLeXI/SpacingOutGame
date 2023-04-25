@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class MeteorSpawner : MonoBehaviour
 {
-
     public float MinSpawnRate, MaxSpawnRate;
 
     private float SpawnRate;
 
     private float LastSpawn;
 
-    public Transform SpawnPoint;
+    public Transform MinSpawnPoint, MaxSpawnPoint;
 
-    public MeteorScript Template;
-
-    public float MinRotation, MaxRotation;
+    public float MinRotation = -90, MaxRotation = 90;
 
     public Vector2 MinSpeed, MaxSpeed;
+
+    public MeteorScript Template;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +36,8 @@ public class MeteorSpawner : MonoBehaviour
     private void SpawnMeteor()
     {
         MeteorScript mt = Instantiate(Template);
-        mt.transform.position = SpawnPoint.position;
+        Vector2 SpawnPoint = new Vector2(Random.Range(MinSpawnPoint.position.x, MaxSpawnPoint.position.x), MinSpawnPoint.position.y);
+        mt.transform.position = SpawnPoint;
         mt.RotationSpeed = Random.Range(MinRotation, MaxRotation);
         mt.Speed = new Vector2(Random.Range(MinSpeed.x, MaxSpeed.x), Random.Range(MinSpeed.y, MaxSpeed.y));
         LastSpawn = Time.time;

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
-    public Vector2 Speed;
+    [SerializeField]
+    private Vector2 Speed;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,8 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        Debug.Log("Bullet Here");
+        if(other.gameObject.tag != "Player")
+            DestroyBullet();
     }
 
     private void MoveBullet()
@@ -28,6 +30,14 @@ public class BulletScript : MonoBehaviour
         float newX = transform.position.x + (Speed.x * Time.deltaTime);
         float newY = transform.position.y + (Speed.y * Time.deltaTime);
         transform.position = new Vector2(newX, newY); 
+        if(Mathf.Abs(transform.position.x)>5.5 || transform.position.y>6)
+        {
+            DestroyBullet();
+        }
     }
 
+    private void DestroyBullet()
+    {
+        Destroy(this.gameObject);
+    }
 }

@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class MeteorScript : MonoBehaviour
 {
-
-    public float RotationSpeed;
     
-    public Vector2 Speed;
+    [SerializeField]
+    protected internal float RotationSpeed;
+    
+    [SerializeField]
+    protected internal Vector2 Speed;
 
     // Start is called before the first frame update
     void Start()
@@ -31,10 +33,7 @@ public class MeteorScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if (other.gameObject.tag == "Bullet")
-        {
-            DestroyMeteor(other);
-        }
+        DestroyMeteor(other);
     }
 
     private void MoveMeteor()
@@ -42,11 +41,14 @@ public class MeteorScript : MonoBehaviour
         float newX = transform.position.x + (Speed.x * Time.deltaTime);
         float newY = transform.position.y + (Speed.y * Time.deltaTime);
         transform.position = new Vector2(newX, newY); 
+        if(Mathf.Abs(transform.position.x)>5.5 || transform.position.y<-6)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void DestroyMeteor(Collider2D bullet)
     {
-        Destroy(bullet.gameObject);
         Destroy(this.gameObject);
     }
 

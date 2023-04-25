@@ -4,24 +4,57 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
+    private float FireRate = 0.3f;
 
-    public int Speed = 1;
+    private float LastShot;
 
-    public Vector2 Velocity = new Vector2(0, 0);
+    [SerializeField]
+    private int Speed = 1;
 
-    public Vector2 Min, Max;
+    [SerializeField]
+    private GameObject Bullet;
+
+    [SerializeField]
+    private Vector2 Velocity = new Vector2(0, 0);
+
+    [SerializeField]
+    private Vector2 Min, Max;
+
+    [SerializeField]
+    private Transform FrontWeapon;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        LastShot = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
+        HandleMovement();
+        if(IsReadyForFire())
+        {
+            HandleFire();
+        }
+        MoveShip();
+    }
+
+    private void HandleMovement()
+    {
         Velocity = HandleHorizontal(Input.GetAxis("Horizontal"));
         Velocity += HandleVertical(Input.GetAxis("Vertical"));
-        MoveShip();
+    }
+
+    private void HandleFire()
+    {
+        if(Input.GetButtonDown("Fire"))
+        {
+            LastShot = Time.time;
+            GameObject bullet = Instantiate(Bullet);
+            bullet.transform.position = FrontWeapon.position;
+        }
     }
 
     private Vector2 HandleHorizontal(float h)
@@ -34,6 +67,11 @@ public class PlayerController : MonoBehaviour
         return new Vector2(0, Mathf.Clamp(v,-1,1));
     }
 
+    private void OnTriggerEnter2D(Collider2D other) 
+    {
+        if(other.gameObject.tag == "BigMeteorite" || other.gameObject.tag == "SmallMeteorite")
+            DestroyShuttle();
+    }
     private void MoveShip()
     {
         float newX = transform.position.x + (Velocity.x * Speed * Time.deltaTime);
@@ -41,5 +79,15 @@ public class PlayerController : MonoBehaviour
         newX = Mathf.Clamp(newX, Min.x, Max.x);
         newY = Mathf.Clamp(newY, Min.y, Max.y);
         transform.position = new Vector2(newX, newY); 
+    }
+
+    private void DestroyShuttle()
+    {
+        Destroy(this.gameObject);
+    }
+
+    private bool IsReadyForFire()
+    {
+        return Time.time >= (LastShot + FireRate);
     }
 }

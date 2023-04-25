@@ -2,21 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeteorSpawner : MonoBehaviour
+public class MeteorSpawner : MeteorScript
 {
-    public float MinSpawnRate, MaxSpawnRate;
+    [SerializeField]
+    private float MinSpawnRate, MaxSpawnRate;
 
     private float SpawnRate;
 
     private float LastSpawn;
 
-    public Transform MinSpawnPoint, MaxSpawnPoint;
+    [SerializeField]
+    private Transform MinSpawnPoint, MaxSpawnPoint;
 
-    public float MinRotation = -90, MaxRotation = 90;
+    [SerializeField]
+    private float MinRotation = -90, MaxRotation = 90;
 
-    public Vector2 MinSpeed, MaxSpeed;
+    [SerializeField]
+    private Vector2 MinSpeedBig, MaxSpeedBig, MinSpeedSmall, MaxSpeedSmall;
 
-    public MeteorScript Template;
+    [SerializeField]
+    private MeteorScript[] Template;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,11 +40,14 @@ public class MeteorSpawner : MonoBehaviour
 
     private void SpawnMeteor()
     {
-        MeteorScript mt = Instantiate(Template);
+        MeteorScript mt = Instantiate(Template[Random.Range(0, Template.Length)]);
         Vector2 SpawnPoint = new Vector2(Random.Range(MinSpawnPoint.position.x, MaxSpawnPoint.position.x), MinSpawnPoint.position.y);
         mt.transform.position = SpawnPoint;
         mt.RotationSpeed = Random.Range(MinRotation, MaxRotation);
-        mt.Speed = new Vector2(Random.Range(MinSpeed.x, MaxSpeed.x), Random.Range(MinSpeed.y, MaxSpeed.y));
+        if (mt.gameObject.tag == "BigMeteorite")
+            mt.Speed = new Vector2(Random.Range(MinSpeedBig.x, MaxSpeedBig.x), Random.Range(MinSpeedBig.y, MaxSpeedBig.y));
+        else
+            mt.Speed = new Vector2(Random.Range(MinSpeedSmall.x, MaxSpeedSmall.x), Random.Range(MinSpeedSmall.y, MaxSpeedSmall.y));
         LastSpawn = Time.time;
         SpawnRate = Random.Range(MinSpawnRate, MaxSpawnRate);
     }

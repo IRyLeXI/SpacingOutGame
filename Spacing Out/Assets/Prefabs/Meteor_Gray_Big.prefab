@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1801072305273489579}
   - component: {fileID: 8025194776116435438}
   m_Layer: 0
-  m_Name: Meteor_Gray_Big 1
-  m_TagString: Untagged
+  m_Name: Meteor_Gray_Big
+  m_TagString: BigMeteorite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

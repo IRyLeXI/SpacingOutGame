@@ -7,23 +7,25 @@ public class MeteorScript : MonoBehaviour
     
     [SerializeField]
     protected internal float RotationSpeed;
-    
-    [SerializeField]
-    protected internal Vector2 Speed;
 
-    private bool isCollided = false;
+    [SerializeField]
+    protected internal float pushForce;
+
+    [SerializeField]
+    protected internal Vector2 pushDirection = Vector2.down;
+
+    private Rigidbody2D rb;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        PushMeteorite();
     }
 
     // Update is called once per frame
     void Update()
     {
-        RotateMeteor();
-        MoveMeteor();
-        isCollided=false;
+        RotateMeteor(); 
     }
 
     private void RotateMeteor()
@@ -37,33 +39,15 @@ public class MeteorScript : MonoBehaviour
     {
         Debug.Log("Meteor touched");
         if(other.gameObject.tag == "PlayerBullet")
+        {
             DestroyMeteor(other);
-        else if (other.gameObject.tag==gameObject.tag)  
-        {
-            if(!isCollided)
-                SwapSpeed(other);
-            isCollided = true;
-        }  
-    }
-
-    private void MoveMeteor()
-    {
-        float newX = transform.position.x + (Speed.x * Time.deltaTime);
-        float newY = transform.position.y + (Speed.y * Time.deltaTime);
-        transform.position = new Vector2(newX, newY); 
-        if(Mathf.Abs(transform.position.x)>5.5 || transform.position.y<-6)
-        {
-            Destroy(this.gameObject);
         }
     }
 
-    private void SwapSpeed(Collider2D other) 
+    private void PushMeteorite()
     {
-        GameObject tmpGameObj = other.gameObject;
-        MeteorScript mt2 = tmpGameObj.GetComponent<MeteorScript>();
-        float tempx = mt2.Speed.x, tempy = mt2.Speed.y;
-        mt2.Speed.x = Speed.x; mt2.Speed.y = Speed.y;
-        Speed.x = tempx;  Speed.y = tempy;
+        rb = GetComponent<Rigidbody2D>();
+        rb.AddForce(pushDirection * pushForce, ForceMode2D.Impulse);
     }
 
     private void DestroyMeteor(Collider2D bullet)

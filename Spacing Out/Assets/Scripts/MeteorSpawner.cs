@@ -18,7 +18,10 @@ public class MeteorSpawner : MeteorScript
     private float MinRotation = -90, MaxRotation = 90;
 
     [SerializeField]
-    private Vector2 MinSpeedBig, MaxSpeedBig, MinSpeedSmall, MaxSpeedSmall;
+    private float MinSpeedBig, MaxSpeedBig, MinSpeedSmall, MaxSpeedSmall;
+
+    [SerializeField]
+    private Vector2 MinDirection, MaxDirection;
 
     [SerializeField]
     private MeteorScript[] Template;
@@ -45,9 +48,15 @@ public class MeteorSpawner : MeteorScript
         mt.transform.position = SpawnPoint;
         mt.RotationSpeed = Random.Range(MinRotation, MaxRotation);
         if (mt.gameObject.tag == "BigMeteorite")
-            mt.Speed = new Vector2(Random.Range(MinSpeedBig.x, MaxSpeedBig.x), Random.Range(MinSpeedBig.y, MaxSpeedBig.y));
+        {
+            mt.pushForce = Random.Range(MinSpeedBig, MaxSpeedBig);
+        }
         else
-            mt.Speed = new Vector2(Random.Range(MinSpeedSmall.x, MaxSpeedSmall.x), Random.Range(MinSpeedSmall.y, MaxSpeedSmall.y));
+        {
+            mt.pushForce = Random.Range(MinSpeedSmall, MaxSpeedSmall);
+        }
+        Vector2 direction = new Vector2(Random.Range(MinDirection.x, MaxDirection.x), Random.Range(MinDirection.y, MaxDirection.y));
+        mt.pushDirection = direction;
         LastSpawn = Time.time;
         SpawnRate = Random.Range(MinSpawnRate, MaxSpawnRate);
     }

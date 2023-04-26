@@ -13,6 +13,11 @@ public class PlayerController : MonoBehaviour
     private int Speed = 1;
 
     [SerializeField]
+    private float InvincibleTime = 3;
+
+    public GameController GameController;
+
+    [SerializeField]
     private GameObject Bullet;
 
     [SerializeField]
@@ -38,6 +43,7 @@ public class PlayerController : MonoBehaviour
         {
             HandleFire();
         }
+        HandleInvincibility();
         MoveShip();
     }
 
@@ -57,6 +63,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void HandleInvincibility()
+    {
+        InvincibleTime-=Time.deltaTime;
+    }
+
     private Vector2 HandleHorizontal(float h)
     {
         return new Vector2(Mathf.Clamp(h,-1,1), 0);
@@ -69,8 +80,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.gameObject.tag == "BigMeteorite" || other.gameObject.tag == "SmallMeteorite")
-            DestroyShuttle();
+        if(other.gameObject.tag != "PlayerBullet" && InvincibleTime <= 0)   
+        {
+            GameController.DestroyShuttle(this);
+        }
     }
     private void MoveShip()
     {
@@ -79,11 +92,6 @@ public class PlayerController : MonoBehaviour
         newX = Mathf.Clamp(newX, Min.x, Max.x);
         newY = Mathf.Clamp(newY, Min.y, Max.y);
         transform.position = new Vector2(newX, newY); 
-    }
-
-    private void DestroyShuttle()
-    {
-        Destroy(this.gameObject);
     }
 
     private bool IsReadyForFire()

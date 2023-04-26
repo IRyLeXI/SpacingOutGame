@@ -11,6 +11,7 @@ public class MeteorScript : MonoBehaviour
     [SerializeField]
     protected internal Vector2 Speed;
 
+    private bool isCollided = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,7 @@ public class MeteorScript : MonoBehaviour
     {
         RotateMeteor();
         MoveMeteor();
+        isCollided=false;
     }
 
     private void RotateMeteor()
@@ -33,7 +35,15 @@ public class MeteorScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        DestroyMeteor(other);
+        Debug.Log("Meteor touched");
+        if(other.gameObject.tag == "PlayerBullet")
+            DestroyMeteor(other);
+        else if (other.gameObject.tag==gameObject.tag)  
+        {
+            if(!isCollided)
+                SwapSpeed(other);
+            isCollided = true;
+        }  
     }
 
     private void MoveMeteor()
@@ -45,6 +55,15 @@ public class MeteorScript : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    private void SwapSpeed(Collider2D other) 
+    {
+        GameObject tmpGameObj = other.gameObject;
+        MeteorScript mt2 = tmpGameObj.GetComponent<MeteorScript>();
+        float tempx = mt2.Speed.x, tempy = mt2.Speed.y;
+        mt2.Speed.x = Speed.x; mt2.Speed.y = Speed.y;
+        Speed.x = tempx;  Speed.y = tempy;
     }
 
     private void DestroyMeteor(Collider2D bullet)

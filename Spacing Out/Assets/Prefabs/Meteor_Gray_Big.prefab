@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4740044764527611014}
   - component: {fileID: 3920818883442580931}
   - component: {fileID: 8662092450189981010}
+  - component: {fileID: -632533642382652664}
   m_Layer: 0
   m_Name: Meteor_Gray_Big
   m_TagString: BigMeteorite
@@ -102,7 +103,6 @@ MonoBehaviour:
   RotationSpeed: 10
   pushForce: 1
   pushDirection: {x: 0, y: -1}
-  bounceMaterial: {fileID: 0}
 --- !u!60 &3920818883442580931
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -164,3 +164,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &-632533642382652664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4740044764527611009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31d9d3a92b0c7dc4f8e660a527cd5cca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

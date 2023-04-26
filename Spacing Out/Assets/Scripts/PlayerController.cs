@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleFire()
     {
-        if(Input.GetButtonDown("Fire"))
+        if(Input.GetButton("Fire"))
         {
             LastShot = Time.time;
             GameObject bullet = Instantiate(Bullet);
@@ -65,6 +65,8 @@ public class PlayerController : MonoBehaviour
 
     private void HandleInvincibility()
     {
+        bool isInvincible = (InvincibleTime > 0) && (Mathf.Sin(Time.time * 20) > 0);
+        GetComponent<Renderer>().enabled = !isInvincible;
         InvincibleTime-=Time.deltaTime;
     }
 

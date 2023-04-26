@@ -4,19 +4,27 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
+    // [SerializeField]
+    // private Vector2 Speed;
+
     [SerializeField]
-    private Vector2 Speed;
+    private float pushForce;
+
+    [SerializeField]
+    private Vector2 pushDirection = Vector2.up;
+
+    private Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        PushBullet();
     }
 
     // Update is called once per frame
     void Update()
     {
-        MoveBullet();
+        //MoveBullet();
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
@@ -25,16 +33,18 @@ public class BulletScript : MonoBehaviour
             DestroyBullet();
     }
 
-    private void MoveBullet()
+    private void PushBullet()
     {
-        float newX = transform.position.x + (Speed.x * Time.deltaTime);
-        float newY = transform.position.y + (Speed.y * Time.deltaTime);
-        transform.position = new Vector2(newX, newY); 
-        if(Mathf.Abs(transform.position.x)>5.5 || transform.position.y>6)
-        {
-            DestroyBullet();
-        }
+        rb = GetComponent<Rigidbody2D>();
+        rb.AddForce(pushDirection * pushForce, ForceMode2D.Impulse);
     }
+    
+    // private void MoveBullet()
+    // {
+    //     float newX = transform.position.x + (Speed.x * Time.deltaTime);
+    //     float newY = transform.position.y + (Speed.y * Time.deltaTime);
+    //     transform.position = new Vector2(newX, newY); 
+    // }
 
     private void DestroyBullet()
     {

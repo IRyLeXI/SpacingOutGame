@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3346122782285607009}
   - component: {fileID: 3834886344327804726}
   - component: {fileID: 7228640587654823991}
+  - component: {fileID: -520779622660646317}
   m_Layer: 0
   m_Name: Meteor_Brown_Small
   m_TagString: SmallMeteorite
@@ -102,7 +103,6 @@ MonoBehaviour:
   RotationSpeed: 0
   pushForce: 1
   pushDirection: {x: 0, y: -1}
-  bounceMaterial: {fileID: 0}
 --- !u!50 &3834886344327804726
 Rigidbody2D:
   serializedVersion: 4
@@ -161,3 +161,15 @@ PolygonCollider2D:
       - {x: 0.05532527, y: -0.059026483}
       - {x: 0.08370121, y: 0.005845666}
       - {x: 0.058896367, y: 0.066428885}
+--- !u!114 &-520779622660646317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3162925864598031792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31d9d3a92b0c7dc4f8e660a527cd5cca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

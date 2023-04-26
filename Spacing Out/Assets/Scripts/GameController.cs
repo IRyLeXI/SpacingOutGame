@@ -38,7 +38,6 @@ public class GameController : MonoBehaviour
         player.GameController = this;
         player.transform.position = PlayerSpawnPoint.position;
         IsDead = false;
-
     }
 
     private bool IsReadyForRespawn()

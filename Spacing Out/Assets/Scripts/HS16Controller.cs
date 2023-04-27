@@ -20,6 +20,7 @@ public class HS16Controller : EnemyScript
     void Start()
     {
         SetPosition();
+        //LastShot = Time.time*3;
     }
 
     // Update is called once per frame
@@ -30,7 +31,7 @@ public class HS16Controller : EnemyScript
             SetPosition();
         }
         MoveShip(); 
-        if(IsReadyForFire())
+        if(IsReadyForFire() && transform.position.y<5)
         {
             HandleFire();
         }
@@ -39,7 +40,17 @@ public class HS16Controller : EnemyScript
     protected override void SetPosition()
     {
         Vector2 playerPos = GetPlayerPos();
-        Vector2 newPos = new Vector2((playerPos.x - transform.position.x) + Random.Range(-1f,1f), Random.Range(-1f,1f));
+        float newX = (playerPos.x - transform.position.x) + Random.Range(MinFaultX, MaxFaultX);
+        float newY;
+        if(transform.position.y>5)
+        {
+            newY = -1;
+        }
+        else
+        {
+            newY = Random.Range(-1f,1f);
+        }
+        Vector2 newPos = new Vector2(newX, newY);
         Velocity = newPos;
         LastSetPos = Time.time;
     }

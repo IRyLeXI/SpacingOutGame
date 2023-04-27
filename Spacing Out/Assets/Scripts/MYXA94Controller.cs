@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MYXA94 : EnemyScript
+public class MYXA94Controller : EnemyScript
 {
      [SerializeField]
     private float FireRate = 1.4f;
@@ -32,7 +32,7 @@ public class MYXA94 : EnemyScript
             SetPosition();
         }
         MoveShip(); 
-        if(IsReadyForFire())
+        if(IsReadyForFire() && transform.position.y<5)
         {
             HandleFire();
         }
@@ -41,7 +41,17 @@ public class MYXA94 : EnemyScript
     protected override void SetPosition()
     {
         Vector2 playerPos = GetPlayerPos();
-        Vector2 newPos = new Vector2((playerPos.x - transform.position.x) + Random.Range(-1f,1f), Random.Range(-0.7f,1f));
+        float newX = (playerPos.x - transform.position.x) + Random.Range(MinFaultX, MaxFaultX);
+        float newY;
+        if(transform.position.y>5)
+        {
+            newY = -1;
+        }
+        else
+        {
+            newY = Random.Range(-1f,0.9f);
+        }
+        Vector2 newPos = new Vector2(newX, newY);
         Velocity = newPos;
         LastSetPos = Time.time;
     }
@@ -52,12 +62,12 @@ public class MYXA94 : EnemyScript
         GameObject bullet1 = Instantiate(Bullet);
         bullet1.transform.position = FrontWeapon.position;
         GameObject bullet2 = Instantiate(Bullet);
-        BulletScript bullet22 = bullet2.GetComponent<BulletScript>();
-        bullet22.ChangeDirection(fireDirectionX);
+        BulletScript bulletRight = bullet2.GetComponent<BulletScript>();
+        bulletRight.ChangeDirection(fireDirectionX);
         bullet2.transform.position = RightWeapon.position;
         GameObject bullet3 = Instantiate(Bullet);
-        BulletScript bullet33 = bullet3.GetComponent<BulletScript>();
-        bullet33.ChangeDirection(-fireDirectionX);
+        BulletScript bulletLeft = bullet3.GetComponent<BulletScript>();
+        bulletLeft.ChangeDirection(-fireDirectionX);
         bullet3.transform.position = LeftWeapon.position;
     }
 

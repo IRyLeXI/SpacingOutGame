@@ -41,8 +41,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8317896670443038091}
   - component: {fileID: 8317896670443038088}
-  - component: {fileID: 5218994642729348428}
   - component: {fileID: 7277540773944062726}
+  - component: {fileID: 5218994642729348428}
   m_Layer: 0
   m_Name: HS16
   m_TagString: HS16
@@ -118,6 +118,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7277540773944062726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8317896670443038094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5768adbc6cedc36408c814054fdc94b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 1
+  Velocity: {x: 0, y: 0}
+  Min: {x: -4.1, y: 0}
+  Max: {x: 4.1, y: 10}
+  GetPlayerPositionDelay: 1
+  FireRate: 0.6
+  Bullet: {fileID: 1473220562046428721, guid: 8dbe058d9bedecb48952cd8b6837cb42, type: 3}
+  FrontWeapon: {fileID: 513715720490749732}
 --- !u!60 &5218994642729348428
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -173,23 +193,3 @@ PolygonCollider2D:
       - {x: 0.10484809, y: 0.124955356}
       - {x: 0.083636954, y: 0.12705114}
       - {x: 0.06791612, y: 0.109823026}
---- !u!114 &7277540773944062726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8317896670443038094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5768adbc6cedc36408c814054fdc94b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 1
-  Velocity: {x: 0, y: 0}
-  Min: {x: -4.1, y: 0}
-  Max: {x: 4.1, y: 4.9}
-  GetPlayerPositionDelay: 1
-  FireRate: 0.6
-  Bullet: {fileID: 0}
-  FrontWeapon: {fileID: 0}

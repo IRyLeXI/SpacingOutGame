@@ -6,13 +6,16 @@ public abstract class EnemyScript : MonoBehaviour
 {
 
     [SerializeField]
-    private float Speed = 1f;
+    protected float Speed = 1f;
 
     [SerializeField]
     protected Vector2 Velocity = new Vector2(0, 0);
 
     [SerializeField]
     private Vector2 Min, Max;
+
+    [SerializeField]
+    protected float MinFaultX = 1f, MaxFaultX = 1f;
 
     [SerializeField]
     private float GetPlayerPositionDelay = 1f;
@@ -44,7 +47,7 @@ public abstract class EnemyScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.gameObject.tag == "PlayerBullet")   
+        if(other.gameObject.tag == "PlayerBullet" && transform.position.y<5.2)   
         {
             Destroy(this.gameObject);
             Destroy(other.gameObject);

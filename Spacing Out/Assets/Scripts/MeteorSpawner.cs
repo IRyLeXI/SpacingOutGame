@@ -2,18 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeteorSpawner : MeteorScript
+public class MeteorSpawner : SpawnerScript
 {
-    [SerializeField]
-    private float MinSpawnRate, MaxSpawnRate;
-
-    private float SpawnRate;
-
-    private float LastSpawn;
-
-    [SerializeField]
-    private Transform MinSpawnPoint, MaxSpawnPoint;
-
     [SerializeField]
     private float MinRotation = -90, MaxRotation = 90;
 
@@ -59,10 +49,5 @@ public class MeteorSpawner : MeteorScript
         mt.pushDirection = direction;
         LastSpawn = Time.time;
         SpawnRate = Random.Range(MinSpawnRate, MaxSpawnRate);
-    }
-
-    private bool IsReadyForSpawn()
-    {
-        return Time.time >= (LastSpawn + SpawnRate);
     }
 }

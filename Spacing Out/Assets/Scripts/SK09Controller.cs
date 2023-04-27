@@ -28,11 +28,10 @@ public class SK09Controller : EnemyScript
     protected override void SetPosition()
     {
         Vector2 playerPos = GetPlayerPos();
-        float newX = (playerPos.x - transform.position.x) + Random.Range(-0.3f, 0.3f);
+        float newX = (playerPos.x - transform.position.x) + Random.Range(MinFaultX, MaxFaultX);
         float newY = (playerPos.y - transform.position.y) + Random.Range(-0.7f, -0.2f);
         Vector2 newPos = new Vector2(newX, newY);
         Velocity = newPos;
-
         LastSetPos = Time.time;
     }
 

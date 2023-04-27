@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4310358384992616748}
   m_Layer: 0
   m_Name: SK09
-  m_TagString: Untagged
+  m_TagString: SK09
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,10 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593a3ccab2bd43842b5566c87083323e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1
+  Speed: 0.6
   Velocity: {x: 0, y: 0}
-  Min: {x: 0, y: 0}
-  Max: {x: 0, y: 0}
+  Min: {x: -4.1, y: -10}
+  Max: {x: 4.1, y: 10}
+  MinFaultX: -0.3
+  MaxFaultX: 0.3
   GetPlayerPositionDelay: 1
   rotateSpeed: 2.8
 --- !u!60 &4310358384992616748

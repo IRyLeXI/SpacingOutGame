@@ -8,6 +8,8 @@ TagManager:
   - SmallMeteorite
   - BigMeteorite
   - PlayerBullet
+  - HS16
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX

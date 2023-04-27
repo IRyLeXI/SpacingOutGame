@@ -85,6 +85,7 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.tag != "PlayerBullet" && InvincibleTime <= 0)   
         {
             GameController.DestroyShuttle(this);
+            Destroy(other.gameObject);
         }
     }
     private void MoveShip()
@@ -100,4 +101,11 @@ public class PlayerController : MonoBehaviour
     {
         return Time.time >= (LastShot + FireRate);
     }
+
+    // public float GetPositionX()
+    // {
+    //     return transform.position.x;
+    // }
+
+    
 }

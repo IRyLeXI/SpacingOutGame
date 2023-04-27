@@ -29,8 +29,7 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.gameObject.tag != "Player")
-            DestroyBullet();
+        
     }
 
     private void PushBullet()
@@ -50,4 +49,10 @@ public class BulletScript : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
+
+    public void ChangeDirection(float newDirection)
+    {
+        pushDirection.x = newDirection;
+    }
+
 }

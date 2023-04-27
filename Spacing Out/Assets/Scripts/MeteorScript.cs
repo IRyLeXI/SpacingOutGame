@@ -53,6 +53,7 @@ public class MeteorScript : MonoBehaviour
     private void DestroyMeteor(Collider2D bullet)
     {
         Destroy(this.gameObject);
+        Destroy(bullet.gameObject);
     }
 
 }

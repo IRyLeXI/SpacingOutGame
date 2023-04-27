@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
     private float DeathTime;
 
     private bool IsDead = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +39,7 @@ public class GameController : MonoBehaviour
         player.GameController = this;
         player.transform.position = PlayerSpawnPoint.position;
         IsDead = false;
+        EnemyScript.SetPlayer();
     }
 
     private bool IsReadyForRespawn()
@@ -51,4 +53,5 @@ public class GameController : MonoBehaviour
         DeathTime = Time.time;
         IsDead=true;
     }
+
 }

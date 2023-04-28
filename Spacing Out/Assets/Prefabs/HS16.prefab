@@ -130,10 +130,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5768adbc6cedc36408c814054fdc94b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1
+  Speed: 1.5
   Velocity: {x: 0, y: 0}
   Min: {x: -4.1, y: 0}
   Max: {x: 4.1, y: 10}
+  MinFaultX: -0.1
+  MaxFaultX: 0.1
   GetPlayerPositionDelay: 1
   FireRate: 0.6
   Bullet: {fileID: 1473220562046428721, guid: 8dbe058d9bedecb48952cd8b6837cb42, type: 3}

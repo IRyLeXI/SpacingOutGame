@@ -7,17 +7,14 @@ public class WaveTemplate : MonoBehaviour
     [SerializeField]
     public float WaveTime;
 
-    // [SerializeField]
-    // private List<IEnemyShuttleSpawner> Spawners;
-
     [SerializeField]
-    private HS16Spawner HS16Spawner;
+    private List<SpawnerScript> Spawners;
 
-    [SerializeField]
-    private SK09Spawner SK09Spawner;
+    // private HS16Spawner HS16Spawner;
 
-    [SerializeField]
-    private MYXA94Spawner MYXA94Spawner;
+    // private SK09Spawner SK09Spawner;
+
+    // private MYXA94Spawner MYXA94Spawner;
 
     [SerializeField]
     private List<int> Amounts;
@@ -42,20 +39,31 @@ public class WaveTemplate : MonoBehaviour
 
     public void DestroyWave()
     {
+        foreach (SpawnerScript obj in Spawners)
+        {
+            obj.DestroyObject();
+        }
         Destroy(this.gameObject);
-        Destroy(HS16Spawner.gameObject);
-        Destroy(SK09Spawner.gameObject);
-        Destroy(MYXA94Spawner.gameObject);
+        // Destroy(HS16Spawner.gameObject);
+        // Destroy(SK09Spawner.gameObject);
+        // Destroy(MYXA94Spawner.gameObject);
     }
 
     public void EnableWave()
     {
         Enabled = true;
-        HS16Spawner = Instantiate(HS16Spawner);
-        SK09Spawner = Instantiate(SK09Spawner);
-        MYXA94Spawner = Instantiate(MYXA94Spawner);
-        HS16Spawner.SetSpawnRate(Amounts[0], WaveTime);
-        SK09Spawner.SetSpawnRate(Amounts[1], WaveTime);
-        MYXA94Spawner.SetSpawnRate(Amounts[2], WaveTime);
+        int i = 0;
+        foreach(var obj in Spawners)
+        {
+            var Obj = Instantiate(obj);
+            Obj.SetSpawnRate(Amounts[i], WaveTime);
+            i++;
+        }
+        // HS16Spawner = Instantiate(HS16Spawner);
+        // SK09Spawner = Instantiate(SK09Spawner);
+        // MYXA94Spawner = Instantiate(MYXA94Spawner);
+        // HS16Spawner.SetSpawnRate(Amounts[0], WaveTime);
+        // SK09Spawner.SetSpawnRate(Amounts[1], WaveTime);
+        // MYXA94Spawner.SetSpawnRate(Amounts[2], WaveTime);
     }
 }

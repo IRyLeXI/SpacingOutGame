@@ -37,7 +37,7 @@ public class MeteorScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        Debug.Log("Meteor touched");
+    //Debug.Log("Meteor touched");
         if(other.gameObject.tag == "PlayerBullet")
         {
             DestroyMeteor(other);

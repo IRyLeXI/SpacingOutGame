@@ -40,7 +40,7 @@ public class HS16Controller : EnemyScript
     protected override void SetPositionProtected()
     {
         Vector2 playerPos = GetPlayerPos();
-        float newX = (playerPos.x - transform.position.x) + Random.Range(MinFaultX, MaxFaultX);
+        float newX = Mathf.Clamp((playerPos.x - transform.position.x),-1,1) + Random.Range(MinFaultX, MaxFaultX);
         float newY;
         if(transform.position.y>5)
         {

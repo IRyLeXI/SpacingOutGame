@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public abstract class SpawnerScript : MonoBehaviour
 {
 
@@ -33,5 +34,11 @@ public abstract class SpawnerScript : MonoBehaviour
     {
         Amount = amount;
         SpawnRate = time / (float)Amount;
+        //Debug.Log(Amount);
+    }
+
+    public void DestroyObject()
+    {
+        //Destroy(this.gameObject);
     }
 }

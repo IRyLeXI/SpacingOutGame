@@ -37,7 +37,7 @@ public class WaveController : MonoBehaviour
 
     private void NextWave()
     {
-        Debug.Log(Waves.Count);
+        //Debug.Log(Waves.Count);
         if(Waves.Count == 0)
         {
             Destroy(this.gameObject);

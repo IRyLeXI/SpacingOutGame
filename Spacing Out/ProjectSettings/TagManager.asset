@@ -10,6 +10,8 @@ TagManager:
   - PlayerBullet
   - HS16
   - EnemyBullet
+  - MYXA94
+  - SK09
   layers:
   - Default
   - TransparentFX

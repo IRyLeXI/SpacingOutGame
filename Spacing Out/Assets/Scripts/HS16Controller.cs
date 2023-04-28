@@ -19,7 +19,7 @@ public class HS16Controller : EnemyScript
     // Start is called before the first frame update
     void Start()
     {
-        SetPosition();
+        SetPositionProtected();
         //LastShot = Time.time*3;
     }
 
@@ -28,16 +28,16 @@ public class HS16Controller : EnemyScript
     {
         if(IsReadyForSetPos())
         {
-            SetPosition();
+            SetPositionProtected();
         }
-        MoveShip(); 
+        MoveShipProtected(); 
         if(IsReadyForFire() && transform.position.y<5)
         {
             HandleFire();
         }
     }
 
-    protected override void SetPosition()
+    protected override void SetPositionProtected()
     {
         Vector2 playerPos = GetPlayerPos();
         float newX = (playerPos.x - transform.position.x) + Random.Range(MinFaultX, MaxFaultX);
@@ -45,6 +45,7 @@ public class HS16Controller : EnemyScript
         if(transform.position.y>5)
         {
             newY = -1;
+            newX = 0;
         }
         else
         {

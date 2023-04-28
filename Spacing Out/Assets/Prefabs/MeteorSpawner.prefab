@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2999483539869533669
+--- !u!1 &2568844180833553356
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,7 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2999483539869533668}
+  - component: {fileID: 2568844180833553359}
   m_Layer: 0
   m_Name: MaxSpawnPoint
   m_TagString: Untagged
@@ -16,22 +16,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2999483539869533668
+--- !u!4 &2568844180833553359
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2999483539869533669}
+  m_GameObject: {fileID: 2568844180833553356}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.3, y: 6.4, z: 0}
+  m_LocalPosition: {x: 3.57, y: 5.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2999483540225508059}
+  m_Father: {fileID: 2568844182399975143}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2999483540187313162
+--- !u!1 &2568844181609121929
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2999483540187313161}
+  - component: {fileID: 2568844181609121928}
   m_Layer: 0
   m_Name: MinSpawnPoint
   m_TagString: Untagged
@@ -47,22 +47,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2999483540187313161
+--- !u!4 &2568844181609121928
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2999483540187313162}
+  m_GameObject: {fileID: 2568844181609121929}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.1, y: 6.4, z: 0}
+  m_LocalPosition: {x: -4.09, y: 5.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2999483540225508059}
+  m_Father: {fileID: 2568844182399975143}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2999483540225508060
+--- !u!1 &2568844182399975141
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -70,49 +70,60 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2999483540225508059}
-  - component: {fileID: 2999483540225508058}
+  - component: {fileID: 2568844182399975143}
+  - component: {fileID: 2568844182399975140}
   m_Layer: 0
-  m_Name: MYXA94Spawner
+  m_Name: MeteorSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2999483540225508059
+--- !u!4 &2568844182399975143
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2999483540225508060}
+  m_GameObject: {fileID: 2568844182399975141}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0649395, y: -0.6009691, z: -0.19941306}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2999483540187313161}
-  - {fileID: 2999483539869533668}
+  - {fileID: 2568844181609121928}
+  - {fileID: 2568844180833553359}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2999483540225508058
+--- !u!114 &2568844182399975140
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2999483540225508060}
+  m_GameObject: {fileID: 2568844182399975141}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d30c79388558e85409ca58e3db63cd06, type: 3}
+  m_Script: {fileID: 11500000, guid: 774e2ef69f37228469dffe0766d0de98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinSpawnRate: -0.1
-  MaxSpawnRate: 0.1
-  MinSpawnPoint: {fileID: 2999483540187313161}
-  MaxSpawnPoint: {fileID: 2999483539869533668}
+  MinSpawnRate: 1
+  MaxSpawnRate: 2
+  MinSpawnPoint: {fileID: 2568844181609121928}
+  MaxSpawnPoint: {fileID: 2568844180833553359}
   Amount: 0
   isInfinite: 0
-  Enabled: 0
-  Template: {fileID: 8398621900589569400, guid: 46f773899a6bff74689759bfa1c07296, type: 3}
+  MinRotation: -50
+  MaxRotation: 50
+  MinSpeedBig: 1.5
+  MaxSpeedBig: 2
+  MinSpeedSmall: 0.9
+  MaxSpeedSmall: 1.5
+  MinDirection: {x: -0.4, y: -1}
+  MaxDirection: {x: 0.4, y: -1}
+  Template:
+  - {fileID: 4740044764527611014, guid: 1295e76e57766114aaa888c3e2c5db87, type: 3}
+  - {fileID: 1329430155158752869, guid: 79c94f8627d253b47bb193b09e4537c5, type: 3}
+  - {fileID: 3346122782285607009, guid: 3abce576b881acc45bbd7fc05a934a7f, type: 3}
+  - {fileID: 8590056285129660806, guid: 1e9008d3b507f3d418d63da1b58925fd, type: 3}

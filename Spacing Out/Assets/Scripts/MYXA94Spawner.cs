@@ -2,19 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MYXA94Spawner : SpawnerScript
+public class MYXA94Spawner : SpawnerScript, IEnemyShuttleSpawner
 {
     [SerializeField]
     private MYXA94Controller Template;
-
-    private float thisSpawnRate;
-
+    
     // Start is called before the first frame update
     void Start()
     {
-        LastSpawn = Time.time;
-        thisSpawnRate = 20f / (float)Amount;
-        SpawnRate = thisSpawnRate + Random.Range(MinSpawnRate, MaxSpawnRate);
+        LastSpawn = Time.time + SpawnRate;
     }
 
     // Update is called once per frame
@@ -22,17 +18,22 @@ public class MYXA94Spawner : SpawnerScript
     {
         if (IsReadyForSpawnWithAmount())
         {
-            SpawnMYXA();
+            SpawnPrivate();
         }
     }
 
-    private void SpawnMYXA()
+    public void Spawn()
+    {
+        SpawnPrivate();
+    }
+
+    private void SpawnPrivate()
     {
         MYXA94Controller mx = Instantiate(Template);
         Vector2 SpawnPoint = new Vector2(Random.Range(MinSpawnPoint.position.x, MaxSpawnPoint.position.x), MinSpawnPoint.position.y);
         mx.transform.position = SpawnPoint;
         LastSpawn = Time.time;
-        SpawnRate = thisSpawnRate + Random.Range(MinSpawnRate, MaxSpawnRate);
+        SpawnTime = SpawnRate + Random.Range(MinSpawnRate, MaxSpawnRate);
         Amount -= 1;
     }
 }

@@ -13,28 +13,25 @@ public abstract class SpawnerScript : MonoBehaviour
 
     [SerializeField]
     protected int Amount=0; 
+
+    [SerializeField]
+    private bool isInfinite = false;
     
-    protected float SpawnRate, LastSpawn;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    protected float SpawnTime, LastSpawn, SpawnRate;
 
     protected bool IsReadyForSpawn()
     {
-        return Time.time >= (LastSpawn + SpawnRate);
+        return Time.time >= (LastSpawn + SpawnTime);
     }
 
     protected bool IsReadyForSpawnWithAmount()
     {
-        return Time.time >= (LastSpawn + SpawnRate) && Amount>0;
+        return Time.time >= (LastSpawn + SpawnTime) && (Amount>0 || isInfinite);
+    }
+
+    public void SetSpawnRate(int amount, float time)
+    {
+        Amount = amount;
+        SpawnRate = time / (float)Amount;
     }
 }

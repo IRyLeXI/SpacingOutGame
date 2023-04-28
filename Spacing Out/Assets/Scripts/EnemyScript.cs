@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EnemyScript : MonoBehaviour
+public abstract class EnemyScript : MonoBehaviour, IEnemyShuttle
 {
 
     [SerializeField]
@@ -36,7 +36,12 @@ public abstract class EnemyScript : MonoBehaviour
         
     }
 
-    protected void MoveShip()
+
+    public void MoveShip()
+    {
+        MoveShipProtected();
+    }
+    protected void MoveShipProtected()
     {
         float newX = transform.position.x + (Velocity.x * Speed * Time.deltaTime);
         float newY = transform.position.y + (Velocity.y * Speed * Time.deltaTime);
@@ -54,7 +59,12 @@ public abstract class EnemyScript : MonoBehaviour
         }
     }
 
-    protected virtual void SetPosition()
+    public void SetPosition()
+    {
+        SetPositionProtected();
+    }
+
+    protected virtual void SetPositionProtected()
     {
         Vector2 playerPos = GetPlayerPos();
         Vector2 newPos = new Vector2((playerPos.x - transform.position.x),-1f);

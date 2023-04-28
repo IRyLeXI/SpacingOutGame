@@ -2,18 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SK09Spawner : SpawnerScript
+public class SK09Spawner : SpawnerScript, IEnemyShuttleSpawner
 {
     [SerializeField]
     private SK09Controller Template;
 
-    private float thisSpawnRate;
     // Start is called before the first frame update
     void Start()
     {
-        LastSpawn = Time.time;
-        thisSpawnRate = 20f / (float)Amount;
-        SpawnRate = thisSpawnRate + Random.Range(MinSpawnRate, MaxSpawnRate);
+        LastSpawn = Time.time + SpawnRate;
     }
 
     // Update is called once per frame
@@ -21,17 +18,26 @@ public class SK09Spawner : SpawnerScript
     {
         if (IsReadyForSpawnWithAmount())
         {
-            SpawnMYXA();
+            SpawnPrivate();
         }
     }
 
-    private void SpawnMYXA()
+    public void Spawn()
+    {
+        SpawnPrivate();
+    }
+
+    private void SpawnPrivate()
     {
         SK09Controller mx = Instantiate(Template);
-        Vector2 SpawnPoint = new Vector2(Random.Range(MinSpawnPoint.position.x, MaxSpawnPoint.position.x), MinSpawnPoint.position.y);
+        Vector2 SpawnPoint = new Vector2(Random.Range(MinSpawnPoint.position.x, MaxSpawnPoint.position.x), Random.Range(MinSpawnPoint.position.y, MaxSpawnPoint.position.y));
+        if(SpawnPoint.y<5.3)
+        {
+            SpawnPoint.x = MaxSpawnPoint.position.x - SpawnPoint.x < SpawnPoint.x - MinSpawnPoint.position.x ? -6f : 6f;
+        }
         mx.transform.position = SpawnPoint;
         LastSpawn = Time.time;
-        SpawnRate = thisSpawnRate + Random.Range(MinSpawnRate, MaxSpawnRate);
+        SpawnTime = SpawnRate + Random.Range(MinSpawnRate, MaxSpawnRate);
         Amount -= 1;
     }
 }

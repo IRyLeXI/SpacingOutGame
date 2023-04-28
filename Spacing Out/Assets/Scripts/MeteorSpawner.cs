@@ -19,7 +19,7 @@ public class MeteorSpawner : SpawnerScript
     void Start()
     {
         LastSpawn = Time.time;
-        SpawnRate = Random.Range(MinSpawnRate, MaxSpawnRate);
+        SpawnTime = Random.Range(MinSpawnRate, MaxSpawnRate);
     }
 
     // Update is called once per frame
@@ -48,6 +48,6 @@ public class MeteorSpawner : SpawnerScript
         Vector2 direction = new Vector2(Random.Range(MinDirection.x, MaxDirection.x), Random.Range(MinDirection.y, MaxDirection.y));
         mt.pushDirection = direction;
         LastSpawn = Time.time;
-        SpawnRate = Random.Range(MinSpawnRate, MaxSpawnRate);
+        SpawnTime = Random.Range(MinSpawnRate, MaxSpawnRate);
     }
 }

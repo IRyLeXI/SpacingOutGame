@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 2.5
+  HealthPoints: 2
   Velocity: {x: 0, y: 0}
   Min: {x: -4.1, y: -10}
   Max: {x: 4.1, y: 10}

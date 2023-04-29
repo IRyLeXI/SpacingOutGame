@@ -8,10 +8,13 @@ public class BulletScript : MonoBehaviour
     // private Vector2 Speed;
 
     [SerializeField]
-    private float pushForce;
+    public float Damage = 1f;
 
     [SerializeField]
-    private Vector2 pushDirection = Vector2.up;
+    public float pushForce;
+
+    [SerializeField]
+    public Vector2 pushDirection = Vector2.up;
 
     private Rigidbody2D rb;
 
@@ -45,10 +48,10 @@ public class BulletScript : MonoBehaviour
     //     transform.position = new Vector2(newX, newY); 
     // }
 
-    private void DestroyBullet()
-    {
-        Destroy(this.gameObject);
-    }
+    // private void DestroyBullet()
+    // {
+    //     Destroy(this.gameObject);
+    // }
 
     public void ChangeDirection(float newDirection)
     {

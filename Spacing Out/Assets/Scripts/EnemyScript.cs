@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EnemyScript : MonoBehaviour, IEnemyShuttle
+public abstract class EnemyScript : MonoBehaviour, IEnemyShuttle, IDamageble
 {
 
     [SerializeField]
     protected float Speed = 1f;
+
+    [SerializeField]
+    private float HealthPoints = 1f;
 
     [SerializeField]
     protected Vector2 Velocity = new Vector2(0, 0);
@@ -24,23 +27,11 @@ public abstract class EnemyScript : MonoBehaviour, IEnemyShuttle
 
     protected float LastSetPos;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
     public void MoveShip()
     {
         MoveShipProtected();
     }
+
     protected void MoveShipProtected()
     {
         float newX = transform.position.x + (Velocity.x * Speed * Time.deltaTime);
@@ -54,9 +45,11 @@ public abstract class EnemyScript : MonoBehaviour, IEnemyShuttle
     {
         if(other.gameObject.tag == "PlayerBullet" && transform.position.y<5.2)   
         {
-            Destroy(this.gameObject);
-            Destroy(other.gameObject);
+            BulletScript bullet = other.GetComponent<BulletScript>();
+            HandleDamage(bullet.Damage);
+            Destroy(bullet.gameObject);
         }
+
     }
 
     public void SetPosition()
@@ -95,6 +88,20 @@ public abstract class EnemyScript : MonoBehaviour, IEnemyShuttle
     protected bool IsReadyForSetPos()
     {
         return Time.time >= (LastSetPos + GetPlayerPositionDelay);
+    }
+
+    public void HandleDamage(float Damage)
+    {
+        HealthPoints -= Damage;
+        CheckForDeath();
+    }
+
+    private void CheckForDeath()
+    {
+        if(HealthPoints<=0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
 }

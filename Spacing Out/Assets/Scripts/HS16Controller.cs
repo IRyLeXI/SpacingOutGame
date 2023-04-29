@@ -9,7 +9,7 @@ public class HS16Controller : EnemyScript
     private float FireRate = 0.6f;
 
     [SerializeField]
-    private GameObject Bullet;
+    private BulletScript Bullet;
 
     private float LastShot;
 
@@ -59,7 +59,7 @@ public class HS16Controller : EnemyScript
     protected void HandleFire()
     {
         LastShot = Time.time;
-        GameObject bullet = Instantiate(Bullet);
+        GameObject bullet = Instantiate(Bullet.gameObject);
         bullet.transform.position = FrontWeapon.position;
     }
 

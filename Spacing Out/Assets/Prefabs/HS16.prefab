@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 1.5
+  HealthPoints: 1
   Velocity: {x: 0, y: 0}
   Min: {x: -4.1, y: 0}
   Max: {x: 4.1, y: 10}
@@ -138,7 +139,7 @@ MonoBehaviour:
   MaxFaultX: 0.1
   GetPlayerPositionDelay: 1
   FireRate: 0.6
-  Bullet: {fileID: 1473220562046428721, guid: 8dbe058d9bedecb48952cd8b6837cb42, type: 3}
+  Bullet: {fileID: 5452126061021288251, guid: 8dbe058d9bedecb48952cd8b6837cb42, type: 3}
   FrontWeapon: {fileID: 513715720490749732}
 --- !u!60 &5218994642729348428
 PolygonCollider2D:

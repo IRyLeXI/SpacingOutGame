@@ -12,6 +12,10 @@ TagManager:
   - EnemyBullet
   - MYXA94
   - SK09
+  - GalaxyGoliath
+  - GoliathWeaponSide
+  - GoliathWeaponMiddle
+  - GoliathWeaponFront
   layers:
   - Default
   - TransparentFX

@@ -39,6 +39,6 @@ public abstract class SpawnerScript : MonoBehaviour
 
     public void DestroyObject()
     {
-        //Destroy(this.gameObject);
+        Destroy(this.gameObject);
     }
 }

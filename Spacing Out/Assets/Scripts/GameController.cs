@@ -35,11 +35,13 @@ public class GameController : MonoBehaviour
 
     private void RespawnPlayer()
     {
+        Debug.Log("Respawning!");
         PlayerController player = Instantiate(PlayerTemplate);
         player.GameController = this;
         player.transform.position = PlayerSpawnPoint.position;
         IsDead = false;
         EnemyScript.SetPlayer();
+        GoliathAimWeaponController.SetPlayer();
     }
 
     private bool IsReadyForRespawn()

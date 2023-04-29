@@ -2,11 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeteorScript : MonoBehaviour
+public class MeteorScript : MonoBehaviour, IDamageble
 {
     
     [SerializeField]
     protected internal float RotationSpeed;
+
+    [SerializeField]
+    public float Damage = 10f;
+
+    [SerializeField]
+    private float HealthPoints = 1f;
 
     [SerializeField]
     protected internal float pushForce;
@@ -40,7 +46,13 @@ public class MeteorScript : MonoBehaviour
     //Debug.Log("Meteor touched");
         if(other.gameObject.tag == "PlayerBullet")
         {
-            DestroyMeteor(other);
+            BulletScript bullet = other.GetComponent<BulletScript>();
+            HandleDamage(bullet.Damage);
+            Destroy(bullet.gameObject);
+        }
+        else if(other.gameObject.tag == "Player")
+        {
+            HandleDamage(1);
         }
     }
 
@@ -54,6 +66,20 @@ public class MeteorScript : MonoBehaviour
     {
         Destroy(this.gameObject);
         Destroy(bullet.gameObject);
+    }
+
+    public void HandleDamage(float Damage)
+    {
+        HealthPoints -= Damage;
+        CheckForDeath();
+    }
+
+    private void CheckForDeath()
+    {
+        if(HealthPoints<=0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
 }

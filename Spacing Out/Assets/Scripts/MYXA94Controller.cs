@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class MYXA94Controller : EnemyScript
 {
-     [SerializeField]
+    [SerializeField]
     private float FireRate = 1.4f;
 
     [SerializeField]
     private GameObject Bullet;
+
 
     private float LastShot;
 
@@ -76,4 +77,5 @@ public class MYXA94Controller : EnemyScript
     {
         return Time.time >= (LastShot + FireRate + Random.Range(-0.1f, 0.1f));
     }
+
 }

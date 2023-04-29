@@ -9,7 +9,7 @@ public class BossScript : MonoBehaviour, IEnemyShuttle
     protected float Speed = 1f;
 
     [SerializeField]
-    private float AttackDelay = 5f;
+    protected float AttackDelay = 5f;
 
     [SerializeField]
     private float MovementDelay = 1f;
@@ -22,12 +22,6 @@ public class BossScript : MonoBehaviour, IEnemyShuttle
 
     [SerializeField]
     protected Vector2 Min, Max;
-
-    [SerializeField]
-    private List<Transform> HitBoxes;
-
-    [SerializeField]
-    private List<float> HealthPointsForHitBoxes;
 
     protected float LastSetPos;
 
@@ -43,12 +37,7 @@ public class BossScript : MonoBehaviour, IEnemyShuttle
         
     }
 
-    protected virtual void HandleFire()
-    {
-
-    }
-
-    protected void MoveShipProtected()
+    protected virtual void MoveShipProtected()
     {
         float newX = transform.position.x + (Velocity.x * Speed * Time.deltaTime);
         float newY = transform.position.y + (Velocity.y * Speed * Time.deltaTime);
@@ -56,6 +45,7 @@ public class BossScript : MonoBehaviour, IEnemyShuttle
         newY = Mathf.Clamp(newY, Min.y, Max.y);
         transform.position = new Vector2(newX, newY); 
     }
+
 
     protected virtual void SetPositionProtected()
     {

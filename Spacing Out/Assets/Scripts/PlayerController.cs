@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamageble
 {
     [SerializeField]
     private float FireRate = 0.3f;
@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private Transform FrontWeapon;
+
+    [SerializeField]
+    private float HealthPoints = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -82,11 +85,22 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.gameObject.tag != "PlayerBullet" && InvincibleTime <= 0)   
+        if(other.gameObject.tag == "EnemyBullet" && InvincibleTime <= 0)   
         {
-            GameController.DestroyShuttle(this);
-            Destroy(other.gameObject);
+            BulletScript bullet = other.GetComponent<BulletScript>();
+            HandleDamage(bullet.Damage);
+            Destroy(bullet.gameObject);
         }
+        else if((other.gameObject.tag == "BigMeteorite" || other.gameObject.tag == "SmallMeteorite") && InvincibleTime <= 0)
+        {
+            MeteorScript mt = other.GetComponent<MeteorScript>();
+            HandleDamage(mt.Damage);
+        }
+        else if(other.gameObject.tag != "PlayerBullet" && InvincibleTime <= 0)
+        {
+            HandleDamage(1);
+        }
+
     }
     private void MoveShip()
     {
@@ -107,5 +121,18 @@ public class PlayerController : MonoBehaviour
     //     return transform.position.x;
     // }
 
-    
+    public void HandleDamage(float Damage)
+    {
+        Debug.Log(HealthPoints);
+        HealthPoints -= Damage;
+        CheckForDeath();
+    }
+
+    private void CheckForDeath()
+    {
+        if(HealthPoints<=0)
+        {
+            GameController.DestroyShuttle(this);
+        }
+    }
 }

@@ -28,7 +28,13 @@ public class WaveTemplate : MonoBehaviour
     void Update()
     {
         if(Enabled)
+        {
             WaveTime-=Time.deltaTime;
+        }
+        if(WaveTime<0)
+        {
+            DestroyWave();
+        }
     }
 
     public void DestroyWave()

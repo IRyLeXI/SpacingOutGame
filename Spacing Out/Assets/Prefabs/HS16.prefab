@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 513715720490749732}
+  - component: {fileID: 869556713246912130}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -31,6 +32,22 @@ Transform:
   m_Father: {fileID: 8317896670443038091}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &869556713246912130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5987713156483047048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f755e7d4af38324d8fbc03e7a0b0b49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FireRate: 2
+  Bullet: {fileID: 1473220562046428721, guid: 8dbe058d9bedecb48952cd8b6837cb42, type: 3}
+  BulletPushForce: 12
+  BulletDirection: {x: 0, y: -1}
 --- !u!1 &8317896670443038094
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,8 +156,10 @@ MonoBehaviour:
   MaxFaultX: 0.1
   GetPlayerPositionDelay: 1
   FireRate: 0.6
-  Bullet: {fileID: 5452126061021288251, guid: 8dbe058d9bedecb48952cd8b6837cb42, type: 3}
-  FrontWeapon: {fileID: 513715720490749732}
+  Bullet: {fileID: 0}
+  BulletPushForce: 0
+  BulletPushDirection: {x: 0, y: 0}
+  FrontWeapon: {fileID: 869556713246912130}
 --- !u!60 &5218994642729348428
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class GoliathAimWeaponController : WeaponScript
 {
-    [SerializeField]
-    private float AttackTime = 3f;
-
-    private float StartAttackTime;
+    //[SerializeField]
+    private float AttackTime, StartAttackTime;
 
     private static PlayerController Player;
 
@@ -64,12 +62,13 @@ public class GoliathAimWeaponController : WeaponScript
         Player = player1.GetComponent<PlayerController>();
     }
 
-    public void StartAttack()
+    public void StartAttack(float attackTime)
     {
         StartAttackTime = Time.time; 
+        AttackTime = attackTime;
     }
 
-    private bool IsReadyForFire()
+    protected override bool IsReadyForFire()
     {
         return (Time.time >= (LastShot + FireRate)) && (Time.time < (StartAttackTime + AttackTime));
     }

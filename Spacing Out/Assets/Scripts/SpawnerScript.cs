@@ -41,4 +41,11 @@ public abstract class SpawnerScript : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
+
+    public void SetPosition(Transform minSP, Transform maxSP)
+    {
+        MinSpawnPoint = minSP;
+        MaxSpawnPoint = maxSP;
+    }
+
 }

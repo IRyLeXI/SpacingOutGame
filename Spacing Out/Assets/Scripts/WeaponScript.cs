@@ -28,4 +28,9 @@ public abstract class WeaponScript : MonoBehaviour
         bulletScript.pushDirection = BulletDirection;
         bullet.transform.position = gameObject.transform.position;
     }
+
+    protected virtual bool IsReadyForFire()
+    {
+        return Time.time >= (LastShot + FireRate);
+    }
 }

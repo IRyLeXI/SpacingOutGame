@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8398621899468454050}
+  - component: {fileID: 2353475291963993834}
   m_Layer: 0
   m_Name: FrontWeapon
   m_TagString: Untagged
@@ -31,6 +32,22 @@ Transform:
   m_Father: {fileID: 8398621900589569403}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2353475291963993834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8398621899468454061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f755e7d4af38324d8fbc03e7a0b0b49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FireRate: 1.6
+  Bullet: {fileID: 1473220562046428721, guid: 8dbe058d9bedecb48952cd8b6837cb42, type: 3}
+  BulletPushForce: 9
+  BulletDirection: {x: 0, y: -1}
 --- !u!1 &8398621900589569381
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,17 +150,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 1
+  HealthPoints: 1
   Velocity: {x: 0, y: -1}
   Min: {x: -4.1, y: 0}
   Max: {x: 4.1, y: 10}
   MinFaultX: -0.5
   MaxFaultX: 0.5
   GetPlayerPositionDelay: 1.5
-  FireRate: 1.4
-  Bullet: {fileID: 1473220562046428721, guid: 8dbe058d9bedecb48952cd8b6837cb42, type: 3}
-  FrontWeapon: {fileID: 8398621899468454050}
-  LeftWeapon: {fileID: 8398621900643233343}
-  RightWeapon: {fileID: 8398621900794440819}
+  FrontWeapon: {fileID: 2353475291963993834}
+  LeftWeapon: {fileID: 2256629378470376994}
+  RightWeapon: {fileID: 5965171876718457950}
   fireDirectionX: 0.3
 --- !u!60 &8398621900589569401
 PolygonCollider2D:
@@ -218,6 +234,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8398621900643233343}
+  - component: {fileID: 2256629378470376994}
   m_Layer: 0
   m_Name: LeftWeapon
   m_TagString: Untagged
@@ -240,6 +257,22 @@ Transform:
   m_Father: {fileID: 8398621900589569403}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2256629378470376994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8398621900643233342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f755e7d4af38324d8fbc03e7a0b0b49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FireRate: 1.6
+  Bullet: {fileID: 1473220562046428721, guid: 8dbe058d9bedecb48952cd8b6837cb42, type: 3}
+  BulletPushForce: 9
+  BulletDirection: {x: -0.2, y: -1}
 --- !u!1 &8398621900794440818
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,6 +282,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8398621900794440819}
+  - component: {fileID: 5965171876718457950}
   m_Layer: 0
   m_Name: RightWeapon
   m_TagString: Untagged
@@ -271,3 +305,19 @@ Transform:
   m_Father: {fileID: 8398621900589569403}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5965171876718457950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8398621900794440818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f755e7d4af38324d8fbc03e7a0b0b49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FireRate: 1.6
+  Bullet: {fileID: 1473220562046428721, guid: 8dbe058d9bedecb48952cd8b6837cb42, type: 3}
+  BulletPushForce: 9
+  BulletDirection: {x: 0.2, y: -1}

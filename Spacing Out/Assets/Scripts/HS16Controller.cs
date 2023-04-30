@@ -4,17 +4,12 @@ using UnityEngine;
 
 public class HS16Controller : EnemyScript
 {
-
+    
     [SerializeField]
-    private float FireRate = 0.6f;
-
-    [SerializeField]
-    private BulletScript Bullet;
+    private WeaponScript FrontWeapon;
 
     private float LastShot;
 
-    [SerializeField]
-    private Transform FrontWeapon;
 
     // Start is called before the first frame update
     void Start()
@@ -31,10 +26,6 @@ public class HS16Controller : EnemyScript
             SetPositionProtected();
         }
         MoveShipProtected(); 
-        if(IsReadyForFire() && transform.position.y<5)
-        {
-            HandleFire();
-        }
     }
 
     protected override void SetPositionProtected()
@@ -54,17 +45,5 @@ public class HS16Controller : EnemyScript
         Vector2 newPos = new Vector2(newX, newY);
         Velocity = newPos;
         LastSetPos = Time.time;
-    }
-
-    protected void HandleFire()
-    {
-        LastShot = Time.time;
-        GameObject bullet = Instantiate(Bullet.gameObject);
-        bullet.transform.position = FrontWeapon.position;
-    }
-
-    protected bool IsReadyForFire()
-    {
-        return Time.time >= (LastShot + FireRate + Random.Range(-0.1f, 0.1f));
     }
 }

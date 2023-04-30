@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-//TODO: Rework Weapon For All Units
 public class PlayerController : MonoBehaviour, IDamageble
 {
     [SerializeField]

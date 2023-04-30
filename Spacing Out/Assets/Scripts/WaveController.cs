@@ -25,7 +25,6 @@ public class WaveController : MonoBehaviour
     {
         if(IsReadyForNextWave())
         {
-            CurrentWave.DestroyWave();
             NextWave();
         }
     }

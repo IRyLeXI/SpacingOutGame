@@ -35,10 +35,10 @@ public class SK09Spawner : SpawnerScript, IEnemyShuttleSpawner
     {
         SK09Controller mx = Instantiate(Template);
         Vector2 SpawnPoint = new Vector2(Random.Range(MinSpawnPoint.position.x, MaxSpawnPoint.position.x), Random.Range(MinSpawnPoint.position.y, MaxSpawnPoint.position.y));
-        if(SpawnPoint.y<5.3)
-        {
-            SpawnPoint.x = MaxSpawnPoint.position.x - SpawnPoint.x < SpawnPoint.x - MinSpawnPoint.position.x ? -6f : 6f;
-        }
+        // if(SpawnPoint.y<5.3)
+        // {
+        //     SpawnPoint.x = MaxSpawnPoint.position.x - SpawnPoint.x < SpawnPoint.x - MinSpawnPoint.position.x ? -6f : 6f;
+        // }
         mx.transform.position = SpawnPoint;
         LastSpawn = Time.time;
         SpawnTime = SpawnRate + Random.Range(MinSpawnRate, MaxSpawnRate);

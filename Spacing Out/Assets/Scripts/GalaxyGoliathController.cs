@@ -11,6 +11,9 @@ public class GalaxyGoliathController : BossScript
     [SerializeField]
     private List<WeaponScript> WeaponsAttack2;
 
+    [SerializeField]
+    private List<GoliathWeaponSpawnerController> WeaponsAttack3;
+
    
     [SerializeField]
     protected float AttackTime = 3f;
@@ -33,7 +36,7 @@ public class GalaxyGoliathController : BossScript
         DistY = 2.6f - transform.position.y;
         SetPositionProtected();
         LastAttackTime = Time.time - AttackTime;
-        AttackList = new List<Attack>() {HandleAttack1, HandleAttack2};
+        AttackList = new List<Attack>() {HandleAttack1, HandleAttack2, HandleAttack3};
     }
 
     // Update is called once per frame
@@ -71,7 +74,7 @@ public class GalaxyGoliathController : BossScript
         Debug.Log(WeaponsAttack1.Count);
         foreach(GoliathWeaponController Weapon in WeaponsAttack1)
         {
-            Weapon.StartAttack();
+            Weapon.StartAttack(AttackTime);
         }
     }
 
@@ -79,7 +82,15 @@ public class GalaxyGoliathController : BossScript
     {
         foreach(GoliathAimWeaponController Weapon in WeaponsAttack2)
         {
-            Weapon.StartAttack();
+            Weapon.StartAttack(AttackTime);
+        }
+    }
+
+    private void HandleAttack3()
+    {
+        foreach(GoliathWeaponSpawnerController Weapon in WeaponsAttack3)
+        {
+            Weapon.StartAttack(AttackTime);
         }
     }
 

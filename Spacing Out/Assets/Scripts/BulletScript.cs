@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
-    // [SerializeField]
-    // private Vector2 Speed;
 
     [SerializeField]
     public float Damage = 1f;
@@ -24,12 +22,6 @@ public class BulletScript : MonoBehaviour
         PushBullet();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //MoveBullet();
-    }
-
     private void OnTriggerEnter2D(Collider2D other) 
     {
         
@@ -39,23 +31,18 @@ public class BulletScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         rb.AddForce(pushDirection * pushForce, ForceMode2D.Impulse);
+        Rotate();
     }
     
-    // private void MoveBullet()
-    // {
-    //     float newX = transform.position.x + (Speed.x * Time.deltaTime);
-    //     float newY = transform.position.y + (Speed.y * Time.deltaTime);
-    //     transform.position = new Vector2(newX, newY); 
-    // }
-
-    // private void DestroyBullet()
-    // {
-    //     Destroy(this.gameObject);
-    // }
 
     public void ChangeDirection(float newDirection)
     {
         pushDirection.x = newDirection;
     }
 
+    private void Rotate()
+    {
+        float angle = Mathf.Atan2(pushDirection.y, pushDirection.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle - 90f, Vector3.forward);
+    }
 }

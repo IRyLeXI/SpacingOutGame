@@ -10,7 +10,7 @@ public class HS16Spawner : SpawnerScript, IEnemyShuttleSpawner
     // Start is called before the first frame update
     void Start()
     {
-        LastSpawn = Time.time + SpawnRate;
+        LastSpawn = Time.time;
     }
 
     // Update is called once per frame
@@ -19,6 +19,10 @@ public class HS16Spawner : SpawnerScript, IEnemyShuttleSpawner
         if (IsReadyForSpawnWithAmount())
         {
             SpawnPrivate();
+        }
+        if(Amount<=0)
+        {
+            DestroyObject();
         }
     }
 

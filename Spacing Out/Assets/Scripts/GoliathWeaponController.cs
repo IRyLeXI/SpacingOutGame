@@ -2,28 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoliathWeaponController : MonoBehaviour, IDamageble
+public class GoliathWeaponController : WeaponScript, IDamageble
 {
 
     [SerializeField]
     private float HealthPoints = 100f;
 
     [SerializeField]
-    private float FireRate = 0.5f;
-
-    [SerializeField]
-    private GameObject Bullet;
-
-    [SerializeField]
-    private float BulletPushForce = 12f;
-
-    [SerializeField]
-    private Vector2 BulletDirection;
-
-    [SerializeField]
     private float AttackTime = 3f;
 
-    private float LastShot, StartAttackTime;
+    private float StartAttackTime;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +23,6 @@ public class GoliathWeaponController : MonoBehaviour, IDamageble
     // Update is called once per frame
     void Update()
     {
-       //Debug.Log(StartAttackTime);
         if(IsReadyForFire())
         {
             HandleFire();
@@ -49,16 +36,6 @@ public class GoliathWeaponController : MonoBehaviour, IDamageble
             HandleDamage(bullet.Damage);
             Destroy(bullet.gameObject);
         }
-    }
-
-    private void HandleFire()
-    {
-        LastShot = Time.time;
-        GameObject bullet = Instantiate(Bullet.gameObject);
-        BulletScript bulletScript = bullet.GetComponent<BulletScript>();
-        bulletScript.pushForce = BulletPushForce;
-        bulletScript.pushDirection = BulletDirection;
-        bullet.transform.position = gameObject.transform.position;
     }
 
     public void HandleDamage(float Damage)
@@ -83,5 +60,4 @@ public class GoliathWeaponController : MonoBehaviour, IDamageble
     {
         StartAttackTime = Time.time; 
     }
-
 }

@@ -6,24 +6,34 @@ public class GalaxyGoliathController : BossScript
 {
 
     [SerializeField]
-    private List<GoliathWeaponController> WeaponsAttack1;
+    private List<WeaponScript> WeaponsAttack1;
 
     [SerializeField]
-    private GoliathAimWeaponController WeaponAttack2;
+    private List<WeaponScript> WeaponsAttack2;
 
+   
     [SerializeField]
     protected float AttackTime = 3f;
 
-    private float LastAttack;
+    private float LastAttackTime;
 
     private float DistY;
+    
+    private delegate void Attack();
+
+    private List<Attack> AttackList;
+
+    private Attack LastAttack;
+
+    private int CurrentAttack;
 
     // Start is called before the first frame update
     void Start()
     {
         DistY = 2.6f - transform.position.y;
         SetPositionProtected();
-        LastAttack = Time.time - AttackTime;
+        LastAttackTime = Time.time - AttackTime;
+        AttackList = new List<Attack>() {HandleAttack1, HandleAttack2};
     }
 
     // Update is called once per frame
@@ -35,17 +45,30 @@ public class GalaxyGoliathController : BossScript
         }
         if(IsReadyForAttack())
         {
-            HandleAttack2();
-            LastAttack = Time.time;
+            CurrentAttack = Random.Range(0, AttackList.Count);
+            AttackList[CurrentAttack]();
+            if(LastAttack!=null)
+            {
+                AttackList.Add(LastAttack);
+            }
+            LastAttack = AttackList[CurrentAttack];
+            AttackList.RemoveAt(CurrentAttack);
+            LastAttackTime = Time.time;
         }
         if(!IsAttacking())
         {
             MoveShipProtected(); 
         }
+        if(WeaponsAttack1.Count == 0)
+        {
+            DestroyGoliath();
+        }
+        UpdateWeapons();
     }
 
     private void HandleAttack1()
     {
+        Debug.Log(WeaponsAttack1.Count);
         foreach(GoliathWeaponController Weapon in WeaponsAttack1)
         {
             Weapon.StartAttack();
@@ -54,7 +77,10 @@ public class GalaxyGoliathController : BossScript
 
     private void HandleAttack2()
     {
-        WeaponAttack2.StartAttack();
+        foreach(GoliathAimWeaponController Weapon in WeaponsAttack2)
+        {
+            Weapon.StartAttack();
+        }
     }
 
     protected override void MoveShipProtected()
@@ -71,6 +97,18 @@ public class GalaxyGoliathController : BossScript
         base.MoveShipProtected();
     }
 
+    private void UpdateWeapons()
+    {
+        for (int i = 0; i < WeaponsAttack1.Count; i++)
+        {
+            GoliathWeaponController weapon = (GoliathWeaponController)WeaponsAttack1[i];
+            if (weapon == null)
+            {
+                WeaponsAttack1.RemoveAt(i);
+                i--;
+            }
+        }
+    }
     protected override void SetPositionProtected()
     {
         float newX = Mathf.Clamp(Random.Range(-3f,3f),-1f,1f);
@@ -82,11 +120,16 @@ public class GalaxyGoliathController : BossScript
 
     private bool IsReadyForAttack()
     {
-        return Time.time >= (LastAttack + AttackTime + AttackDelay);
+        return Time.time >= (LastAttackTime + AttackTime + AttackDelay);
     }
 
     private bool IsAttacking()
     {
-        return Time.time < (LastAttack + AttackTime);
+        return Time.time < (LastAttackTime + AttackTime);
+    }
+
+    private void DestroyGoliath()
+    {
+        Destroy(this.gameObject);
     }
 }

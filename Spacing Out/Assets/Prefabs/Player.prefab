@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FireRate: 0.2
   Speed: 8
-  InvincibleTime: 100
+  InvincibleTime: 3
   GameController: {fileID: 0}
   Bullet: {fileID: 4898414446623601743, guid: 90c49fb6cdab4cc4cbf1c3eb6e4c8dad, type: 3}
   Velocity: {x: 0, y: 0}

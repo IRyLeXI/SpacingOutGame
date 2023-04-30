@@ -33,10 +33,6 @@ public class WaveTemplate : MonoBehaviour
 
     public void DestroyWave()
     {
-        foreach (GameObject obj in spawnedObjects)
-        {
-           Destroy(obj);
-        }
         Destroy(this.gameObject);
     }
 

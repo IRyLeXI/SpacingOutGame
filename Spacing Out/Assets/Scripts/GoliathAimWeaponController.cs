@@ -2,21 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoliathAimWeaponController : MonoBehaviour
+public class GoliathAimWeaponController : WeaponScript
 {
-    [SerializeField]
-    private float FireRate = 0.5f;
-
-    [SerializeField]
-    private GameObject Bullet;
-
-    [SerializeField]
-    private float BulletPushForce = 12f;
-
     [SerializeField]
     private float AttackTime = 3f;
 
-    private float LastShot, StartAttackTime;
+    private float StartAttackTime;
 
     private static PlayerController Player;
 
@@ -37,12 +28,14 @@ public class GoliathAimWeaponController : MonoBehaviour
         }
     }
 
-    private void HandleFire()
+    protected override void HandleFire()
     {
         LastShot = Time.time;
         GameObject bullet = Instantiate(Bullet.gameObject);
         BulletScript bulletScript = bullet.GetComponent<BulletScript>();
         Vector2 playerPos = GetPlayerPos();
+        //Mathf.Clamp(playerPos.x,-1f,1f);
+        playerPos.x = playerPos.x - transform.position.x;
         playerPos.Normalize();
         playerPos.y = -1f;
         //playerPos.y = playerPos.y > 0 ? 1f : -1f;

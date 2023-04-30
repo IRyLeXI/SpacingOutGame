@@ -14,7 +14,12 @@ public class GalaxyGoliathController : BossScript
     [SerializeField]
     private List<GoliathWeaponSpawnerController> WeaponsAttack3;
 
-   
+    [SerializeField]
+    private LaserScript Weapon4;
+
+    [SerializeField]
+    private EngineController Engine;
+
     [SerializeField]
     protected float AttackTime = 3f;
 
@@ -36,7 +41,7 @@ public class GalaxyGoliathController : BossScript
         DistY = 2.6f - transform.position.y;
         SetPositionProtected();
         LastAttackTime = Time.time - AttackTime;
-        AttackList = new List<Attack>() {HandleAttack1, HandleAttack2, HandleAttack3};
+        AttackList = new List<Attack>() {HandleAttack1, HandleAttack2, HandleAttack3, HandleAttack4};
     }
 
     // Update is called once per frame
@@ -48,23 +53,19 @@ public class GalaxyGoliathController : BossScript
         }
         if(IsReadyForAttack())
         {
-            CurrentAttack = Random.Range(0, AttackList.Count);
-            AttackList[CurrentAttack]();
-            if(LastAttack!=null)
-            {
-                AttackList.Add(LastAttack);
-            }
-            LastAttack = AttackList[CurrentAttack];
-            AttackList.RemoveAt(CurrentAttack);
-            LastAttackTime = Time.time;
+            ExecuteAttack();
         }
         if(!IsAttacking())
         {
             MoveShipProtected(); 
         }
-        if(WeaponsAttack1.Count == 0)
+        if(Engine == null)
         {
             DestroyGoliath();
+        }
+        if(WeaponsAttack1.Count == 0 && !Engine.IsOpened())
+        {
+            Engine.OpenUp();
         }
         UpdateWeapons();
     }
@@ -77,6 +78,21 @@ public class GalaxyGoliathController : BossScript
             Weapon.StartAttack(AttackTime);
         }
     }
+
+    private void ExecuteAttack()
+    {
+        CurrentAttack = Random.Range(0, AttackList.Count);
+        AttackList[CurrentAttack]();
+        if(LastAttack!=null)
+        {
+            AttackList.Add(LastAttack);
+        }
+        LastAttack = AttackList[CurrentAttack];
+        if(AttackList.Count!=1) 
+            AttackList.RemoveAt(CurrentAttack);
+        LastAttackTime = Time.time;
+    }
+
 
     private void HandleAttack2()
     {
@@ -92,6 +108,11 @@ public class GalaxyGoliathController : BossScript
         {
             Weapon.StartAttack(AttackTime);
         }
+    }
+
+    private void HandleAttack4()
+    {
+        Weapon4.StartAttack(AttackTime);
     }
 
     protected override void MoveShipProtected()
@@ -120,6 +141,9 @@ public class GalaxyGoliathController : BossScript
             }
         }
     }
+
+    
+
     protected override void SetPositionProtected()
     {
         float newX = Mathf.Clamp(Random.Range(-3f,3f),-1f,1f);
@@ -138,9 +162,15 @@ public class GalaxyGoliathController : BossScript
     {
         return Time.time < (LastAttackTime + AttackTime);
     }
-
+    
     private void DestroyGoliath()
     {
         Destroy(this.gameObject);
+    }
+    
+
+    public void SlowDown()
+    {
+        Speed/=2;
     }
 }

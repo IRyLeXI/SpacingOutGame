@@ -59,4 +59,9 @@ public class GoliathWeaponController : WeaponScript, IDamageble
         StartAttackTime = Time.time; 
         AttackTime = attackTime;
     }
+
+    public float GetHealth()
+    {
+        return HealthPoints;
+    }
 }

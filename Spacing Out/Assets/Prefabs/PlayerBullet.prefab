@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83ab6aec47cd9c24c9ee92e3267aedb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 1
+  Damage: 20
   pushForce: 12
   pushDirection: {x: 0, y: 1}
 --- !u!61 &4898414446623601739

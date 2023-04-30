@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IDamageble
@@ -7,15 +5,15 @@ public class PlayerController : MonoBehaviour, IDamageble
     [SerializeField]
     private float FireRate = 0.3f;
 
-    private float LastShot;
+    private float lastShot;
 
     [SerializeField]
-    private int Speed = 1;
+    private int speed = 1;
 
     [SerializeField]
-    private float InvincibleTime = 3;
+    private float invincibleTime = 3;
 
-    public GameController GameController;
+    public GameController gameController;
 
     [SerializeField]
     private GameObject Bullet;
@@ -27,15 +25,15 @@ public class PlayerController : MonoBehaviour, IDamageble
     private Vector2 Min, Max;
 
     [SerializeField]
-    private Transform FrontWeapon;
+    private Transform frontWeapon;
 
     [SerializeField]
-    private float HealthPoints = 1f;
+    private float healthPoints = 1f;
 
     // Start is called before the first frame update
     void Start()
     {
-        LastShot = Time.time;
+        lastShot = Time.time;
     }
 
     // Update is called once per frame
@@ -60,17 +58,17 @@ public class PlayerController : MonoBehaviour, IDamageble
     {
         if(Input.GetButton("Fire"))
         {
-            LastShot = Time.time;
+            lastShot = Time.time;
             GameObject bullet = Instantiate(Bullet);
-            bullet.transform.position = FrontWeapon.position;
+            bullet.transform.position = frontWeapon.position;
         }
     }
 
     private void HandleInvincibility()
     {
-        bool isInvincible = (InvincibleTime > 0) && (Mathf.Sin(Time.time * 20) > 0);
+        bool isInvincible = (invincibleTime > 0) && (Mathf.Sin(Time.time * 20) > 0);
         GetComponent<Renderer>().enabled = !isInvincible;
-        InvincibleTime-=Time.deltaTime;
+        invincibleTime-=Time.deltaTime;
     }
 
     private Vector2 HandleHorizontal(float h)
@@ -85,18 +83,18 @@ public class PlayerController : MonoBehaviour, IDamageble
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.gameObject.tag == "EnemyBullet" && InvincibleTime <= 0)   
+        if(other.gameObject.tag == "EnemyBullet" && invincibleTime <= 0)   
         {
             BulletScript bullet = other.GetComponent<BulletScript>();
             HandleDamage(bullet.Damage);
             Destroy(bullet.gameObject);
         }
-        else if((other.gameObject.tag == "BigMeteorite" || other.gameObject.tag == "SmallMeteorite") && InvincibleTime <= 0)
+        else if((other.gameObject.tag == "BigMeteorite" || other.gameObject.tag == "SmallMeteorite") && invincibleTime <= 0)
         {
             MeteorScript mt = other.GetComponent<MeteorScript>();
             HandleDamage(mt.Damage);
         }
-        else if(other.gameObject.tag != "PlayerBullet" && InvincibleTime <= 0)
+        else if(other.gameObject.tag != "PlayerBullet" && invincibleTime <= 0)
         {
             HandleDamage(1);
         }
@@ -104,8 +102,8 @@ public class PlayerController : MonoBehaviour, IDamageble
     }
     private void MoveShip()
     {
-        float newX = transform.position.x + (Velocity.x * Speed * Time.deltaTime);
-        float newY = transform.position.y + (Velocity.y * Speed * Time.deltaTime);
+        float newX = transform.position.x + (Velocity.x * speed * Time.deltaTime);
+        float newY = transform.position.y + (Velocity.y * speed * Time.deltaTime);
         newX = Mathf.Clamp(newX, Min.x, Max.x);
         newY = Mathf.Clamp(newY, Min.y, Max.y);
         transform.position = new Vector2(newX, newY); 
@@ -113,7 +111,7 @@ public class PlayerController : MonoBehaviour, IDamageble
 
     private bool IsReadyForFire()
     {
-        return Time.time >= (LastShot + FireRate);
+        return Time.time >= (lastShot + FireRate);
     }
 
     // public float GetPositionX()
@@ -123,16 +121,16 @@ public class PlayerController : MonoBehaviour, IDamageble
 
     public void HandleDamage(float Damage)
     {
-        Debug.Log(HealthPoints);
-        HealthPoints -= Damage;
+        Debug.Log(healthPoints);
+        healthPoints -= Damage;
         CheckForDeath();
     }
 
     private void CheckForDeath()
     {
-        if(HealthPoints<=0)
+        if(healthPoints<=0)
         {
-            GameController.DestroyShuttle(this);
+            gameController.DestroyShuttle(this);
         }
     }
 

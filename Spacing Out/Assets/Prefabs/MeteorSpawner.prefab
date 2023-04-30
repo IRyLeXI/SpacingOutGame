@@ -108,20 +108,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 774e2ef69f37228469dffe0766d0de98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinSpawnRate: 1
-  MaxSpawnRate: 2
-  MinSpawnPoint: {fileID: 2568844181609121928}
-  MaxSpawnPoint: {fileID: 2568844180833553359}
+  minSpawnRate: 1
+  maxSpawnRate: 2
+  minSpawnPoint: {fileID: 2568844181609121928}
+  maxSpawnPoint: {fileID: 2568844180833553359}
   Amount: 0
-  isInfinite: 0
-  MinRotation: -50
-  MaxRotation: 50
-  MinSpeedBig: 1.5
-  MaxSpeedBig: 2
-  MinSpeedSmall: 0.9
-  MaxSpeedSmall: 1.5
-  MinDirection: {x: -0.4, y: -1}
-  MaxDirection: {x: 0.4, y: -1}
+  isInfinite: 1
+  minRotation: -50
+  maxRotation: 50
+  minSpeedBig: 1.6
+  maxSpeedBig: 2
+  minSpeedSmall: 1
+  maxSpeedSmall: 1.5
+  minDirection: {x: -0.3, y: -1}
+  maxDirection: {x: 0.3, y: -1}
   Template:
   - {fileID: 4740044764527611014, guid: 1295e76e57766114aaa888c3e2c5db87, type: 3}
   - {fileID: 1329430155158752869, guid: 79c94f8627d253b47bb193b09e4537c5, type: 3}

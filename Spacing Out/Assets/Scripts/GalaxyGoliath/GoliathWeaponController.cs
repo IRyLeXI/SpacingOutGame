@@ -1,21 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GoliathWeaponController : WeaponScript, IDamageble
 {
 
     [SerializeField]
-    private float HealthPoints = 100f;
+    private float healthPoints = 100f;
 
     //[SerializeField]
-    private float AttackTime, StartAttackTime;
+    private float attackTime, startAttackTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        LastShot = Time.time;
-        StartAttackTime = Time.time - AttackTime;
+        lastShot = Time.time;
+        startAttackTime = Time.time - attackTime;
     }
 
     // Update is called once per frame
@@ -38,30 +36,30 @@ public class GoliathWeaponController : WeaponScript, IDamageble
 
     public void HandleDamage(float Damage)
     {
-        HealthPoints -= Damage;
+        healthPoints -= Damage;
         CheckForDeath();
     }
 
     private void CheckForDeath()
     {
-        if(HealthPoints<=0)
+        if(healthPoints<=0)
         {
             Destroy(this.gameObject);
         }
     }
     protected override bool IsReadyForFire()
     {
-        return (Time.time >= (LastShot + FireRate)) && (Time.time < (StartAttackTime + AttackTime));
+        return (Time.time >= (lastShot + fireRate)) && (Time.time < (startAttackTime + attackTime));
     }
 
     public void StartAttack(float attackTime)
     {
-        StartAttackTime = Time.time; 
-        AttackTime = attackTime;
+        startAttackTime = Time.time; 
+        this.attackTime = attackTime;
     }
 
     public float GetHealth()
     {
-        return HealthPoints;
+        return healthPoints;
     }
 }

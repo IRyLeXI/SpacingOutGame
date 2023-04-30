@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f755e7d4af38324d8fbc03e7a0b0b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireRate: 2
+  fireRate: 0.6
   Bullet: {fileID: 1473220562046428721, guid: 8dbe058d9bedecb48952cd8b6837cb42, type: 3}
-  BulletPushForce: 12
-  BulletDirection: {x: 0, y: -1}
+  bulletPushForce: 12
+  bulletDirection: {x: 0, y: -1}
 --- !u!1 &8317896670443038094
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,19 +147,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5768adbc6cedc36408c814054fdc94b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1.5
-  HealthPoints: 1
+  Speed: 1.7
+  healthPoints: 1
   Velocity: {x: 0, y: 0}
   Min: {x: -4.1, y: 0}
   Max: {x: 4.1, y: 10}
-  MinFaultX: -0.1
-  MaxFaultX: 0.1
-  GetPlayerPositionDelay: 1
-  FireRate: 0.6
-  Bullet: {fileID: 0}
-  BulletPushForce: 0
-  BulletPushDirection: {x: 0, y: 0}
-  FrontWeapon: {fileID: 869556713246912130}
+  minFaultX: -0.1
+  maxFaultX: 0.1
+  getPlayerPositionDelay: 1
+  frontWeapon: {fileID: 869556713246912130}
 --- !u!60 &5218994642729348428
 PolygonCollider2D:
   m_ObjectHideFlags: 0

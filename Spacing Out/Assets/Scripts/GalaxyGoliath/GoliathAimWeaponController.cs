@@ -1,19 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GoliathAimWeaponController : WeaponScript
 {
     //[SerializeField]
-    private float AttackTime, StartAttackTime;
+    private float attackTime, startAttackTime;
 
     private static PlayerController Player;
 
     // Start is called before the first frame update
     void Start()
     {
-        LastShot = Time.time;
-        StartAttackTime = Time.time - AttackTime;
+        lastShot = Time.time;
+        startAttackTime = Time.time - attackTime;
     }
 
     // Update is called once per frame
@@ -28,7 +26,7 @@ public class GoliathAimWeaponController : WeaponScript
 
     protected override void HandleFire()
     {
-        LastShot = Time.time;
+        lastShot = Time.time;
         GameObject bullet = Instantiate(Bullet.gameObject);
         BulletScript bulletScript = bullet.GetComponent<BulletScript>();
         Vector2 playerPos = GetPlayerPos();
@@ -37,7 +35,7 @@ public class GoliathAimWeaponController : WeaponScript
         playerPos.Normalize();
         playerPos.y = -1f;
         //playerPos.y = playerPos.y > 0 ? 1f : -1f;
-        bulletScript.pushForce = BulletPushForce;
+        bulletScript.pushForce = bulletPushForce;
         bulletScript.pushDirection = playerPos;
         bullet.transform.position = gameObject.transform.position;
     }
@@ -64,13 +62,13 @@ public class GoliathAimWeaponController : WeaponScript
 
     public void StartAttack(float attackTime)
     {
-        StartAttackTime = Time.time; 
-        AttackTime = attackTime;
+        startAttackTime = Time.time; 
+        this.attackTime = attackTime;
     }
 
     protected override bool IsReadyForFire()
     {
-        return (Time.time >= (LastShot + FireRate)) && (Time.time < (StartAttackTime + AttackTime));
+        return (Time.time >= (lastShot + fireRate)) && (Time.time < (startAttackTime + attackTime));
     }
 
 }

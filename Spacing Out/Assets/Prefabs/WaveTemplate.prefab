@@ -44,9 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f44911fc17a9ba441bf33031c0a4b1f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WaveTime: 0
-  HS16Spawner: {fileID: 8806725401026109045, guid: fa0d599a65172c24bb249570a0b92ec4, type: 3}
-  SK09Spawner: {fileID: 4646094749080196160, guid: 401af96ca92862b41be2459d9155be72, type: 3}
-  MYXA94Spawner: {fileID: 2999483540225508058, guid: 93d1fd87a6f9cc04b84df54e6ef6ef6e, type: 3}
+  waveTime: 20
+  Spawners:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   Amounts: 000000000000000000000000
   Enabled: 0

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossScript : MonoBehaviour, IEnemyShuttle
@@ -9,10 +7,10 @@ public class BossScript : MonoBehaviour, IEnemyShuttle
     protected float Speed = 1f;
 
     [SerializeField]
-    protected float AttackDelay = 5f;
+    protected float attackDelay = 5f;
 
     [SerializeField]
-    private float MovementDelay = 1f;
+    private float movementDelay = 1f;
 
     // [SerializeField]
     // private float MinX, MaxX;
@@ -23,7 +21,7 @@ public class BossScript : MonoBehaviour, IEnemyShuttle
     [SerializeField]
     protected Vector2 Min, Max;
 
-    protected float LastSetPos;
+    protected float lastSetPos;
 
     // Start is called before the first frame update
     void Start()
@@ -53,12 +51,12 @@ public class BossScript : MonoBehaviour, IEnemyShuttle
         float newY = Random.Range(-1f, 1f); 
         Velocity.x = newX;
         Velocity.y = newY;
-        LastSetPos = Time.time;
+        lastSetPos = Time.time;
     }
 
     protected bool IsReadyForSetPos()
     {
-        return Time.time >= (LastSetPos + MovementDelay);
+        return Time.time >= (lastSetPos + movementDelay);
     }
 
     public void MoveShip()

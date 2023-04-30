@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,11 +7,11 @@ public class WaveController : MonoBehaviour
     private List<WaveTemplate> Waves;
 
     [SerializeField]
-    private float DelayBetweenWaves;
+    private float delayBetweenWaves;
     
-    private float LastSpawn;
+    private float lastSpawn;
 
-    private WaveTemplate CurrentWave;
+    private WaveTemplate currentWave;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +30,7 @@ public class WaveController : MonoBehaviour
 
     private bool IsReadyForNextWave()
     {
-        return CurrentWave.WaveTime <= 0 && (Time.time >= (LastSpawn + DelayBetweenWaves));
+        return currentWave.waveTime <= 0 && (Time.time >= (lastSpawn + delayBetweenWaves));
     }
 
     private void NextWave()
@@ -42,9 +41,9 @@ public class WaveController : MonoBehaviour
             Destroy(this.gameObject);
             return;
         }
-        CurrentWave = Waves[0];
-        CurrentWave.EnableWave();
+        currentWave = Waves[0];
+        currentWave.EnableWave();
         Waves.RemoveAt(0);
-        LastSpawn = Time.time + CurrentWave.WaveTime;
+        lastSpawn = Time.time + currentWave.waveTime;
     }
 }

@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f755e7d4af38324d8fbc03e7a0b0b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireRate: 1.6
+  fireRate: 1.6
   Bullet: {fileID: 1473220562046428721, guid: 8dbe058d9bedecb48952cd8b6837cb42, type: 3}
-  BulletPushForce: 9
-  BulletDirection: {x: 0, y: -1}
+  bulletPushForce: 9
+  bulletDirection: {x: 0, y: -1}
 --- !u!1 &8398621900589569381
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,18 +149,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58574fb23bd7c2046989302fe537fc48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1
-  HealthPoints: 1
-  Velocity: {x: 0, y: -1}
+  Speed: 1.3
+  healthPoints: 1
+  Velocity: {x: 0, y: 0}
   Min: {x: -4.1, y: 0}
   Max: {x: 4.1, y: 10}
-  MinFaultX: -0.5
-  MaxFaultX: 0.5
-  GetPlayerPositionDelay: 1.5
-  FrontWeapon: {fileID: 2353475291963993834}
-  LeftWeapon: {fileID: 2256629378470376994}
-  RightWeapon: {fileID: 5965171876718457950}
-  fireDirectionX: 0.3
+  minFaultX: -0.3
+  maxFaultX: 0.3
+  getPlayerPositionDelay: 1.4
+  frontWeapon: {fileID: 2353475291963993834}
+  leftWeapon: {fileID: 2256629378470376994}
+  rightWeapon: {fileID: 5965171876718457950}
 --- !u!60 &8398621900589569401
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -269,10 +268,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f755e7d4af38324d8fbc03e7a0b0b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireRate: 1.6
+  fireRate: 1.6
   Bullet: {fileID: 1473220562046428721, guid: 8dbe058d9bedecb48952cd8b6837cb42, type: 3}
-  BulletPushForce: 9
-  BulletDirection: {x: -0.2, y: -1}
+  bulletPushForce: 9
+  bulletDirection: {x: -0.3, y: -1}
 --- !u!1 &8398621900794440818
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,7 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f755e7d4af38324d8fbc03e7a0b0b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireRate: 1.6
+  fireRate: 1.6
   Bullet: {fileID: 1473220562046428721, guid: 8dbe058d9bedecb48952cd8b6837cb42, type: 3}
-  BulletPushForce: 9
-  BulletDirection: {x: 0.2, y: -1}
+  bulletPushForce: 9
+  bulletDirection: {x: 0.3, y: -1}

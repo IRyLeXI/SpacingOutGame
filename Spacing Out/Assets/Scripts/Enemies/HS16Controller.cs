@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HS16Controller : EnemyScript
 {
     
     [SerializeField]
-    private WeaponScript FrontWeapon;
+    private WeaponScript frontWeapon;
 
-    private float LastShot;
+    private float lastShot;
 
 
     // Start is called before the first frame update
@@ -31,7 +29,7 @@ public class HS16Controller : EnemyScript
     protected override void SetPositionProtected()
     {
         Vector2 playerPos = GetPlayerPos();
-        float newX = Mathf.Clamp((playerPos.x - transform.position.x),-1,1) + Random.Range(MinFaultX, MaxFaultX);
+        float newX = Mathf.Clamp((playerPos.x - transform.position.x),-1,1) + Random.Range(minFaultX, maxFaultX);
         float newY;
         if(transform.position.y>5)
         {
@@ -44,6 +42,6 @@ public class HS16Controller : EnemyScript
         }
         Vector2 newPos = new Vector2(newX, newY);
         Velocity = newPos;
-        LastSetPos = Time.time;
+        lastSetPos = Time.time;
     }
 }

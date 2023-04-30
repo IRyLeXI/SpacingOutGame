@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MeteorScript : MonoBehaviour, IDamageble
 {
     
     [SerializeField]
-    protected internal float RotationSpeed;
+    protected internal float rotationSpeed;
 
     [SerializeField]
     public float Damage = 10f;
 
     [SerializeField]
-    private float HealthPoints = 1f;
+    private float healthPoints = 1f;
 
     [SerializeField]
     protected internal float pushForce;
@@ -36,7 +34,7 @@ public class MeteorScript : MonoBehaviour, IDamageble
 
     private void RotateMeteor()
     {
-        float newZ = transform.rotation.eulerAngles.z + (RotationSpeed * Time.deltaTime);
+        float newZ = transform.rotation.eulerAngles.z + (rotationSpeed * Time.deltaTime);
         Vector3 newR = new (0, 0, newZ);
         transform.rotation = Quaternion.Euler(newR);
     }
@@ -70,13 +68,13 @@ public class MeteorScript : MonoBehaviour, IDamageble
 
     public void HandleDamage(float Damage)
     {
-        HealthPoints -= Damage;
+        healthPoints -= Damage;
         CheckForDeath();
     }
 
     private void CheckForDeath()
     {
-        if(HealthPoints<=0)
+        if(healthPoints<=0)
         {
             Destroy(this.gameObject);
         }

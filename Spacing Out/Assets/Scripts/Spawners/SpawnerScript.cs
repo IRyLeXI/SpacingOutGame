@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -7,10 +5,10 @@ public abstract class SpawnerScript : MonoBehaviour
 {
 
     [SerializeField]
-    protected float MinSpawnRate, MaxSpawnRate;
+    protected float minSpawnRate, maxSpawnRate;
 
     [SerializeField]
-    protected Transform MinSpawnPoint, MaxSpawnPoint;
+    protected Transform minSpawnPoint, maxSpawnPoint;
 
     [SerializeField]
     protected int Amount=0; 
@@ -18,23 +16,22 @@ public abstract class SpawnerScript : MonoBehaviour
     [SerializeField]
     private bool isInfinite = false;
     
-    protected float SpawnTime, LastSpawn, SpawnRate;
+    protected float spawnTime, lastSpawn, spawnRate;
 
     protected bool IsReadyForSpawn()
     {
-        return Time.time >= (LastSpawn + SpawnTime);
+        return Time.time >= (lastSpawn + spawnTime);
     }
 
     protected bool IsReadyForSpawnWithAmount()
     {
-        return Time.time >= (LastSpawn + SpawnTime) && (Amount>0 || isInfinite);
+        return Time.time >= (lastSpawn + spawnTime) && (Amount>0 || isInfinite);
     }
 
     public void SetSpawnRate(int amount, float time)
     {
         Amount = amount;
-        SpawnRate = time / (float)Amount;
-        //Debug.Log(Amount);
+        spawnRate = time / (float)Amount;
     }
 
     public void DestroyObject()
@@ -42,10 +39,10 @@ public abstract class SpawnerScript : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    public void SetPosition(Transform minSP, Transform maxSP)
+    public void SetPosition(Vector2 minSP, Vector2 maxSP)
     {
-        MinSpawnPoint = minSP;
-        MaxSpawnPoint = maxSP;
+        minSpawnPoint.position = minSP;
+        maxSpawnPoint.position = maxSP;
     }
 
 }

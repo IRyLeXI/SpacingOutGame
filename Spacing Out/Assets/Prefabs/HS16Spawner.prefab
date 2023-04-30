@@ -46,11 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4700e80c5aab2ea4bb2dde6691318560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinSpawnRate: -0.1
-  MaxSpawnRate: 0.1
-  MinSpawnPoint: {fileID: 8806725401232939879}
-  MaxSpawnPoint: {fileID: 8806725401312604060}
-  Amount: 0
+  minSpawnRate: 1
+  maxSpawnRate: 3
+  minSpawnPoint: {fileID: 8806725401232939879}
+  maxSpawnPoint: {fileID: 8806725401312604060}
+  Amount: 10
   isInfinite: 0
   Template: {fileID: 7277540773944062726, guid: f4124b65b04ec3b4895014d0dc970aa1, type: 3}
 --- !u!1 &8806725401232939872

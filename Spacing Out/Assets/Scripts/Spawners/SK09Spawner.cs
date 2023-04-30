@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SK09Spawner : SpawnerScript, IEnemyShuttleSpawner
@@ -10,7 +8,7 @@ public class SK09Spawner : SpawnerScript, IEnemyShuttleSpawner
     // Start is called before the first frame update
     void Start()
     {
-        LastSpawn = Time.time;
+        lastSpawn = Time.time;
     }
 
     // Update is called once per frame
@@ -34,14 +32,14 @@ public class SK09Spawner : SpawnerScript, IEnemyShuttleSpawner
     private void SpawnPrivate()
     {
         SK09Controller mx = Instantiate(Template);
-        Vector2 SpawnPoint = new Vector2(Random.Range(MinSpawnPoint.position.x, MaxSpawnPoint.position.x), Random.Range(MinSpawnPoint.position.y, MaxSpawnPoint.position.y));
-        // if(SpawnPoint.y<5.3)
-        // {
-        //     SpawnPoint.x = MaxSpawnPoint.position.x - SpawnPoint.x < SpawnPoint.x - MinSpawnPoint.position.x ? -6f : 6f;
-        // }
+        Vector2 SpawnPoint = new Vector2(Random.Range(minSpawnPoint.position.x, maxSpawnPoint.position.x), Random.Range(minSpawnPoint.position.y, maxSpawnPoint.position.y));
+        if(SpawnPoint.y<5.3)
+        {
+            SpawnPoint.x = maxSpawnPoint.position.x - SpawnPoint.x < SpawnPoint.x - minSpawnPoint.position.x ? -5f : 5f;
+        }
         mx.transform.position = SpawnPoint;
-        LastSpawn = Time.time;
-        SpawnTime = SpawnRate + Random.Range(MinSpawnRate, MaxSpawnRate);
+        lastSpawn = Time.time;
+        spawnTime = spawnRate + Random.Range(minSpawnRate, maxSpawnRate);
         Amount -= 1;
     }
 }

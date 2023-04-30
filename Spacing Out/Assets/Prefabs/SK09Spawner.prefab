@@ -108,10 +108,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 023f200251b643849bb0ceaecfc9c362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinSpawnRate: -0.1
-  MaxSpawnRate: 0.1
-  MinSpawnPoint: {fileID: 3122752029776459475}
-  MaxSpawnPoint: {fileID: 7375273807934512197}
-  Amount: 0
+  minSpawnRate: 1
+  maxSpawnRate: 3
+  minSpawnPoint: {fileID: 3122752029776459475}
+  maxSpawnPoint: {fileID: 7375273807934512197}
+  Amount: 10
   isInfinite: 0
   Template: {fileID: 988551705624849329, guid: 28c112c8c1276fb49ac02dde6d4f361c, type: 3}

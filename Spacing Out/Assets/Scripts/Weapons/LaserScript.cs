@@ -1,28 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LaserScript : MonoBehaviour
 {
     [SerializeField]
-    private float DistanceRay = 100f;
+    private float distanceRay = 100f;
 
     [SerializeField]
-    private Vector2 ColliderOffsetShooting, ColliderSizeShooting;
+    private Vector2 colliderOffsetShooting, ColliderSizeShooting;
 
     [SerializeField]
-    private float GrowthTime = 1f, FinalWidth = 2f;
+    private float growthTime = 1f, finalWidth = 2f;
 
     [SerializeField]
-    private float AttackTime = 2f;
+    private float attackTime = 2f;
 
-    private float GrowthSpeed, GrowthColliderSpeed, GrowthOffsetSpeed;
+    private float growthSpeed, growthColliderSpeed, growthOffsetSpeed;
 
-    private Vector2 ColliderGrowth = new Vector2(0f,0f), ColliderOffsetGrowth = new Vector2(0f,0f);
+    private Vector2 colliderGrowth = new Vector2(0f,0f), colliderOffsetGrowth = new Vector2(0f,0f);
 
-    public LineRenderer LineRenderer;
+    public LineRenderer lineRenderer;
 
-    private Transform LaserTransform;
+    private Transform laserTransform;
 
     private BoxCollider2D laserCollider;
 
@@ -30,19 +28,19 @@ public class LaserScript : MonoBehaviour
 
     void Start()
     {
-        LaserTransform = GetComponent<Transform>();
+        laserTransform = GetComponent<Transform>();
         laserCollider = GetComponent<BoxCollider2D>();
-        GrowthSpeed = FinalWidth / GrowthTime;
-        GrowthColliderSpeed = ColliderSizeShooting.x / GrowthTime;
-        GrowthOffsetSpeed = ColliderOffsetShooting.x / GrowthTime;
+        growthSpeed = finalWidth / growthTime;
+        growthColliderSpeed = ColliderSizeShooting.x / growthTime;
+        growthOffsetSpeed = colliderOffsetShooting.x / growthTime;
         //Debug.Log(GrowthSpeed);
     }
 
     void Update()
     {
-        if(isFiring && AttackTime>0)
+        if(isFiring && attackTime > 0)
         {
-            if(LineRenderer.startWidth<FinalWidth)
+            if(lineRenderer.startWidth<finalWidth)
             {
                 GrowLaser();
             }
@@ -50,7 +48,7 @@ public class LaserScript : MonoBehaviour
             {
                 HandleShoot();
             }
-            AttackTime-=Time.deltaTime;
+            attackTime-=Time.deltaTime;
         }
         else 
         {
@@ -61,7 +59,7 @@ public class LaserScript : MonoBehaviour
 
     private void HandleShoot()
     {
-        Vector2 Pos = new Vector2(transform.position.x, -1f * DistanceRay);
+        Vector2 Pos = new Vector2(transform.position.x, -1f * distanceRay);
         Draw2DRay(transform.position, Pos);
         laserCollider.size = ColliderSizeShooting;
         laserCollider.offset = new Vector2(0f, 2.5f);
@@ -69,10 +67,13 @@ public class LaserScript : MonoBehaviour
 
     private void RestoreDefault()
     {
-        laserCollider.size = new Vector2(0f, 0f);
-        laserCollider.offset =  new Vector2(0f, 0f);
+        laserCollider.size = new Vector2(0.001f, 0.001f);
+        laserCollider.offset =  new Vector2(0.001f, 0.001f);
         Draw2DRay(transform.position, transform.position);
-        LineRenderer.startWidth = 0;
+        colliderGrowth = new Vector2(0f,0f);
+        colliderOffsetGrowth = new Vector2(0f,0f);
+        attackTime = 4f;
+        lineRenderer.startWidth = 0;
         isFiring = false;
         isRestored = true;
     }
@@ -80,24 +81,24 @@ public class LaserScript : MonoBehaviour
     private void GrowLaser()
     {
         Draw2DRay(transform.position, transform.position);
-        LineRenderer.startWidth += GrowthSpeed * Time.deltaTime;
-        ColliderGrowth.x += GrowthColliderSpeed * Time.deltaTime;
-        ColliderGrowth.y += GrowthColliderSpeed * Time.deltaTime;
-        laserCollider.size = ColliderGrowth;
-        ColliderOffsetGrowth.x += GrowthOffsetSpeed * Time.deltaTime;
-        ColliderOffsetGrowth.y += GrowthOffsetSpeed * Time.deltaTime;
-        laserCollider.offset = ColliderOffsetGrowth;
+        lineRenderer.startWidth += growthSpeed * Time.deltaTime;
+        colliderGrowth.x += growthColliderSpeed * Time.deltaTime;
+        colliderGrowth.y += growthColliderSpeed * Time.deltaTime;
+        laserCollider.size = colliderGrowth;
+        colliderOffsetGrowth.x += growthOffsetSpeed * Time.deltaTime;
+        colliderOffsetGrowth.y += growthOffsetSpeed * Time.deltaTime;
+        laserCollider.offset = colliderOffsetGrowth;
     }
 
     private void Draw2DRay(Vector2 startPos, Vector2 endPos)
     {
-        LineRenderer.SetPosition(0, startPos);
-        LineRenderer.SetPosition(1, endPos);
+        lineRenderer.SetPosition(0, startPos);
+        lineRenderer.SetPosition(1, endPos);
     }
 
     public void StartAttack(float attackTime)
     {
-        AttackTime = attackTime;
+        this.attackTime = attackTime;
         isFiring = true;
         isRestored = false;
     }

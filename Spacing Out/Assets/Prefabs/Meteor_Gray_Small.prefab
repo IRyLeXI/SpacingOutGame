@@ -100,7 +100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3e2472ef9cba504bb1f501522ecab3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RotationSpeed: 0
+  rotationSpeed: -50
+  Damage: 3
+  healthPoints: 1
   pushForce: 1
   pushDirection: {x: 0, y: -1}
 --- !u!60 &8535452197959514935

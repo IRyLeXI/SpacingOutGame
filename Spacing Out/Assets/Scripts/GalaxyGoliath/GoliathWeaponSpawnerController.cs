@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GoliathWeaponSpawnerController : WeaponScript
@@ -8,31 +6,22 @@ public class GoliathWeaponSpawnerController : WeaponScript
     [SerializeField]
     private int Amount;
 
-    private float AttackTime;
+    private float attackTime;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    private Vector2 spawnPoint1;
 
     protected override void HandleFire()
     {
         SpawnerScript spawner = Bullet.GetComponent<SpawnerScript>();
         var Obj = Instantiate(spawner);
-        Obj.SetPosition(this.transform, this.transform);
-        Obj.SetSpawnRate(Amount, AttackTime);
+        Obj.SetPosition(spawnPoint1, spawnPoint1);
+        Obj.SetSpawnRate(Amount, attackTime);
     }
 
     public void StartAttack(float attackTime)
     {
-        AttackTime = attackTime;
-        HandleFire();
+        this.attackTime = attackTime;
+        spawnPoint1 = new Vector2(this.transform.position.x, this.transform.position.y);
+        HandleFire();   
     }
 }

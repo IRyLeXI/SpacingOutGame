@@ -46,13 +46,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 154e32b7a6863674fae8a1b7d4254dfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DistanceRay: 5
-  ColliderSizeDefault: {x: 0, y: 0}
+  distanceRay: 5
+  colliderOffsetShooting: {x: 0, y: 2.5}
   ColliderSizeShooting: {x: 2, y: 7}
-  GrowthTime: 50
-  FinalWidth: 1
-  LineRenderer: {fileID: 4591535542345445771}
-  isFiring: 0
+  growthTime: 2
+  finalWidth: 2
+  attackTime: 4
+  lineRenderer: {fileID: 4591535542345445771}
 --- !u!120 &4591535542345445771
 LineRenderer:
   m_ObjectHideFlags: 0

@@ -1,11 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyWeaponController : WeaponScript
 {
-
-    // Update is called once per frame
     void Update()
     {
         if(IsReadyForFire())
@@ -16,6 +12,6 @@ public class EnemyWeaponController : WeaponScript
 
     protected override bool IsReadyForFire()
     {
-        return Time.time >= (LastShot + FireRate) && transform.position.y<5;
+        return Time.time >= (lastShot + fireRate) && transform.position.y<5;
     }
 }

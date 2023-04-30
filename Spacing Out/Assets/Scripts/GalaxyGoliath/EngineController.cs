@@ -1,17 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EngineController : MonoBehaviour, IDamageble
 {
 
     [SerializeField]
-    private float HealthPoints = 100f;
+    private float healthPoints = 100f;
 
     [SerializeField]
     private GalaxyGoliathController Goliath;
 
-    private float StartHP;
+    private float startHP;
 
     public bool Opened = false;
 
@@ -24,7 +22,7 @@ public class EngineController : MonoBehaviour, IDamageble
     {
         b_Collider = GetComponent<BoxCollider2D>();
         b_Collider.enabled = false;
-        StartHP = HealthPoints;
+        startHP = healthPoints;
     }
 
     // Update is called once per frame
@@ -44,27 +42,27 @@ public class EngineController : MonoBehaviour, IDamageble
 
     public void HandleDamage(float Damage)
     {
-        HealthPoints -= Damage;
+        healthPoints -= Damage;
         CheckForDeath();
     }
 
     private void CheckForDeath()
     {
-        if(HealthPoints <= 0)
+        if(healthPoints <= 0)
         {
             Destroy(this.gameObject);
         }
-        else if(HealthPoints <= StartHP / 8 && !thirdSlow)
+        else if(healthPoints <= startHP / 8 && !thirdSlow)
         {
             Goliath.SlowDown();
             thirdSlow = true;
         }
-        else if(HealthPoints <= StartHP / 4 && !secondSlow)
+        else if(healthPoints <= startHP / 4 && !secondSlow)
         {
             Goliath.SlowDown();
             secondSlow = true;
         }
-        else if(HealthPoints <= StartHP/2 && !firstSlow)
+        else if(healthPoints <= startHP/2 && !firstSlow)
         {
             Goliath.SlowDown();
             firstSlow = true;

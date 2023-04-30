@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MYXA94Spawner : SpawnerScript, IEnemyShuttleSpawner
@@ -10,7 +8,7 @@ public class MYXA94Spawner : SpawnerScript, IEnemyShuttleSpawner
     // Start is called before the first frame update
     void Start()
     {
-        LastSpawn = Time.time;
+        lastSpawn = Time.time;
     }
 
     // Update is called once per frame
@@ -34,10 +32,10 @@ public class MYXA94Spawner : SpawnerScript, IEnemyShuttleSpawner
     private void SpawnPrivate()
     {
         MYXA94Controller mx = Instantiate(Template);
-        Vector2 SpawnPoint = new Vector2(Random.Range(MinSpawnPoint.position.x, MaxSpawnPoint.position.x), MinSpawnPoint.position.y);
+        Vector2 SpawnPoint = new Vector2(Random.Range(minSpawnPoint.position.x, maxSpawnPoint.position.x), minSpawnPoint.position.y);
         mx.transform.position = SpawnPoint;
-        LastSpawn = Time.time;
-        SpawnTime = SpawnRate + Random.Range(MinSpawnRate, MaxSpawnRate);
+        lastSpawn = Time.time;
+        spawnTime = spawnRate + Random.Range(minSpawnRate, maxSpawnRate);
         Amount -= 1;
     }
 }

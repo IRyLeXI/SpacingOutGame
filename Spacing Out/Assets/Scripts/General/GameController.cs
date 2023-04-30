@@ -1,22 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
 
     [SerializeField]
-    private PlayerController PlayerTemplate;
+    private PlayerController playerTemplate;
 
     [SerializeField]
-    private Transform PlayerSpawnPoint;
+    private Transform playerSpawnPoint;
 
     [SerializeField]
-    private float RespawnTime = 1;
+    private float respawnTime = 1;
 
-    private float DeathTime;
+    private float deathTime;
 
-    private bool IsDead = false;
+    private bool isDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +25,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(IsDead && IsReadyForRespawn())
+        if(isDead && IsReadyForRespawn())
         {
             RespawnPlayer();
         }
@@ -35,25 +33,24 @@ public class GameController : MonoBehaviour
 
     private void RespawnPlayer()
     {
-        Debug.Log("Respawning!");
-        PlayerController player = Instantiate(PlayerTemplate);
-        player.GameController = this;
-        player.transform.position = PlayerSpawnPoint.position;
-        IsDead = false;
+        PlayerController player = Instantiate(playerTemplate);
+        player.gameController = this;
+        player.transform.position = playerSpawnPoint.position;
+        isDead = false;
         EnemyScript.SetPlayer();
         GoliathAimWeaponController.SetPlayer();
     }
 
     private bool IsReadyForRespawn()
     {
-        return Time.time >= (DeathTime + RespawnTime);
+        return Time.time >= (deathTime + respawnTime);
     }
 
     public void DestroyShuttle(PlayerController Player)
     {
         Destroy(Player.gameObject);
-        DeathTime = Time.time;
-        IsDead=true;
+        deathTime = Time.time;
+        isDead=true;
     }
 
 }

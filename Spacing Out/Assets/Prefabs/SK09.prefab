@@ -98,14 +98,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593a3ccab2bd43842b5566c87083323e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 2.5
-  HealthPoints: 2
+  Speed: 3
+  healthPoints: 2
   Velocity: {x: 0, y: 0}
   Min: {x: -4.1, y: -10}
   Max: {x: 4.1, y: 10}
-  MinFaultX: -0.2
-  MaxFaultX: 0.2
-  GetPlayerPositionDelay: 1
+  minFaultX: -0.1
+  maxFaultX: 0.1
+  getPlayerPositionDelay: 1
   rotateSpeed: 4
 --- !u!60 &4310358384992616748
 PolygonCollider2D:

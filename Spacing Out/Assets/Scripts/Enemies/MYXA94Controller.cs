@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MYXA94Controller : EnemyScript
 {
 
     [SerializeField]
-    private WeaponScript FrontWeapon, LeftWeapon, RightWeapon;
+    private WeaponScript frontWeapon, leftWeapon, rightWeapon;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +25,7 @@ public class MYXA94Controller : EnemyScript
     protected override void SetPositionProtected()
     {
         Vector2 playerPos = GetPlayerPos();
-        float newX = Mathf.Clamp((playerPos.x - transform.position.x),-1,1) + Random.Range(MinFaultX, MaxFaultX);
+        float newX = Mathf.Clamp((playerPos.x - transform.position.x),-1,1) + Random.Range(minFaultX, maxFaultX);
         float newY;
         if(transform.position.y>5)
         {
@@ -40,7 +38,7 @@ public class MYXA94Controller : EnemyScript
         }
         Vector2 newPos = new Vector2(newX, newY);
         Velocity = newPos;
-        LastSetPos = Time.time;
+        lastSetPos = Time.time;
     }
 
 }

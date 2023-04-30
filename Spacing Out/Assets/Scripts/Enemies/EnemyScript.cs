@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class EnemyScript : MonoBehaviour, IEnemyShuttle, IDamageble
@@ -9,7 +7,7 @@ public abstract class EnemyScript : MonoBehaviour, IEnemyShuttle, IDamageble
     protected float Speed = 1f;
 
     [SerializeField]
-    private float HealthPoints = 1f;
+    private float healthPoints = 1f;
 
     [SerializeField]
     protected Vector2 Velocity = new Vector2(0, 0);
@@ -18,14 +16,14 @@ public abstract class EnemyScript : MonoBehaviour, IEnemyShuttle, IDamageble
     private Vector2 Min, Max;
 
     [SerializeField]
-    protected float MinFaultX = 1f, MaxFaultX = 1f;
+    protected float minFaultX = 1f, maxFaultX = 1f;
 
     [SerializeField]
-    private float GetPlayerPositionDelay = 1f;
+    private float getPlayerPositionDelay = 1f;
 
     protected static PlayerController Player;
 
-    protected float LastSetPos;
+    protected float lastSetPos;
 
     public void MoveShip()
     {
@@ -62,7 +60,7 @@ public abstract class EnemyScript : MonoBehaviour, IEnemyShuttle, IDamageble
         Vector2 playerPos = GetPlayerPos();
         Vector2 newPos = new Vector2((playerPos.x - transform.position.x),-1f);
         Velocity = newPos;
-        LastSetPos = Time.time;
+        lastSetPos = Time.time;
     }
 
     public static void SetPlayer()
@@ -87,18 +85,18 @@ public abstract class EnemyScript : MonoBehaviour, IEnemyShuttle, IDamageble
     
     protected bool IsReadyForSetPos()
     {
-        return Time.time >= (LastSetPos + GetPlayerPositionDelay);
+        return Time.time >= (lastSetPos + getPlayerPositionDelay);
     }
 
     public void HandleDamage(float Damage)
     {
-        HealthPoints -= Damage;
+        healthPoints -= Damage;
         CheckForDeath();
     }
 
     private void CheckForDeath()
     {
-        if(HealthPoints<=0)
+        if(healthPoints<=0)
         {
             Destroy(this.gameObject);
         }

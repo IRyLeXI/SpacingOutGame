@@ -1,11 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WaveTemplate : MonoBehaviour
 {
     [SerializeField]
-    public float WaveTime;
+    public float waveTime;
 
     [SerializeField]
     private List<SpawnerScript> Spawners;
@@ -29,9 +28,9 @@ public class WaveTemplate : MonoBehaviour
     {
         if(Enabled)
         {
-            WaveTime-=Time.deltaTime;
+            waveTime-=Time.deltaTime;
         }
-        if(WaveTime<0)
+        if(waveTime<0)
         {
             DestroyWave();
         }
@@ -49,7 +48,7 @@ public class WaveTemplate : MonoBehaviour
         foreach(SpawnerScript obj in Spawners)
         {
             var Obj = Instantiate(obj);
-            Obj.SetSpawnRate(Amounts[i], WaveTime);
+            Obj.SetSpawnRate(Amounts[i], waveTime);
             spawnedObjects.Add(Obj.gameObject);
             i++;
         }

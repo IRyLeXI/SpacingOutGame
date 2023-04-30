@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SK09Controller : EnemyScript
@@ -28,11 +26,11 @@ public class SK09Controller : EnemyScript
     protected override void SetPositionProtected()
     {
         Vector2 playerPos = GetPlayerPos();
-        float newX = Mathf.Clamp((playerPos.x - transform.position.x), -1, 1) + Random.Range(MinFaultX, MaxFaultX);
+        float newX = Mathf.Clamp((playerPos.x - transform.position.x), -1, 1) + Random.Range(minFaultX, maxFaultX);
         float newY = Mathf.Clamp((playerPos.y - transform.position.y), -1, 1) + Random.Range(-0.7f, -0.2f);
         Vector2 newPos = new Vector2(newX, newY);
         Velocity = newPos;
-        LastSetPos = Time.time;
+        lastSetPos = Time.time;
     }
 
     private void Rotate()

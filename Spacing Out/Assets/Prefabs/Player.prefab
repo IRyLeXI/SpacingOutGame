@@ -131,16 +131,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5cb468889222334199eab77989f4bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireRate: 0.2
-  Speed: 8
-  InvincibleTime: 3
-  GameController: {fileID: 0}
+  FireRate: 0.15
+  speed: 7
+  invincibleTime: 300
+  gameController: {fileID: 0}
   Bullet: {fileID: 4898414446623601743, guid: 90c49fb6cdab4cc4cbf1c3eb6e4c8dad, type: 3}
   Velocity: {x: 0, y: 0}
   Min: {x: -3.9, y: -4.9}
   Max: {x: 3.9, y: 2}
-  FrontWeapon: {fileID: 8040294901601973209}
-  HealthPoints: 1
+  frontWeapon: {fileID: 8040294901601973209}
+  healthPoints: 1
 --- !u!60 &8679282011853225065
 PolygonCollider2D:
   m_ObjectHideFlags: 0

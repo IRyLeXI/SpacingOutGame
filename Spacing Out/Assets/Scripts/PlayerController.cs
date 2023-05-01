@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IDamageble
@@ -25,10 +26,19 @@ public class PlayerController : MonoBehaviour, IDamageble
     private Vector2 Min, Max;
 
     [SerializeField]
-    private Transform frontWeapon;
+    private PlayerLaserAbility laser;
+
+    [SerializeField]
+    private StrongWeaponController strongWeapon;
+
+    // [SerializeField]
+    // private WeaponScript Abilities;
 
     [SerializeField]
     private float healthPoints = 1f;
+
+    // [SerializeField]
+    // private List<WeaponScript> Ablilties;
 
     // Start is called before the first frame update
     void Start()
@@ -40,10 +50,6 @@ public class PlayerController : MonoBehaviour, IDamageble
     void Update()
     {
         HandleMovement();
-        if(IsReadyForFire())
-        {
-            HandleFire();
-        }
         HandleInvincibility();
         MoveShip();
     }
@@ -52,16 +58,6 @@ public class PlayerController : MonoBehaviour, IDamageble
     {
         Velocity = HandleHorizontal(Input.GetAxis("Horizontal"));
         Velocity += HandleVertical(Input.GetAxis("Vertical"));
-    }
-
-    private void HandleFire()
-    {
-        if(Input.GetButton("Fire"))
-        {
-            lastShot = Time.time;
-            GameObject bullet = Instantiate(Bullet);
-            bullet.transform.position = frontWeapon.position;
-        }
     }
 
     private void HandleInvincibility()
@@ -87,14 +83,19 @@ public class PlayerController : MonoBehaviour, IDamageble
         {
             BulletScript bullet = other.GetComponent<BulletScript>();
             HandleDamage(bullet.Damage);
-            Destroy(bullet.gameObject);
+            bullet.HandleDamage(1);
+        }
+        else if(other.gameObject.tag == "EnemyLaser")
+        {
+            LaserScript laser = other.GetComponent<LaserScript>();
+            HandleDamage(laser.Damage);
         }
         else if((other.gameObject.tag == "BigMeteorite" || other.gameObject.tag == "SmallMeteorite") && invincibleTime <= 0)
         {
             MeteorScript mt = other.GetComponent<MeteorScript>();
             HandleDamage(mt.Damage);
         }
-        else if(other.gameObject.tag != "PlayerBullet" && invincibleTime <= 0)
+        else if(other.gameObject.tag != "PlayerBullet" && other.gameObject.tag != "PlayerLaser" && invincibleTime <= 0)
         {
             HandleDamage(1);
         }
@@ -121,7 +122,6 @@ public class PlayerController : MonoBehaviour, IDamageble
 
     public void HandleDamage(float Damage)
     {
-        Debug.Log(healthPoints);
         healthPoints -= Damage;
         CheckForDeath();
     }
@@ -130,8 +130,10 @@ public class PlayerController : MonoBehaviour, IDamageble
     {
         if(healthPoints<=0)
         {
+            laser.ShootDown();
             gameController.DestroyShuttle(this);
         }
     }
+
 
 }

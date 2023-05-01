@@ -18,7 +18,7 @@ public class HS16Spawner : SpawnerScript, IEnemyShuttleSpawner
         {
             SpawnPrivate();
         }
-        if(Amount<=0)
+        if(Amount<=0 && !isInfinite)
         {
             DestroyObject();
         }
@@ -35,7 +35,7 @@ public class HS16Spawner : SpawnerScript, IEnemyShuttleSpawner
         Vector2 SpawnPoint = new Vector2(Random.Range(minSpawnPoint.position.x, maxSpawnPoint.position.x), minSpawnPoint.position.y);
         mx.transform.position = SpawnPoint;
         lastSpawn = Time.time;
-        spawnTime = spawnRate + Random.Range(minSpawnRate, maxSpawnRate);
+        spawnRate = Random.Range(minSpawnRate, maxSpawnRate);
         Amount -= 1;
     }
 }

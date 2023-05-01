@@ -3,10 +3,13 @@ using UnityEngine;
 public class LaserScript : MonoBehaviour
 {
     [SerializeField]
+    public float Damage = 20f;
+
+    [SerializeField]
     private float distanceRay = 100f;
 
     [SerializeField]
-    private Vector2 colliderOffsetShooting, ColliderSizeShooting;
+    private Vector2 colliderOffsetShooting, colliderSizeShooting;
 
     [SerializeField]
     private float growthTime = 1f, finalWidth = 2f;
@@ -14,7 +17,7 @@ public class LaserScript : MonoBehaviour
     [SerializeField]
     private float attackTime = 2f;
 
-    private float growthSpeed, growthColliderSpeed, growthOffsetSpeed;
+    private float growthSpeed, growthColliderSpeed, growthOffsetSpeed, attackTimeBackup;
 
     private Vector2 colliderGrowth = new Vector2(0f,0f), colliderOffsetGrowth = new Vector2(0f,0f);
 
@@ -24,15 +27,16 @@ public class LaserScript : MonoBehaviour
 
     private BoxCollider2D laserCollider;
 
-    private bool isFiring, isRestored;
+    public bool isFiring, isRestored;
 
     void Start()
     {
         laserTransform = GetComponent<Transform>();
         laserCollider = GetComponent<BoxCollider2D>();
         growthSpeed = finalWidth / growthTime;
-        growthColliderSpeed = ColliderSizeShooting.x / growthTime;
+        growthColliderSpeed = colliderSizeShooting.x / growthTime;
         growthOffsetSpeed = colliderOffsetShooting.x / growthTime;
+        attackTimeBackup = attackTime;
         //Debug.Log(GrowthSpeed);
     }
 
@@ -61,8 +65,8 @@ public class LaserScript : MonoBehaviour
     {
         Vector2 Pos = new Vector2(transform.position.x, -1f * distanceRay);
         Draw2DRay(transform.position, Pos);
-        laserCollider.size = ColliderSizeShooting;
-        laserCollider.offset = new Vector2(0f, 2.5f);
+        laserCollider.size = colliderSizeShooting;
+        laserCollider.offset = colliderOffsetShooting;
     }
 
     private void RestoreDefault()
@@ -72,7 +76,7 @@ public class LaserScript : MonoBehaviour
         Draw2DRay(transform.position, transform.position);
         colliderGrowth = new Vector2(0f,0f);
         colliderOffsetGrowth = new Vector2(0f,0f);
-        attackTime = 4f;
+        attackTime = attackTimeBackup;
         lineRenderer.startWidth = 0;
         isFiring = false;
         isRestored = true;
@@ -99,7 +103,13 @@ public class LaserScript : MonoBehaviour
     public void StartAttack(float attackTime)
     {
         this.attackTime = attackTime;
+        attackTimeBackup = attackTime;
         isFiring = true;
         isRestored = false;
+    }
+
+    public void ShutDown()
+    {
+        RestoreDefault();
     }
 }

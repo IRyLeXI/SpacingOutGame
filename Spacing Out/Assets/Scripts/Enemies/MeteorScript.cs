@@ -41,16 +41,20 @@ public class MeteorScript : MonoBehaviour, IDamageble
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-    //Debug.Log("Meteor touched");
         if(other.gameObject.tag == "PlayerBullet")
         {
             BulletScript bullet = other.GetComponent<BulletScript>();
             HandleDamage(bullet.Damage);
-            Destroy(bullet.gameObject);
+            bullet.HandleDamage(Damage);
         }
         else if(other.gameObject.tag == "Player")
         {
             HandleDamage(1);
+        }
+        else if(other.gameObject.tag == "PlayerLaser")
+        {
+            LaserScript laser = other.GetComponent<LaserScript>();
+            HandleDamage(laser.Damage);
         }
     }
 

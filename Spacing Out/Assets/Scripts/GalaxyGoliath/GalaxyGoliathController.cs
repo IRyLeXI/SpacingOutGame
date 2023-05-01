@@ -164,6 +164,7 @@ public class GalaxyGoliathController : BossScript
     
     private void DestroyGoliath()
     {
+        weapon4.ShutDown();
         Destroy(this.gameObject);
     }
     

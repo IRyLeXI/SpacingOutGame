@@ -14,24 +14,26 @@ public abstract class SpawnerScript : MonoBehaviour
     protected int Amount=0; 
 
     [SerializeField]
-    private bool isInfinite = false;
+    protected bool isInfinite = false;
     
-    protected float spawnTime, lastSpawn, spawnRate;
+    protected float lastSpawn, spawnRate;
 
     protected bool IsReadyForSpawn()
     {
-        return Time.time >= (lastSpawn + spawnTime);
+        return Time.time >= (lastSpawn + spawnRate);
     }
 
     protected bool IsReadyForSpawnWithAmount()
     {
-        return Time.time >= (lastSpawn + spawnTime) && (Amount>0 || isInfinite);
+        return Time.time >= (lastSpawn + spawnRate) && (Amount>0 || isInfinite);
     }
 
     public void SetSpawnRate(int amount, float time)
     {
         Amount = amount;
         spawnRate = time / (float)Amount;
+        minSpawnRate = spawnRate;
+        maxSpawnRate = spawnRate;
     }
 
     public void DestroyObject()

@@ -18,7 +18,7 @@ public class SK09Spawner : SpawnerScript, IEnemyShuttleSpawner
         {
             SpawnPrivate();
         }
-        if(Amount<=0)
+        if(Amount<=0 && !isInfinite)
         {
             DestroyObject();
         }
@@ -33,13 +33,9 @@ public class SK09Spawner : SpawnerScript, IEnemyShuttleSpawner
     {
         SK09Controller mx = Instantiate(Template);
         Vector2 SpawnPoint = new Vector2(Random.Range(minSpawnPoint.position.x, maxSpawnPoint.position.x), Random.Range(minSpawnPoint.position.y, maxSpawnPoint.position.y));
-        if(SpawnPoint.y<5.3)
-        {
-            SpawnPoint.x = maxSpawnPoint.position.x - SpawnPoint.x < SpawnPoint.x - minSpawnPoint.position.x ? -5f : 5f;
-        }
         mx.transform.position = SpawnPoint;
         lastSpawn = Time.time;
-        spawnTime = spawnRate + Random.Range(minSpawnRate, maxSpawnRate);
+        spawnRate = Random.Range(minSpawnRate, maxSpawnRate);
         Amount -= 1;
     }
 }

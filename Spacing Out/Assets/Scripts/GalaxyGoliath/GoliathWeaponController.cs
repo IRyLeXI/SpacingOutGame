@@ -30,9 +30,15 @@ public class GoliathWeaponController : WeaponScript, IDamageble
         {   
             BulletScript bullet = other.GetComponent<BulletScript>();
             HandleDamage(bullet.Damage);
-            Destroy(bullet.gameObject);
+            bullet.HandleDamage(1);
+        }
+        else if(other.gameObject.tag == "PlayerLaser")
+        {
+            LaserScript laser = other.GetComponent<LaserScript>();
+            HandleDamage(laser.Damage);
         }
     }
+    
 
     public void HandleDamage(float Damage)
     {

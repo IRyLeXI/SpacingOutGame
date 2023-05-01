@@ -1,5 +1,102 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &654571091492772433
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5580964330281636357}
+  - component: {fileID: 5232578456128174967}
+  m_Layer: 0
+  m_Name: StrongShotAbility
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5580964330281636357
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654571091492772433}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.248, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8040294902954331372}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5232578456128174967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654571091492772433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a0cd39af0bd2ea408d52a36cd9c57d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 6
+  Bullet: {fileID: 2406518925917180733, guid: 662d07f27f836a145860e5f8bbadb322, type: 3}
+  bulletPushForce: 6
+  bulletDirection: {x: 0, y: 1}
+--- !u!1 &5084544547653798853
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4579578431233952389}
+  - component: {fileID: 7664695441932565593}
+  m_Layer: 0
+  m_Name: LaserAbility
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &4579578431233952389
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5084544547653798853}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.206, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8040294902954331372}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7664695441932565593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5084544547653798853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 158d0b6e7fa9ac341a1ffcbac741b532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 9
+  Bullet: {fileID: 7457903979772878098, guid: a77ee16a3719bb4448d4dd0ba8b21e43, type: 3}
+  bulletPushForce: 12
+  bulletDirection: {x: 0, y: 0}
+  attackTime: 1.5
 --- !u!1 &8040294901601973208
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,6 +106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8040294901601973209}
+  - component: {fileID: 1991620466919287819}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -24,13 +122,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8040294901601973208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.188, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8040294902954331372}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1991620466919287819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8040294901601973208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a88a81da2dbafa74b82395ccc1d23b74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 0.2
+  Bullet: {fileID: 4898414446623601743, guid: 90c49fb6cdab4cc4cbf1c3eb6e4c8dad, type: 3}
+  bulletPushForce: 12
+  bulletDirection: {x: 0, y: 1}
 --- !u!1 &8040294902954331361
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +157,7 @@ GameObject:
   - component: {fileID: 8040294902954331363}
   - component: {fileID: 8040294902954331362}
   - component: {fileID: 8679282011853225065}
-  - component: {fileID: 1480757252349262371}
+  - component: {fileID: -5554591526119669149}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -64,6 +178,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8040294901601973209}
+  - {fileID: 5580964330281636357}
+  - {fileID: 4579578431233952389}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -131,15 +247,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5cb468889222334199eab77989f4bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireRate: 0.15
-  speed: 7
-  invincibleTime: 300
+  FireRate: 0.2
+  speed: 5
+  invincibleTime: 3
   gameController: {fileID: 0}
   Bullet: {fileID: 4898414446623601743, guid: 90c49fb6cdab4cc4cbf1c3eb6e4c8dad, type: 3}
   Velocity: {x: 0, y: 0}
   Min: {x: -3.9, y: -4.9}
   Max: {x: 3.9, y: 2}
-  frontWeapon: {fileID: 8040294901601973209}
+  laser: {fileID: 7664695441932565593}
+  strongWeapon: {fileID: 5232578456128174967}
   healthPoints: 1
 --- !u!60 &8679282011853225065
 PolygonCollider2D:
@@ -229,7 +346,7 @@ PolygonCollider2D:
       - {x: 0.20758273, y: -0.043590058}
       - {x: 0.21, y: 0.14444542}
       - {x: 0.15684308, y: 0.19880116}
---- !u!50 &1480757252349262371
+--- !u!50 &-5554591526119669149
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -237,14 +354,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8040294902954331361}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

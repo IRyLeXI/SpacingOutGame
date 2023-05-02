@@ -56,4 +56,11 @@ public class MYXA94Controller : EnemyScript, IFreezable, IEnemyShuttle
         this.freezeTime = freezeTime;
     }
 
+    private void OnDestroy() 
+    {
+        if(gameController!=null)
+            gameController.HandleScore(scoreValue);
+    }
+
+
 }

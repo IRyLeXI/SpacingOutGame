@@ -986,7 +986,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2568844182399975140, guid: f0f15d09b89168e46ae822b703cd28ce, type: 3}
       propertyPath: maxSpawnRate
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2568844182399975140, guid: f0f15d09b89168e46ae822b703cd28ce, type: 3}
       propertyPath: minSpawnRate
@@ -1296,7 +1296,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3490831951881978704, guid: fa5a229dc06224b4eaeab4fa1309d3f1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3490831951881978705, guid: fa5a229dc06224b4eaeab4fa1309d3f1, type: 3}
       propertyPath: Waves.Array.size
@@ -1641,11 +1641,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6341150209265512680, guid: 2316b9b36a544634885fda70f364de1d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.66
+      value: -1.36
       objectReference: {fileID: 0}
     - target: {fileID: 6341150209265512680, guid: 2316b9b36a544634885fda70f364de1d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.88
+      value: 3.58
       objectReference: {fileID: 0}
     - target: {fileID: 6341150209265512680, guid: 2316b9b36a544634885fda70f364de1d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1687,6 +1687,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6341150209779969451, guid: 2316b9b36a544634885fda70f364de1d, type: 3}
+      propertyPath: Bullet
+      value: 
+      objectReference: {fileID: 4533757818042907752, guid: ffc713effedf1be41a97ab37f1d86b1c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2316b9b36a544634885fda70f364de1d, type: 3}
 --- !u!1001 &8687072050442867506

@@ -12,14 +12,27 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private float respawnTime = 1;
 
+    [SerializeField]
+    private OverlayController overlay;
+
+    [SerializeField]
+    private bool isScoreVisible = true;
+
     private float deathTime;
 
     private bool isDead = false;
+
+    public int playerScore = 0;
+
+    
 
     // Start is called before the first frame update
     void Start()
     {
         RespawnPlayer();
+        overlay = GetComponent<OverlayController>();
+        if(!isScoreVisible)
+            overlay.DisableScore();
     }
 
     // Update is called once per frame
@@ -53,4 +66,10 @@ public class GameController : MonoBehaviour
         isDead=true;
     }
 
+    public void HandleScore(int Value)
+    {
+        playerScore+=Value;
+        if(overlay!=null && isScoreVisible)
+            overlay.UpdateScore(playerScore);
+    }
 }

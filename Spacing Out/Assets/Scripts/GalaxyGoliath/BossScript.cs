@@ -21,6 +21,11 @@ public class BossScript : MonoBehaviour
     [SerializeField]
     protected Vector2 Min, Max;
 
+    protected GameController gameController;
+
+    [SerializeField]
+    protected int scoreValue = 500;
+
     protected float lastSetPos;
 
     // Start is called before the first frame update
@@ -68,4 +73,10 @@ public class BossScript : MonoBehaviour
     {
         SetPositionProtected();
     }
+
+    public void SetController(GameController controller)
+    {
+        gameController = controller;
+    }
+
 }

@@ -49,4 +49,11 @@ public class LS500Controller : EnemyScript, IFreezable, IEnemyShuttle
     {
         this.freezeTime = freezeTime;
     }
+
+    private void OnDestroy() 
+    {
+        if(gameController!=null)
+            gameController.HandleScore(scoreValue);
+    }
+
 }

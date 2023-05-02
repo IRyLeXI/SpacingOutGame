@@ -16,8 +16,9 @@ public class MeteorSpawner : SpawnerScript, IFreezable
     
     private float freezeTime = -1f;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         lastSpawn = Time.time;
         spawnRate = Random.Range(minSpawnRate, maxSpawnRate);
     }
@@ -40,6 +41,7 @@ public class MeteorSpawner : SpawnerScript, IFreezable
     private void SpawnMeteor()
     {
         MeteorScript mt = Instantiate(Template[Random.Range(0, Template.Length)]);
+        mt.SetController(gameController);
         Vector2 SpawnPoint = new Vector2(Random.Range(minSpawnPoint.position.x, maxSpawnPoint.position.x), minSpawnPoint.position.y);
         mt.transform.position = SpawnPoint;
         mt.rotationSpeed = Random.Range(minRotation, maxRotation);

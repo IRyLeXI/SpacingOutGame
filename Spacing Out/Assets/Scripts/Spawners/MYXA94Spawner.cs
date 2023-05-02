@@ -7,8 +7,9 @@ public class MYXA94Spawner : SpawnerScript, IEnemyShuttleSpawner, IFreezable
     
     private float freezeTime = -1f;
     
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         lastSpawn = Time.time - spawnRate;
     }
 
@@ -39,6 +40,7 @@ public class MYXA94Spawner : SpawnerScript, IEnemyShuttleSpawner, IFreezable
     private void SpawnPrivate()
     {
         MYXA94Controller mx = Instantiate(Template);
+        mx.SetController(gameController);
         Vector2 SpawnPoint = new Vector2(Random.Range(minSpawnPoint.position.x, maxSpawnPoint.position.x), minSpawnPoint.position.y);
         mx.transform.position = SpawnPoint;
         lastSpawn = Time.time;

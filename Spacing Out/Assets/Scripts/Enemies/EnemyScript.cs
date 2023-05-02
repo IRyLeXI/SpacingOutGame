@@ -21,7 +21,12 @@ public abstract class EnemyScript : MonoBehaviour, IDamageble
     [SerializeField]
     private float getPlayerPositionDelay = 1f;
 
+    [SerializeField]
+    protected int scoreValue = 10;
+
     protected static PlayerController Player;
+
+    protected GameController gameController;
 
     protected float lastSetPos;
 
@@ -104,5 +109,10 @@ public abstract class EnemyScript : MonoBehaviour, IDamageble
     public void MoveShip()
     {
         MoveShipProtected();
+    }
+
+    public void SetController(GameController controller)
+    {
+        gameController = controller;
     }
 }

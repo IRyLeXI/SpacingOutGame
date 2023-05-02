@@ -201,4 +201,10 @@ public class GalaxyGoliathController : BossScript, IFreezable, IEnemyShuttle
             isFreezed = false;
         }
     }
+
+    private void OnDestroy() 
+    {
+        if(gameController!=null)
+            gameController.HandleScore(scoreValue);
+    }
 }

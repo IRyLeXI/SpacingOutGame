@@ -11,7 +11,7 @@ public class BGController : MonoBehaviour, IFreezable
 
         if(transform.position.y<-10.83f)
         {
-            transform.position = new Vector3(transform.position.x, 10.83f);
+            transform.position = new Vector3(transform.position.x, 11.25f);
         }
         }
         else

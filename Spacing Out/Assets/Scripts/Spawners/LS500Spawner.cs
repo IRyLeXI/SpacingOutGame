@@ -6,8 +6,9 @@ public class LS500Spawner : SpawnerScript, IEnemyShuttleSpawner, IFreezable
     private LS500Controller Template;
 
     private float freezeTime = -1f;
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         lastSpawn = Time.time - spawnRate;
     }
 
@@ -38,6 +39,7 @@ public class LS500Spawner : SpawnerScript, IEnemyShuttleSpawner, IFreezable
     private void SpawnPrivate()
     {
         LS500Controller mx = Instantiate(Template);
+        mx.SetController(gameController);
         Vector2 SpawnPoint = new Vector2(Random.Range(minSpawnPoint.position.x, maxSpawnPoint.position.x), minSpawnPoint.position.y);
         mx.transform.position = SpawnPoint;
         lastSpawn = Time.time;

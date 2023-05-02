@@ -18,11 +18,16 @@ public class MeteorScript : MonoBehaviour, IDamageble, IFreezable
     [SerializeField]
     protected internal Vector2 pushDirection = Vector2.down;
 
+    [SerializeField]
+    private int scoreValue = 10;
+
     private Rigidbody2D rb;
 
     private bool isFreezed = false;
 
     private float freezeTime = -1f;
+
+    private GameController gameController;
 
     // Start is called before the first frame update
     void Start()
@@ -112,5 +117,17 @@ public class MeteorScript : MonoBehaviour, IDamageble, IFreezable
     {
         PushMeteorite();
         isFreezed = false;
+    }
+
+    public void SetController(GameController controller)
+    {
+        gameController = controller;
+    }
+
+    private void OnDestroy() 
+    {
+        //Debug.Log(gameController);
+        if(gameController!=null)
+            gameController.HandleScore(scoreValue);
     }
 }

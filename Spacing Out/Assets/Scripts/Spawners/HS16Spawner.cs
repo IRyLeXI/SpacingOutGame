@@ -1,26 +1,32 @@
 using UnityEngine;
 
-public class HS16Spawner : SpawnerScript, IEnemyShuttleSpawner
+public class HS16Spawner : SpawnerScript, IEnemyShuttleSpawner, IFreezable
 {
     [SerializeField]
     private HS16Controller Template;
 
-    // Start is called before the first frame update
+    private float freezeTime = -1f;
     void Start()
     {
         lastSpawn = Time.time;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (IsReadyForSpawnWithAmount())
+        if(freezeTime<0)
         {
-            SpawnPrivate();
+            if (IsReadyForSpawnWithAmount())
+            {
+                SpawnPrivate();
+            }
+            if (Amount <= 0 && !isInfinite)
+            {
+                DestroyObject();
+            }
         }
-        if(Amount<=0 && !isInfinite)
+        else
         {
-            DestroyObject();
+            freezeTime-=Time.deltaTime;
         }
     }
 
@@ -37,5 +43,10 @@ public class HS16Spawner : SpawnerScript, IEnemyShuttleSpawner
         lastSpawn = Time.time;
         spawnRate = Random.Range(minSpawnRate, maxSpawnRate);
         Amount -= 1;
+    }
+
+    public void Freeze(float freezeTime)
+    {
+        this.freezeTime = freezeTime;
     }
 }

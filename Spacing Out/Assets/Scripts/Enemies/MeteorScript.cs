@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MeteorScript : MonoBehaviour, IDamageble
+public class MeteorScript : MonoBehaviour, IDamageble, IFreezable
 {
     
     [SerializeField]
@@ -20,16 +20,32 @@ public class MeteorScript : MonoBehaviour, IDamageble
 
     private Rigidbody2D rb;
 
+    private bool isFreezed = false;
+
+    private float freezeTime = -1f;
+
     // Start is called before the first frame update
     void Start()
     {
+        rb = gameObject.GetComponent<Rigidbody2D>();
         PushMeteorite();
     }
 
     // Update is called once per frame
     void Update()
     {
-        RotateMeteor(); 
+        if(freezeTime < 0)
+        {
+            if(isFreezed)
+            {
+                Unfreeze();
+            }
+            RotateMeteor();
+        }
+        else
+        {
+            freezeTime-=Time.deltaTime;
+        }
     }
 
     private void RotateMeteor()
@@ -84,4 +100,17 @@ public class MeteorScript : MonoBehaviour, IDamageble
         }
     }
 
+    public void Freeze(float freezeTime)
+    {
+        this.freezeTime = freezeTime; 
+        rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0f;   
+        isFreezed = true;
+    }
+
+    private void Unfreeze()
+    {
+        PushMeteorite();
+        isFreezed = false;
+    }
 }

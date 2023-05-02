@@ -25,11 +25,6 @@ public abstract class EnemyScript : MonoBehaviour, IEnemyShuttle, IDamageble
 
     protected float lastSetPos;
 
-    public void MoveShip()
-    {
-        MoveShipProtected();
-    }
-
     protected void MoveShipProtected()
     {
         float newX = transform.position.x + (Velocity.x * Speed * Time.deltaTime);
@@ -106,5 +101,8 @@ public abstract class EnemyScript : MonoBehaviour, IEnemyShuttle, IDamageble
             Destroy(this.gameObject);
         }
     }
-
+    public void MoveShip()
+    {
+        MoveShipProtected();
+    }
 }

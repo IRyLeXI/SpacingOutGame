@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveTemplate : MonoBehaviour
+public class WaveTemplate : MonoBehaviour, IFreezable
 {
     [SerializeField]
     public float waveTime;
@@ -17,13 +17,11 @@ public class WaveTemplate : MonoBehaviour
     [SerializeField]
     public bool Enabled;
 
-    // Start is called before the first frame update
     void Start()
     {
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Enabled)
@@ -52,5 +50,10 @@ public class WaveTemplate : MonoBehaviour
             spawnedObjects.Add(Obj.gameObject);
             i++;
         }
+    }
+
+    public void Freeze(float freezeTime)
+    {
+        waveTime += freezeTime;
     }
 }

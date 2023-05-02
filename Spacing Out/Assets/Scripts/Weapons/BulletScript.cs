@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BulletScript : MonoBehaviour, IDamageble
+public class BulletScript : MonoBehaviour, IDamageble, IFreezable
 {
 
     [SerializeField]
@@ -16,20 +16,36 @@ public class BulletScript : MonoBehaviour, IDamageble
     public Vector2 pushDirection = Vector2.up;
 
     private Rigidbody2D rb;
-    
 
-    // Start is called before the first frame update
+    private float freezeTime = -1f;
+    
+    private bool isFreezed = false;
+
     void Start()
     {
         PushBullet();
     }
+
+    void Update() {
+        if(freezeTime < 0)
+        {
+            if(isFreezed)
+            {
+                Unfreeze();
+            }
+        }
+        else
+        {
+            freezeTime -= Time.deltaTime;
+        }
+    }   
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
         
     }
 
-    private void PushBullet()
+    protected void PushBullet()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.AddForce(pushDirection * pushForce, ForceMode2D.Impulse);
@@ -60,6 +76,20 @@ public class BulletScript : MonoBehaviour, IDamageble
         {
             Destroy(this.gameObject);
         }
+    }
+
+    public void Freeze(float freezeTime)
+    {
+        this.freezeTime = freezeTime;
+        rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0f;   
+        isFreezed = true;
+    }
+
+    private void Unfreeze()
+    {
+        PushBullet();
+        isFreezed = false;
     }
 
 }

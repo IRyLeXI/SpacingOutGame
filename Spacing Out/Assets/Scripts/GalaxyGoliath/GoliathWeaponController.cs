@@ -9,14 +9,12 @@ public class GoliathWeaponController : WeaponScript, IDamageble
     //[SerializeField]
     private float attackTime, startAttackTime;
 
-    // Start is called before the first frame update
     void Start()
     {
         lastShot = Time.time;
         startAttackTime = Time.time - attackTime;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(IsReadyForFire())
@@ -64,8 +62,4 @@ public class GoliathWeaponController : WeaponScript, IDamageble
         this.attackTime = attackTime;
     }
 
-    public float GetHealth()
-    {
-        return healthPoints;
-    }
 }

@@ -40,13 +40,11 @@ public class PlayerController : MonoBehaviour, IDamageble
     // [SerializeField]
     // private List<WeaponScript> Ablilties;
 
-    // Start is called before the first frame update
     void Start()
     {
         lastShot = Time.time;
     }
 
-    // Update is called once per frame
     void Update()
     {
         HandleMovement();
@@ -85,7 +83,7 @@ public class PlayerController : MonoBehaviour, IDamageble
             HandleDamage(bullet.Damage);
             bullet.HandleDamage(1);
         }
-        else if(other.gameObject.tag == "EnemyLaser")
+        else if(other.gameObject.tag == "EnemyLaser" && invincibleTime <= 0)
         {
             LaserScript laser = other.GetComponent<LaserScript>();
             HandleDamage(laser.Damage);
@@ -130,10 +128,9 @@ public class PlayerController : MonoBehaviour, IDamageble
     {
         if(healthPoints<=0)
         {
-            laser.ShootDown();
+            if(laser.gameObject.activeSelf) 
+                laser.ShootDown();
             gameController.DestroyShuttle(this);
         }
     }
-
-
 }

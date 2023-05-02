@@ -17,7 +17,6 @@ public class GoliathAimWeaponController : WeaponScript
     // Update is called once per frame
     void Update()
     {
-       //Debug.Log(StartAttackTime);
         if(IsReadyForFire())
         {
             HandleFire();

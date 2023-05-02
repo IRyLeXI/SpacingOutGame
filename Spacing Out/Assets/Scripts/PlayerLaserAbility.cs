@@ -10,7 +10,6 @@ public class PlayerLaserAbility : WeaponScript
 
     //private bool isActive = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         lastShot = Time.time - fireRate;
@@ -18,7 +17,6 @@ public class PlayerLaserAbility : WeaponScript
         laser = bullet.GetComponent<LaserScript>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         laser.transform.position = transform.position;

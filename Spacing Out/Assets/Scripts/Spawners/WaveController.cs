@@ -13,13 +13,11 @@ public class WaveController : MonoBehaviour
 
     private WaveTemplate currentWave;
 
-    // Start is called before the first frame update
     void Start()
     {
         NextWave();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(IsReadyForNextWave())
@@ -46,4 +44,5 @@ public class WaveController : MonoBehaviour
         Waves.RemoveAt(0);
         lastSpawn = Time.time + currentWave.waveTime;
     }
+
 }

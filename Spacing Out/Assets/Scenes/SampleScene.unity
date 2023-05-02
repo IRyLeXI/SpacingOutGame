@@ -459,7 +459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5084544547653798853, guid: 50bb26a0cb00ae8489f361429ee7492d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5232578456128174967, guid: 50bb26a0cb00ae8489f361429ee7492d, type: 3}
       propertyPath: bulletPushForce
@@ -944,7 +944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2568844182399975141, guid: f0f15d09b89168e46ae822b703cd28ce, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2568844182399975143, guid: f0f15d09b89168e46ae822b703cd28ce, type: 3}
       propertyPath: m_RootOrder
@@ -1073,7 +1073,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3297340434694017442, guid: ece193594d287744694d0f2f3e7a7875, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3297340434694017471, guid: ece193594d287744694d0f2f3e7a7875, type: 3}
       propertyPath: Speed

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GalaxyGoliathController : BossScript
+public class GalaxyGoliathController : BossScript, IFreezable
 {
 
     [SerializeField]
@@ -26,7 +26,7 @@ public class GalaxyGoliathController : BossScript
 
     private float distY;
     
-    private delegate void Attack();
+    private delegate void Attack(float aTime);
 
     private List<Attack> attackList;
 
@@ -34,7 +34,10 @@ public class GalaxyGoliathController : BossScript
 
     private int currentAttack;
 
-    // Start is called before the first frame update
+    private float freezeTime = -1f;
+
+    private bool isFreezed = false;
+
     void Start()
     {
         distY = 2.6f - transform.position.y;
@@ -43,47 +46,48 @@ public class GalaxyGoliathController : BossScript
         attackList = new List<Attack>() {HandleAttack1, HandleAttack2, HandleAttack3, HandleAttack4};
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(IsReadyForSetPos())
+        if(freezeTime<0)
         {
-            SetPositionProtected();
+            if(isFreezed)
+            {
+                Unfreeze();
+            }
+            if (IsReadyForSetPos())
+            {
+                SetPositionProtected();
+            }
+            if (IsReadyForAttack())
+            {
+                ExecuteAttack();
+            }
+            if (!IsAttacking())
+            {
+                MoveShipProtected();
+            }
+            if (Engine == null)
+            {
+                DestroyGoliath();
+            }
+            if (weaponsAttack1.Count == 0 && !Engine.IsOpened())
+            {
+                Engine.OpenUp();
+                attackList.Remove(HandleAttack1);
+                if (lastAttack == HandleAttack1) lastAttack = null;
+            }
         }
-        if(IsReadyForAttack())
+        else
         {
-            ExecuteAttack();
-        }
-        if(!IsAttacking())
-        {
-            MoveShipProtected(); 
-        }
-        if(Engine == null)
-        {
-            DestroyGoliath();
-        }
-        if(weaponsAttack1.Count == 0 && !Engine.IsOpened())
-        {
-            Engine.OpenUp();
-            attackList.Remove(HandleAttack1);
-            if(lastAttack == HandleAttack1) lastAttack = null;
+            freezeTime-=Time.deltaTime;
         }
         UpdateWeapons();
-    }
-
-    private void HandleAttack1()
-    {
-        Debug.Log(weaponsAttack1.Count);
-        foreach(GoliathWeaponController Weapon in weaponsAttack1)
-        {
-            Weapon.StartAttack(attackTime);
-        }
     }
 
     private void ExecuteAttack()
     {
         currentAttack = Random.Range(0, attackList.Count);
-        attackList[currentAttack]();
+        attackList[currentAttack](attackTime);
         if(lastAttack!=null)
         {
             attackList.Add(lastAttack);
@@ -94,24 +98,32 @@ public class GalaxyGoliathController : BossScript
         lastAttackTime = Time.time;
     }
 
+    private void HandleAttack1(float aTime)
+    {
+        Debug.Log(aTime);
+        foreach(GoliathWeaponController Weapon in weaponsAttack1)
+        {
+            Weapon.StartAttack(aTime);
+        }
+    }
 
-    private void HandleAttack2()
+    private void HandleAttack2(float aTime)
     {
         foreach(GoliathAimWeaponController Weapon in weaponsAttack2)
         {
-            Weapon.StartAttack(attackTime);
+            Weapon.StartAttack(aTime);
         }
     }
 
-    private void HandleAttack3()
+    private void HandleAttack3(float aTime)
     {
         foreach(GoliathWeaponSpawnerController Weapon in weaponsAttack3)
         {
-            Weapon.StartAttack(attackTime);
+            Weapon.StartAttack(aTime);
         }
     }
 
-    private void HandleAttack4()
+    private void HandleAttack4(float aTime)
     {
         weapon4.StartAttack(attackTime);
     }
@@ -168,9 +180,25 @@ public class GalaxyGoliathController : BossScript
         Destroy(this.gameObject);
     }
     
-
     public void SlowDown()
     {
         Speed/=2;
+    }
+
+    public void Freeze(float freezeTime)
+    {
+        this.freezeTime = freezeTime;
+        //Debug.Log(attackTime - (Time.time - lastAttackTime));
+        lastAttackTime = lastAttackTime + freezeTime;
+        isFreezed = true;
+    }
+
+    private void Unfreeze()
+    {
+        if(lastAttack!=null && IsAttacking())
+        {
+            lastAttack(attackTime - (Time.time - lastAttackTime));
+            isFreezed = false;
+        }
     }
 }

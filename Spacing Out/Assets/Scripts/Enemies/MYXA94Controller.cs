@@ -1,10 +1,13 @@
 using UnityEngine;
 
-public class MYXA94Controller : EnemyScript
+public class MYXA94Controller : EnemyScript, IFreezable
 {
 
     [SerializeField]
     private WeaponScript frontWeapon, leftWeapon, rightWeapon;
+
+    
+    private float freezeTime = -1f;
 
     // Start is called before the first frame update
     void Start()
@@ -15,11 +18,18 @@ public class MYXA94Controller : EnemyScript
     // Update is called once per frame
     void Update()
     {
-        if(IsReadyForSetPos())
+        if(freezeTime<0)
         {
-            SetPositionProtected();
+            if(IsReadyForSetPos())
+            {
+                SetPositionProtected();
+            }
+            MoveShipProtected(); 
         }
-        MoveShipProtected(); 
+        else
+        {
+            freezeTime -= Time.deltaTime;
+        }
     }
 
     protected override void SetPositionProtected()
@@ -39,6 +49,11 @@ public class MYXA94Controller : EnemyScript
         Vector2 newPos = new Vector2(newX, newY);
         Velocity = newPos;
         lastSetPos = Time.time;
+    }
+
+    public void Freeze(float freezeTime)
+    {
+        this.freezeTime = freezeTime;
     }
 
 }

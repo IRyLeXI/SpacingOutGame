@@ -17,7 +17,6 @@ public class EngineController : MonoBehaviour, IDamageble
 
     private BoxCollider2D b_Collider;
     
-    // Start is called before the first frame update
     void Start()
     {
         b_Collider = GetComponent<BoxCollider2D>();
@@ -25,7 +24,6 @@ public class EngineController : MonoBehaviour, IDamageble
         startHP = healthPoints;
     }
 
-    // Update is called once per frame
     void Update()
     {
         

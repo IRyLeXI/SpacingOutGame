@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HS16Controller : EnemyScript
+public class HS16Controller : EnemyScript, IFreezable
 {
     
     [SerializeField]
@@ -8,22 +8,27 @@ public class HS16Controller : EnemyScript
 
     private float lastShot;
 
+    private float freezeTime = -1f;
 
-    // Start is called before the first frame update
     void Start()
     {
         SetPositionProtected();
-        //LastShot = Time.time*3;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(IsReadyForSetPos())
+        if(freezeTime<0)
         {
-            SetPositionProtected();
+            if(IsReadyForSetPos())
+            {
+                SetPositionProtected();
+            }
+            MoveShipProtected(); 
         }
-        MoveShipProtected(); 
+        else
+        {
+            freezeTime -= Time.deltaTime;
+        }
     }
 
     protected override void SetPositionProtected()
@@ -44,4 +49,10 @@ public class HS16Controller : EnemyScript
         Velocity = newPos;
         lastSetPos = Time.time;
     }
+
+    public void Freeze(float freezeTime)
+    {
+        this.freezeTime = freezeTime;
+    }
+
 }

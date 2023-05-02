@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MeteorSpawner : SpawnerScript
+public class MeteorSpawner : SpawnerScript, IFreezable
 {
     [SerializeField]
     private float minRotation = -90, maxRotation = 90;
@@ -13,19 +13,27 @@ public class MeteorSpawner : SpawnerScript
 
     [SerializeField]
     private MeteorScript[] Template;
-    // Start is called before the first frame update
+    
+    private float freezeTime = -1f;
+
     void Start()
     {
         lastSpawn = Time.time;
         spawnRate = Random.Range(minSpawnRate, maxSpawnRate);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (IsReadyForSpawn())
+        if (freezeTime < 0)
         {
-            SpawnMeteor();
+            if (IsReadyForSpawn())
+            {
+                SpawnMeteor();
+            }
+        }
+        else
+        {
+            freezeTime -= Time.deltaTime;
         }
     }
 
@@ -47,5 +55,10 @@ public class MeteorSpawner : SpawnerScript
         mt.pushDirection = direction;
         lastSpawn = Time.time;
         spawnRate = Random.Range(minSpawnRate, maxSpawnRate);
+    }
+
+    public void Freeze(float freezeTime)
+    {
+        this.freezeTime = freezeTime;
     }
 }

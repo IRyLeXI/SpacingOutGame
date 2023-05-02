@@ -1,26 +1,33 @@
 using UnityEngine;
 
-public class SK09Controller : EnemyScript
+public class SK09Controller : EnemyScript, IFreezable
 {
 
     [SerializeField]
     private float rotateSpeed;
+    
+    private float freezeTime = -1f;
 
-    // Start is called before the first frame update
     void Start()
     {
         SetPositionProtected();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(IsReadyForSetPos())
+        if(freezeTime<0)
         {
-            SetPositionProtected();
+            if(IsReadyForSetPos())
+            {
+                SetPositionProtected();
+            }
+            MoveShipProtected();     
+            Rotate();
         }
-        MoveShipProtected();     
-        Rotate();
+        else
+        {
+            freezeTime -= Time.deltaTime;
+        }
     }
 
     protected override void SetPositionProtected()
@@ -44,4 +51,9 @@ public class SK09Controller : EnemyScript
         }
     }
 
+    public void Freeze(float freezeTime)
+    {
+        this.freezeTime = freezeTime;
+
+    }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class WeaponScript : MonoBehaviour
+public abstract class WeaponScript : MonoBehaviour, IFreezable
 {
 
     [SerializeField]
@@ -31,4 +31,10 @@ public abstract class WeaponScript : MonoBehaviour
     {
         return Time.time >= (lastShot + fireRate);
     }
+
+    public void Freeze(float freezeTime)
+    {
+        lastShot = lastShot + freezeTime;
+    }
+
 }

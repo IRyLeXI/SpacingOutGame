@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LaserScript : MonoBehaviour
+public class LaserScript : MonoBehaviour, IFreezable
 {
     [SerializeField]
     public float Damage = 20f;
@@ -111,5 +111,10 @@ public class LaserScript : MonoBehaviour
     public void ShutDown()
     {
         RestoreDefault();
+    }
+
+    public void Freeze(float freezeTime)
+    {
+        attackTime+=freezeTime;
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HS16Controller : EnemyScript, IFreezable
+public class LS500Controller : EnemyScript, IFreezable
 {
 
     private float freezeTime = -1f;
@@ -49,5 +49,4 @@ public class HS16Controller : EnemyScript, IFreezable
     {
         this.freezeTime = freezeTime;
     }
-
 }

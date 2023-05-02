@@ -1,18 +1,16 @@
 using UnityEngine;
 
-public class PlayerLaserAbility : WeaponScript
+public class EnemyLaserWeapon : WeaponScript
 {
-
     [SerializeField]
     protected float attackTime = 1.5f;
 
     protected LaserScript laser;
 
-    //private bool isActive = false;
 
     protected void Start()
     {
-        lastShot = Time.time - fireRate;
+        lastShot = Time.time;
         GameObject bullet = Instantiate(Bullet);
         laser = bullet.GetComponent<LaserScript>();
     }
@@ -28,15 +26,13 @@ public class PlayerLaserAbility : WeaponScript
 
     protected override void HandleFire()
     {
-        if(Input.GetButton("Special"))
-        {
-            laser.StartAttack(attackTime);
-            lastShot = Time.time;
-        }
+        laser.StartAttack(attackTime);
+        lastShot = Time.time;
     }
 
     public void ShootDown()
     {
         laser.ShutDown();
     }
+
 }

@@ -479,11 +479,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7352907702302274914, guid: 2f0de3f10f392f841960c3193082a882, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.4170575
+      value: -0.009
       objectReference: {fileID: 0}
     - target: {fileID: 7352907702302274914, guid: 2f0de3f10f392f841960c3193082a882, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.68668264
+      value: -0.021
       objectReference: {fileID: 0}
     - target: {fileID: 7352907702302274914, guid: 2f0de3f10f392f841960c3193082a882, type: 3}
       propertyPath: m_LocalPosition.z
@@ -520,6 +520,14 @@ PrefabInstance:
     - target: {fileID: 7352907702302274916, guid: 2f0de3f10f392f841960c3193082a882, type: 3}
       propertyPath: m_Name
       value: TimeFreezer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7352907703973024353, guid: 2f0de3f10f392f841960c3193082a882, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.018
+      objectReference: {fileID: 0}
+    - target: {fileID: 7352907703973024353, guid: 2f0de3f10f392f841960c3193082a882, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.028
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f0de3f10f392f841960c3193082a882, type: 3}

@@ -6,6 +6,7 @@ public class MYXA94Spawner : SpawnerScript, IEnemyShuttleSpawner, IFreezable
     private MYXA94Controller Template;
     
     private float freezeTime = -1f;
+    
     void Start()
     {
         lastSpawn = Time.time;

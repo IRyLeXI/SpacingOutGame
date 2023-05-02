@@ -8,7 +8,7 @@ public class HS16Spawner : SpawnerScript, IEnemyShuttleSpawner, IFreezable
     private float freezeTime = -1f;
     void Start()
     {
-        lastSpawn = Time.time;
+        lastSpawn = Time.time - spawnRate;
     }
 
     void Update()

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MYXA94Controller : EnemyScript, IFreezable
+public class MYXA94Controller : EnemyScript, IFreezable, IEnemyShuttle
 {
 
     [SerializeField]

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BossScript : MonoBehaviour, IEnemyShuttle
+public class BossScript : MonoBehaviour
 {
 
     [SerializeField]

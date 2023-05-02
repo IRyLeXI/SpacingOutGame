@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class SK09Spawner : SpawnerScript, IEnemyShuttleSpawner, IFreezable
+public class LS500Spawner : SpawnerScript, IEnemyShuttleSpawner, IFreezable
 {
     [SerializeField]
-    private SK09Controller Template;
+    private LS500Controller Template;
 
     private float freezeTime = -1f;
     void Start()
@@ -37,8 +37,8 @@ public class SK09Spawner : SpawnerScript, IEnemyShuttleSpawner, IFreezable
 
     private void SpawnPrivate()
     {
-        SK09Controller mx = Instantiate(Template);
-        Vector2 SpawnPoint = new Vector2(Random.Range(minSpawnPoint.position.x, maxSpawnPoint.position.x), Random.Range(minSpawnPoint.position.y, maxSpawnPoint.position.y));
+        LS500Controller mx = Instantiate(Template);
+        Vector2 SpawnPoint = new Vector2(Random.Range(minSpawnPoint.position.x, maxSpawnPoint.position.x), minSpawnPoint.position.y);
         mx.transform.position = SpawnPoint;
         lastSpawn = Time.time;
         spawnRate = Random.Range(minSpawnRate, maxSpawnRate);
@@ -49,4 +49,5 @@ public class SK09Spawner : SpawnerScript, IEnemyShuttleSpawner, IFreezable
     {
         this.freezeTime = freezeTime;
     }
+    
 }

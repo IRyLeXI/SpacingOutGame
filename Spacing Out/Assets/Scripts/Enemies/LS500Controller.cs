@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LS500Controller : EnemyScript, IFreezable
+public class LS500Controller : EnemyScript, IFreezable, IEnemyShuttle
 {
 
     private float freezeTime = -1f;

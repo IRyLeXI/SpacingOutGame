@@ -9,7 +9,7 @@ public class MYXA94Spawner : SpawnerScript, IEnemyShuttleSpawner, IFreezable
     
     void Start()
     {
-        lastSpawn = Time.time;
+        lastSpawn = Time.time - spawnRate;
     }
 
     void Update()

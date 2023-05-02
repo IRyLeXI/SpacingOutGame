@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class WaveController : MonoBehaviour
@@ -20,7 +21,7 @@ public class WaveController : MonoBehaviour
 
     void Update()
     {
-        if(IsReadyForNextWave())
+        if(IsReadyForNextWave() && !IsEnemiesLeft())
         {
             NextWave();
         }
@@ -33,7 +34,6 @@ public class WaveController : MonoBehaviour
 
     private void NextWave()
     {
-        //Debug.Log(Waves.Count);
         if(Waves.Count == 0)
         {
             Destroy(this.gameObject);
@@ -43,6 +43,12 @@ public class WaveController : MonoBehaviour
         currentWave.EnableWave();
         Waves.RemoveAt(0);
         lastSpawn = Time.time + currentWave.waveTime;
+    }
+
+    private bool IsEnemiesLeft()
+    { 
+        IEnemyShuttle[] enemies = FindObjectsOfType<MonoBehaviour>().OfType<IEnemyShuttle>().ToArray();
+        return enemies.Length > 0;
     }
 
 }

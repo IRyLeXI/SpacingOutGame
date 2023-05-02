@@ -30,7 +30,7 @@ public class EnemyLaserWeapon : WeaponScript
         lastShot = Time.time;
     }
 
-    public void ShootDown()
+    private void OnDestroy()
     {
         laser.ShutDown();
     }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class EnemyScript : MonoBehaviour, IEnemyShuttle, IDamageble
+public abstract class EnemyScript : MonoBehaviour, IDamageble
 {
 
     [SerializeField]

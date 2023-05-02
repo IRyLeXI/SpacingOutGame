@@ -18,6 +18,9 @@ TagManager:
   - GoliathWeaponFront
   - PlayerLaser
   - EnemyLaser
+  - EnemyWeapon
+  - PlayerWeapon
+  - LS500
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SK09Controller : EnemyScript, IFreezable
+public class SK09Controller : EnemyScript, IFreezable, IEnemyShuttle
 {
 
     [SerializeField]

@@ -1,11 +1,12 @@
 using UnityEngine;
 
-public class SK09Spawner : SpawnerScript, IEnemyShuttleSpawner, IFreezable
-{
+public class GoliathSpawner : SpawnerScript, IFreezable
+{   
     [SerializeField]
-    private SK09Controller Template;
+    private GalaxyGoliathController Template;
 
     private float freezeTime = -1f;
+
     void Start()
     {
         lastSpawn = Time.time - spawnRate;
@@ -37,8 +38,8 @@ public class SK09Spawner : SpawnerScript, IEnemyShuttleSpawner, IFreezable
 
     private void SpawnPrivate()
     {
-        SK09Controller mx = Instantiate(Template);
-        Vector2 SpawnPoint = new Vector2(Random.Range(minSpawnPoint.position.x, maxSpawnPoint.position.x), Random.Range(minSpawnPoint.position.y, maxSpawnPoint.position.y));
+        GalaxyGoliathController mx = Instantiate(Template);
+        Vector2 SpawnPoint = new Vector2(Random.Range(minSpawnPoint.position.x, maxSpawnPoint.position.x), minSpawnPoint.position.y);
         mx.transform.position = SpawnPoint;
         lastSpawn = Time.time;
         spawnRate = Random.Range(minSpawnRate, maxSpawnRate);

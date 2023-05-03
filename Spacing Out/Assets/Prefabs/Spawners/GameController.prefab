@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8687072049978121251}
   m_Layer: 0
   m_Name: SpawnPoint
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,6 +79,7 @@ MonoBehaviour:
   playerTemplate: {fileID: 8040294902954331362, guid: 50bb26a0cb00ae8489f361429ee7492d, type: 3}
   playerSpawnPoint: {fileID: 8687072049978121251}
   respawnTime: 1
-  overlay: {fileID: 0}
+  shuttleLives: 3
   isScoreVisible: 1
-  playerScore: 0
+  isLivesVisible: 1
+  gameMode: {fileID: 0}

@@ -48,6 +48,7 @@ public class WaveController : MonoBehaviour
     private bool IsEnemiesLeft()
     { 
         IEnemyShuttle[] enemies = FindObjectsOfType<MonoBehaviour>().OfType<IEnemyShuttle>().ToArray();
+        if(enemies.Length == 0) lastSpawn = Time.time;
         return enemies.Length > 0;
     }
 

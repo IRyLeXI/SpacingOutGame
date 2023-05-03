@@ -3,13 +3,9 @@ using UnityEngine;
 public class PlayerWeaponScript : WeaponScript
 {
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
+        //Debug.Log($"ls {lastShot} time {Time.time}");
         if(IsReadyForFire())
         {
             HandleFire();

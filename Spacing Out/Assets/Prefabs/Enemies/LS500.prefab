@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 0.5
-  healthPoints: 2
+  healthPoints: 3
   Velocity: {x: 0, y: 0}
   Min: {x: -4.1, y: 1.6}
   Max: {x: 4.1, y: 7}
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 3
-  Bullet: {fileID: 0}
+  Bullet: {fileID: 4533757818042907752, guid: ffc713effedf1be41a97ab37f1d86b1c, type: 3}
   bulletPushForce: 12
   bulletDirection: {x: 0, y: 0}
   attackTime: 1.5

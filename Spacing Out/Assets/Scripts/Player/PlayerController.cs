@@ -17,17 +17,18 @@ public class PlayerController : MonoBehaviour, IDamageble
     private Vector2 Min, Max;
 
     [SerializeField]
-    private PlayerLaserAbility laser;
-
-    [SerializeField]
-    private StrongWeaponController strongWeapon;
+    public PlayerWeaponsController weaponsController;
 
     [SerializeField]
     private float healthPoints = 1f;
 
-    void Start()
-    {
-        
+    public ShieldController shield;
+
+    private Collider2D cd;
+    private bool isDeathTriggered = false;
+
+    void Start() {
+        cd = GetComponent<Collider2D>();
     }
 
     void Update()
@@ -62,25 +63,42 @@ public class PlayerController : MonoBehaviour, IDamageble
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.CompareTag("EnemyBullet") && invincibleTime <= 0)   
+        if(isDeathTriggered)
+            return;
+        if(invincibleTime <= 0)
         {
-            BulletScript bullet = other.GetComponent<BulletScript>();
-            HandleDamage(bullet.Damage);
-            bullet.HandleDamage(1);
-        }
-        else if(other.CompareTag("EnemyLaser") && invincibleTime <= 0)
-        {
-            LaserScript laser = other.GetComponent<LaserScript>();
-            HandleDamage(laser.Damage);
-        }
-        else if((other.CompareTag("BigMeteorite") || other.CompareTag("SmallMeteorite")) && invincibleTime <= 0)
-        {
-            MeteorScript mt = other.GetComponent<MeteorScript>();
-            HandleDamage(mt.Damage);
-        }
-        else if(!other.CompareTag("PlayerBullet") && !other.CompareTag("PlayerLaser") && invincibleTime <= 0)
-        {
-            HandleDamage(1);
+            if (other.CompareTag("EnemyBullet"))
+            {
+                BulletScript bullet = other.GetComponent<BulletScript>();
+                if (shield.GetDurability() < 0)
+                {
+                    HandleDamage(bullet.Damage);
+                }
+                bullet.HandleDamage(1);
+            }
+            else if (other.CompareTag("EnemyLaser"))
+            {
+                LaserScript laser = other.GetComponent<LaserScript>();
+                shield.HandleDamage(shield.GetDurability());
+                HandleDamage(laser.Damage);
+
+            }
+            else if ((other.CompareTag("BigMeteorite") || other.CompareTag("SmallMeteorite")))
+            {
+                MeteorScript mt = other.GetComponent<MeteorScript>();
+                Debug.Log(shield.GetDurability());
+                if (shield.GetDurability() < 0)
+                {
+                    HandleDamage(mt.Damage);
+                }
+            }
+            else if (!other.CompareTag("PlayerBullet") && !other.CompareTag("PlayerLaser") && !other.CompareTag("Buff"))
+            {
+                if (shield.GetDurability() < 0)
+                {
+                    HandleDamage(1);
+                }
+            }
         }
 
     }
@@ -103,8 +121,12 @@ public class PlayerController : MonoBehaviour, IDamageble
     {
         if(healthPoints<=0)
         {
-            if(laser.gameObject.activeSelf) 
-                laser.ShootDown();
+            //Debug.Log(weaponsController.laserAbility.gameObject.activeSelf);
+            if(weaponsController.laserAbility.gameObject.activeSelf) 
+            {
+                weaponsController.laserAbility.ShootDown();
+            }
+            isDeathTriggered = true;    
             gameController.DestroyShuttle(this);
         }
     }

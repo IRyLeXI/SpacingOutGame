@@ -41,13 +41,13 @@ public abstract class EnemyScript : MonoBehaviour, IDamageble
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.gameObject.tag == "PlayerBullet" && transform.position.y<5.2)   
+        if(other.gameObject.tag == "PlayerBullet" && transform.position.y  <5.7)   
         {
             BulletScript bullet = other.GetComponent<BulletScript>();
             HandleDamage(bullet.Damage);
             bullet.HandleDamage(1);
         }
-        else if(other.gameObject.tag == "PlayerLaser")
+        else if(other.gameObject.tag == "PlayerLaser" && transform.position.y < 6)
         {
             LaserScript laser = other.GetComponent<LaserScript>();
             HandleDamage(laser.Damage);
@@ -68,9 +68,8 @@ public abstract class EnemyScript : MonoBehaviour, IDamageble
         lastSetPos = Time.time;
     }
 
-    public static void SetPlayer()
+    public static void SetPlayer(PlayerController player1)
     {
-        GameObject player1 = GameObject.FindGameObjectWithTag("Player");
         Player = player1.GetComponent<PlayerController>();
     }
 

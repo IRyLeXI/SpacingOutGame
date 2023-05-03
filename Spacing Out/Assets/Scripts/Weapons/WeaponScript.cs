@@ -17,11 +17,14 @@ public abstract class WeaponScript : MonoBehaviour, IFreezable
 
     protected float lastShot;
 
+    public float bulletDamage = 1f;
+
     protected virtual void HandleFire()
     {
         lastShot = Time.time;
         GameObject bullet = Instantiate(Bullet.gameObject);
         BulletScript bulletScript = bullet.GetComponent<BulletScript>();
+        bulletScript.Damage = bulletDamage;
         bulletScript.pushForce = bulletPushForce;
         bulletScript.pushDirection = bulletDirection;
         bullet.transform.position = gameObject.transform.position;
@@ -37,4 +40,9 @@ public abstract class WeaponScript : MonoBehaviour, IFreezable
         lastShot = lastShot + freezeTime;
     }
 
+    public void SetNewShotSpeed(float newShotSpeed)
+    {
+        lastShot = Time.time;
+        fireRate = newShotSpeed;
+    }
 }

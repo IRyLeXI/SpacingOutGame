@@ -11,42 +11,36 @@ public class GameController : MonoBehaviour
 
     [SerializeField]
     private float respawnTime = 1;
-
+    
     [SerializeField]
-    private ScoreOverlayController scoreOverlay;
-
-    [SerializeField]
-    private LivesOverlayController livesOverlay;
-
+    private int shuttleLives = 3;
+    
     [SerializeField]
     private bool isScoreVisible = true, isLivesVisible = true;
 
     [SerializeField]
-    private int shuttleLives = 3;
+    private WaveController gameMode;
+
+    [SerializeField]
+    private GameObject gameOverScreenController;
+
+    private int shuttleLivesBackup;
+
+    private ScoreOverlayController scoreOverlay;
+
+    private LivesOverlayController livesOverlay;
 
     private float deathTime;
 
     private bool isDead = false;
 
-    public int playerScore = 0;
+    private int playerScore = 0; 
 
-    
-
-    // Start is called before the first frame update
     void Start()
     {
-        RespawnPlayer();
-        scoreOverlay = GetComponent<ScoreOverlayController>();
-        livesOverlay = GetComponent<LivesOverlayController>();
-        if(!isScoreVisible)
-            scoreOverlay.DisableScore();
-        if(!isLivesVisible) 
-            livesOverlay.DisableLives();
-        else
-            livesOverlay.SetLives(shuttleLives);
+        StartGame();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(isDead && IsReadyForRespawn())
@@ -57,14 +51,14 @@ public class GameController : MonoBehaviour
 
     private void RespawnPlayer()
     {
-        if(shuttleLives > 0 || !isLivesVisible)
+        if(shuttleLivesBackup > 0 || !isLivesVisible)
         {
             PlayerController player = Instantiate(playerTemplate);
             player.gameController = this;
             player.transform.position = playerSpawnPoint.position;
             isDead = false;
-            EnemyScript.SetPlayer();
-            GoliathAimWeaponController.SetPlayer();
+            EnemyScript.SetPlayer(player);
+            GoliathAimWeaponController.SetPlayer(player);
         }
     }
 
@@ -78,9 +72,29 @@ public class GameController : MonoBehaviour
         Destroy(Player.gameObject);
         deathTime = Time.time;
         isDead=true;
-        shuttleLives--;
+        shuttleLivesBackup--;
         if(livesOverlay != null && isLivesVisible)
-            livesOverlay.ReduceLives(shuttleLives);
+        {
+            livesOverlay.ReduceLives(shuttleLivesBackup);
+        }
+        if(shuttleLivesBackup <= 0 && isLivesVisible)
+        {
+            gameOverScreenController.SetActive(true);
+            DestroyAll();
+        }
+    }
+
+    private void DestroyAll()
+    {
+        var objects = FindObjectsOfType<GameObject>();
+        foreach(GameObject obj in objects)
+        {
+            if(obj.CompareTag("GameController") || obj.CompareTag("SmallMeteorite") || obj.CompareTag("BigMeteorite") || obj.CompareTag("MainCamera"))
+            {
+                continue;
+            }
+            Destroy(obj.gameObject);
+        }
     }
 
     public void HandleScore(int Value)
@@ -89,4 +103,34 @@ public class GameController : MonoBehaviour
         if(scoreOverlay!=null && isScoreVisible)
             scoreOverlay.UpdateScore(playerScore);
     }
+
+    private void StartGame()
+    {
+        scoreOverlay = GetComponent<ScoreOverlayController>();
+        livesOverlay = GetComponent<LivesOverlayController>();
+        Debug.Log(gameOverScreenController);
+        shuttleLivesBackup = shuttleLives;
+        RespawnPlayer();
+        if(isScoreVisible)
+        {
+            playerScore = 0;
+            scoreOverlay.EnableScore();
+            scoreOverlay.UpdateScore(playerScore);
+
+        }
+        if(isLivesVisible) 
+        {
+            livesOverlay.EnableLives();       
+            livesOverlay.SetLives(shuttleLivesBackup);
+        }
+        Instantiate<WaveController>(gameMode);
+    }
+
+    public void TryAgain()
+    {
+        gameOverScreenController.SetActive(false);
+        StartGame();
+    }
+
+
 }

@@ -28,7 +28,6 @@ public class FreezeAbility : MonoBehaviour
         originalScale = field.transform.localScale;
         expandSpeed = maxSize / expandTime;  
         reduceSpeed = maxSize / reduceTime;
-        Debug.Log(field);
     }
 
     private void Update()

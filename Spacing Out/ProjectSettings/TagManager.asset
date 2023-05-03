@@ -21,6 +21,7 @@ TagManager:
   - EnemyWeapon
   - PlayerWeapon
   - LS500
+  - Buff
   layers:
   - Default
   - TransparentFX

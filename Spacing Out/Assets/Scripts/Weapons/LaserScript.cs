@@ -33,11 +33,12 @@ public class LaserScript : MonoBehaviour, IFreezable
     {
         laserTransform = GetComponent<Transform>();
         laserCollider = GetComponent<BoxCollider2D>();
+
         growthSpeed = finalWidth / growthTime;
         growthColliderSpeed = colliderSizeShooting.x / growthTime;
         growthOffsetSpeed = colliderOffsetShooting.x / growthTime;
+        
         attackTimeBackup = attackTime;
-        //Debug.Log(GrowthSpeed);
     }
 
     void Update()
@@ -73,9 +74,11 @@ public class LaserScript : MonoBehaviour, IFreezable
     {
         laserCollider.size = new Vector2(0.001f, 0.001f);
         laserCollider.offset =  new Vector2(0.001f, 0.001f);
+
         Draw2DRay(transform.position, transform.position);
         colliderGrowth = new Vector2(0f,0f);
         colliderOffsetGrowth = new Vector2(0f,0f);
+
         attackTime = attackTimeBackup;
         lineRenderer.startWidth = 0;
         isFiring = false;
@@ -86,9 +89,11 @@ public class LaserScript : MonoBehaviour, IFreezable
     {
         Draw2DRay(transform.position, transform.position);
         lineRenderer.startWidth += growthSpeed * Time.deltaTime;
+
         colliderGrowth.x += growthColliderSpeed * Time.deltaTime;
         colliderGrowth.y += growthColliderSpeed * Time.deltaTime;
         laserCollider.size = colliderGrowth;
+
         colliderOffsetGrowth.x += growthOffsetSpeed * Time.deltaTime;
         colliderOffsetGrowth.y += growthOffsetSpeed * Time.deltaTime;
         laserCollider.offset = colliderOffsetGrowth;

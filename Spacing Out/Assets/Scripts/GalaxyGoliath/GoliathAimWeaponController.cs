@@ -7,14 +7,12 @@ public class GoliathAimWeaponController : WeaponScript
 
     private static PlayerController Player;
 
-    // Start is called before the first frame update
     void Start()
     {
         lastShot = Time.time;
         startAttackTime = Time.time - attackTime;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(IsReadyForFire())
@@ -53,9 +51,9 @@ public class GoliathAimWeaponController : WeaponScript
         return pos;
     }
 
-    public static void SetPlayer()
+    public static void SetPlayer(PlayerController player1)
     {
-        GameObject player1 = GameObject.FindGameObjectWithTag("Player");
+        //GameObject player1 = GameObject.FindGameObjectWithTag("Player");
         Player = player1.GetComponent<PlayerController>();
     }
 

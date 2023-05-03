@@ -12,9 +12,6 @@ public class BossScript : MonoBehaviour
     [SerializeField]
     private float movementDelay = 1f;
 
-    // [SerializeField]
-    // private float MinX, MaxX;
-
     [SerializeField]
     protected Vector2 Velocity = new Vector2(0, 0);
 
@@ -27,18 +24,6 @@ public class BossScript : MonoBehaviour
     protected int scoreValue = 500;
 
     protected float lastSetPos;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     protected virtual void MoveShipProtected()
     {

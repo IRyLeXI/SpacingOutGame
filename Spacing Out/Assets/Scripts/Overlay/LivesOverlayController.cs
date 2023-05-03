@@ -31,8 +31,8 @@ public class LivesOverlayController : MonoBehaviour
     }
 
 
-    public void DisableLives()
+    public void EnableLives()
     {
-        Container.gameObject.SetActive(false);
+        Container.gameObject.SetActive(true);
     }
 }

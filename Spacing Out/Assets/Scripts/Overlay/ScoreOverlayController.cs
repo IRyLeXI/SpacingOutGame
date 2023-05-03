@@ -12,9 +12,9 @@ public class ScoreOverlayController : MonoBehaviour
         Score.text = score.ToString().PadLeft(8, '0');
     }
 
-    public void DisableScore()
+    public void EnableScore()
     {
-        Score.gameObject.SetActive(false);
+        Score.gameObject.SetActive(true);
     }
 
 }

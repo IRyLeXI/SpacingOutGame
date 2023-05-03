@@ -1,0 +1,118 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerWeaponsController : MonoBehaviour
+{
+
+    [SerializeField]
+    private List<PlayerWeaponScript> Weapons;
+
+    [SerializeField]
+    private float weaponsDamage = 1f, weaponsShotSpeed = 0.2f;
+
+    [SerializeField]
+    private StrongWeaponController strongShotAbility;
+
+    [SerializeField]
+    private PlayerTeleportAbility teleportAbility;
+
+    [SerializeField]
+    public PlayerLaserAbility laserAbility;
+
+    [SerializeField]
+    private PlayerTimeStopAbility timeStopAbility;
+
+    [SerializeField]
+    public bool IsStrongWeapon = true, IsTeleportAbility = false, IsLaserAbility = false, IsTimeStopAbility = false;
+
+    private float sideWeaponsHandleTime, weaponsBuffTime;
+
+    private bool isDamageChanged = true, isShotSpeedChanged = true;
+
+    void Start()
+    {
+        SetDamage(weaponsDamage);
+        SetShotSpeed(weaponsShotSpeed);
+
+        if(!IsStrongWeapon)
+            strongShotAbility.gameObject.SetActive(false);
+
+        if(!IsTeleportAbility)
+            teleportAbility.gameObject.SetActive(false);
+
+        if(!IsLaserAbility)
+            laserAbility.gameObject.SetActive(false);
+
+        if(!IsTimeStopAbility)
+            timeStopAbility.gameObject.SetActive(false);
+    }
+
+    void Update()
+    {
+        if(sideWeaponsHandleTime>0)
+        {
+            sideWeaponsHandleTime-=Time.deltaTime;
+        }
+        else
+        {
+            if(isShotSpeedChanged)
+            {
+                DeactivateSideWeapons();
+                SetShotSpeed(weaponsShotSpeed);
+                isShotSpeedChanged = false;
+            }
+        }
+        if(weaponsBuffTime>0)
+        {
+            weaponsBuffTime-=Time.deltaTime;
+        }
+        else
+        {
+            if(isDamageChanged)
+            {
+                SetDamage(weaponsDamage);
+                isDamageChanged = false;
+            }
+        }
+    }
+
+    public void ActivateSideWeapons(float newShotSpeed, float aTime)
+    {
+        Weapons[1].gameObject.SetActive(true);
+        Weapons[2].gameObject.SetActive(true);
+        SetShotSpeed(newShotSpeed);
+        sideWeaponsHandleTime = aTime;
+        isShotSpeedChanged = true;
+    }
+
+    private void DeactivateSideWeapons()
+    {
+        SetShotSpeed(weaponsShotSpeed);
+        Weapons[1].gameObject.SetActive(false);
+        Weapons[2].gameObject.SetActive(false);
+    }
+
+    public void BuffBullets(float damage, float aTime)
+    {
+        SetDamage(damage);
+        weaponsBuffTime = aTime;
+        isShotSpeedChanged = true;
+    }
+
+    private void SetDamage(float damage)
+    {
+        foreach(PlayerWeaponScript weapon in Weapons)
+        {
+            weapon.bulletDamage = weaponsDamage;
+        }
+    }
+
+    private void SetShotSpeed(float shotSpeed)
+    {
+        foreach (PlayerWeaponScript weapon in Weapons)
+        {
+            weapon.SetNewShotSpeed(shotSpeed);
+        }
+    }
+
+}

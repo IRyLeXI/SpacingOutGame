@@ -9,13 +9,11 @@ public class MYXA94Controller : EnemyScript, IFreezable, IEnemyShuttle
     
     private float freezeTime = -1f;
 
-    // Start is called before the first frame update
     void Start()
     {
         SetPositionProtected();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(freezeTime<0)

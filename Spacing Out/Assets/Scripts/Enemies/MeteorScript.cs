@@ -67,15 +67,21 @@ public class MeteorScript : MonoBehaviour, IDamageble, IFreezable
             BulletScript bullet = other.GetComponent<BulletScript>();
             HandleDamage(bullet.Damage);
             bullet.HandleDamage(Damage);
+            if(gameController!=null)
+                gameController.HandleScore(scoreValue);
         }
         else if(other.gameObject.tag == "Player")
         {
             HandleDamage(1);
+            if(gameController!=null)
+                gameController.HandleScore(scoreValue);
         }
         else if(other.gameObject.tag == "PlayerLaser")
         {
             LaserScript laser = other.GetComponent<LaserScript>();
             HandleDamage(laser.Damage);
+            if(gameController!=null)
+                gameController.HandleScore(scoreValue);
         }
     }
 
@@ -122,12 +128,5 @@ public class MeteorScript : MonoBehaviour, IDamageble, IFreezable
     public void SetController(GameController controller)
     {
         gameController = controller;
-    }
-
-    private void OnDestroy() 
-    {
-        //Debug.Log(gameController);
-        if(gameController!=null)
-            gameController.HandleScore(scoreValue);
     }
 }

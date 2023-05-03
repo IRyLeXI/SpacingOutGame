@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2568844180833553359}
   m_Layer: 0
   m_Name: MaxSpawnPoint
-  m_TagString: Untagged
+  m_TagString: BigMeteorite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 2568844181609121928}
   m_Layer: 0
   m_Name: MinSpawnPoint
-  m_TagString: Untagged
+  m_TagString: BigMeteorite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 2568844182399975140}
   m_Layer: 0
   m_Name: MeteorSpawner
-  m_TagString: Untagged
+  m_TagString: BigMeteorite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

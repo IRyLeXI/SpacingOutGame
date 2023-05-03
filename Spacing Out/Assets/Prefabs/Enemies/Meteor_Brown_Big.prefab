@@ -101,11 +101,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 20
-  Damage: 10
+  Damage: 5
   healthPoints: 3
   pushForce: 1
   pushDirection: {x: 0, y: -1}
-  scoreValue: 50
+  scoreValue: 25
 --- !u!60 &1627167459203077239
 PolygonCollider2D:
   m_ObjectHideFlags: 0

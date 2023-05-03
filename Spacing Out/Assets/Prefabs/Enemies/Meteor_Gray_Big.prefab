@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: -30
-  Damage: 10
+  Damage: 5
   healthPoints: 3
   pushForce: 1
   pushDirection: {x: 0, y: -1}

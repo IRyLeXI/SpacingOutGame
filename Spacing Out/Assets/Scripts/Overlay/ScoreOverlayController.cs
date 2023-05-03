@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class OverlayController : MonoBehaviour
+public class ScoreOverlayController : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI Score;

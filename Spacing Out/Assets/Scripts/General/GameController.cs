@@ -13,10 +13,16 @@ public class GameController : MonoBehaviour
     private float respawnTime = 1;
 
     [SerializeField]
-    private OverlayController overlay;
+    private ScoreOverlayController scoreOverlay;
 
     [SerializeField]
-    private bool isScoreVisible = true;
+    private LivesOverlayController livesOverlay;
+
+    [SerializeField]
+    private bool isScoreVisible = true, isLivesVisible = true;
+
+    [SerializeField]
+    private int shuttleLives = 3;
 
     private float deathTime;
 
@@ -30,9 +36,14 @@ public class GameController : MonoBehaviour
     void Start()
     {
         RespawnPlayer();
-        overlay = GetComponent<OverlayController>();
+        scoreOverlay = GetComponent<ScoreOverlayController>();
+        livesOverlay = GetComponent<LivesOverlayController>();
         if(!isScoreVisible)
-            overlay.DisableScore();
+            scoreOverlay.DisableScore();
+        if(!isLivesVisible) 
+            livesOverlay.DisableLives();
+        else
+            livesOverlay.SetLives(shuttleLives);
     }
 
     // Update is called once per frame
@@ -46,12 +57,15 @@ public class GameController : MonoBehaviour
 
     private void RespawnPlayer()
     {
-        PlayerController player = Instantiate(playerTemplate);
-        player.gameController = this;
-        player.transform.position = playerSpawnPoint.position;
-        isDead = false;
-        EnemyScript.SetPlayer();
-        GoliathAimWeaponController.SetPlayer();
+        if(shuttleLives > 0 || !isLivesVisible)
+        {
+            PlayerController player = Instantiate(playerTemplate);
+            player.gameController = this;
+            player.transform.position = playerSpawnPoint.position;
+            isDead = false;
+            EnemyScript.SetPlayer();
+            GoliathAimWeaponController.SetPlayer();
+        }
     }
 
     private bool IsReadyForRespawn()
@@ -64,12 +78,15 @@ public class GameController : MonoBehaviour
         Destroy(Player.gameObject);
         deathTime = Time.time;
         isDead=true;
+        shuttleLives--;
+        if(livesOverlay != null && isLivesVisible)
+            livesOverlay.ReduceLives(shuttleLives);
     }
 
     public void HandleScore(int Value)
     {
         playerScore+=Value;
-        if(overlay!=null && isScoreVisible)
-            overlay.UpdateScore(playerScore);
+        if(scoreOverlay!=null && isScoreVisible)
+            scoreOverlay.UpdateScore(playerScore);
     }
 }

@@ -19,7 +19,7 @@ public abstract class SpawnerScript : MonoBehaviour
     protected float lastSpawn, spawnRate;
 
     protected GameController gameController;
-
+    
     protected virtual void Start()
     {
         gameController = FindObjectOfType<GameController>();

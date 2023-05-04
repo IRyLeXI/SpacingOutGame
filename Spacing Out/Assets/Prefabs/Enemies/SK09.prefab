@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6302478624212305724}
   - component: {fileID: 988551705624849329}
   - component: {fileID: 4310358384992616748}
+  - component: {fileID: -679695195543983778}
   m_Layer: 0
   m_Name: SK09
   m_TagString: SK09
@@ -106,6 +107,7 @@ MonoBehaviour:
   minFaultX: -0.1
   maxFaultX: 0.1
   getPlayerPositionDelay: 1
+  SoundConroller: {fileID: 5728397988607967894, guid: e7295d6936eac68428d7ec4b237ed722, type: 3}
   scoreValue: 400
   rotateSpeed: 4
 --- !u!60 &4310358384992616748
@@ -155,3 +157,20 @@ PolygonCollider2D:
       - {x: 0.088276096, y: -0.15244976}
       - {x: 0.14794326, y: -0.14737593}
       - {x: 0.15205674, y: 0.08120561}
+--- !u!114 &-679695195543983778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6302478624212305727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71199808cc065374183a36ed341be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropChance: 15
+  buffs:
+  - {fileID: 7045020587499424857, guid: 8ff828624e466eb479f27e7f40447fbc, type: 3}
+  - {fileID: 2400301217708033856, guid: 193ec011ed883d644b15404c0729f4ad, type: 3}
+  - {fileID: 3746974227742557234, guid: 914b2bd4306d0e14aa3d57f054b76e61, type: 3}

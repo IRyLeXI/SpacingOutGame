@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6341150209265512683}
   - component: {fileID: 6341150209265512681}
   - component: {fileID: 6341150209265512686}
+  - component: {fileID: 3156155649830462961}
   m_Layer: 0
   m_Name: LS500
   m_TagString: LS500
@@ -107,6 +108,7 @@ MonoBehaviour:
   minFaultX: 0.01
   maxFaultX: 0.02
   getPlayerPositionDelay: 0.5
+  SoundConroller: {fileID: 5728397988607967894, guid: e7295d6936eac68428d7ec4b237ed722, type: 3}
   scoreValue: 500
 --- !u!60 &6341150209265512686
 PolygonCollider2D:
@@ -157,6 +159,23 @@ PolygonCollider2D:
       - {x: 0.14080377, y: -0.07224512}
       - {x: 0.14031318, y: -0.01548782}
       - {x: 0.12234369, y: 0.035745844}
+--- !u!114 &3156155649830462961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6341150209265512682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71199808cc065374183a36ed341be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropChance: 20
+  buffs:
+  - {fileID: 7045020587499424857, guid: 8ff828624e466eb479f27e7f40447fbc, type: 3}
+  - {fileID: 2400301217708033856, guid: 193ec011ed883d644b15404c0729f4ad, type: 3}
+  - {fileID: 3746974227742557234, guid: 914b2bd4306d0e14aa3d57f054b76e61, type: 3}
 --- !u!1 &6341150209779969445
 GameObject:
   m_ObjectHideFlags: 0

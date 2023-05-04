@@ -8,13 +8,14 @@ public class PlayerLaserAbility : WeaponScript
 
     protected LaserScript laser;
 
-    //private bool isActive = false;
+    private SoundController sc;
 
     protected void Start()
     {
         lastShot = Time.time - fireRate;
         GameObject bullet = Instantiate(Bullet);
-        laser = bullet.GetComponent<LaserScript>();
+        laser = bullet.GetComponent<LaserScript>(); 
+        sc = FindObjectOfType<SoundController>();
     }
 
     protected void Update()
@@ -30,6 +31,7 @@ public class PlayerLaserAbility : WeaponScript
     {
         if(Input.GetButton("Special"))
         {
+            sc.SmallLaser();
             laser.StartAttack(attackTime);
             lastShot = Time.time;
         }

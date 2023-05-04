@@ -6,19 +6,23 @@ public class GoliathWeaponController : WeaponScript, IDamageble
     [SerializeField]
     private float healthPoints = 100f;
 
-    //[SerializeField]
     private float attackTime, startAttackTime;
+
+    private SoundController sc;
+
 
     void Start()
     {
         lastShot = Time.time;
         startAttackTime = Time.time - attackTime;
+         sc = FindObjectOfType<SoundController>();
     }
 
     void Update()
     {
         if(IsReadyForFire())
         {
+            sc.EnemyShotSound();
             HandleFire();
         }
     }

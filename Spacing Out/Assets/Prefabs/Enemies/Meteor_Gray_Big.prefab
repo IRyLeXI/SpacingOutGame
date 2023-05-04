@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4740044764527611012}
   - component: {fileID: 4740044764527611015}
   - component: {fileID: 4740044764527611014}
+  - component: {fileID: 8375758326814186369}
   - component: {fileID: 3920818883442580931}
   - component: {fileID: 8662092450189981010}
   - component: {fileID: -632533642382652664}
@@ -106,6 +107,23 @@ MonoBehaviour:
   pushForce: 1
   pushDirection: {x: 0, y: -1}
   scoreValue: 50
+--- !u!114 &8375758326814186369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4740044764527611009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71199808cc065374183a36ed341be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropChance: 5
+  buffs:
+  - {fileID: 7045020587499424857, guid: 8ff828624e466eb479f27e7f40447fbc, type: 3}
+  - {fileID: 2400301217708033856, guid: 193ec011ed883d644b15404c0729f4ad, type: 3}
+  - {fileID: 3746974227742557234, guid: 914b2bd4306d0e14aa3d57f054b76e61, type: 3}
 --- !u!60 &3920818883442580931
 PolygonCollider2D:
   m_ObjectHideFlags: 0

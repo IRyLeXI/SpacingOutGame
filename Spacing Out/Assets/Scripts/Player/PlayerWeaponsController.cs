@@ -96,14 +96,14 @@ public class PlayerWeaponsController : MonoBehaviour
     {
         SetDamage(damage);
         weaponsBuffTime = aTime;
-        isShotSpeedChanged = true;
+        isDamageChanged = true;
     }
 
     private void SetDamage(float damage)
     {
         foreach(PlayerWeaponScript weapon in Weapons)
         {
-            weapon.bulletDamage = weaponsDamage;
+            weapon.SetNewDamage(damage);
         }
     }
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PowerBuffScript : MonoBehaviour
+public class PowerBuffScript : PlayerBuffController
 {
 
     [SerializeField]
@@ -8,6 +8,16 @@ public class PowerBuffScript : MonoBehaviour
 
     [SerializeField]
     private float buffDuration = 10f;
+
+    protected override void Start()
+    {
+        base.Start();
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {

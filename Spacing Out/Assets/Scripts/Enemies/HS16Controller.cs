@@ -4,12 +4,7 @@ public class HS16Controller : EnemyScript, IFreezable, IEnemyShuttle
 {
 
     private float freezeTime = -1f;
-
-    void Start()
-    {
-        SetPositionProtected();
-    }
-
+    
     void Update()
     {
         if(freezeTime<0)

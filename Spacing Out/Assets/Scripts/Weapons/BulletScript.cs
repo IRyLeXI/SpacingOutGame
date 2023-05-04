@@ -21,9 +21,12 @@ public class BulletScript : MonoBehaviour, IDamageble, IFreezable
     
     private bool isFreezed = false;
 
+    private SoundController sc;
+
     void Start()
     {
         PushBullet();
+        sc = FindObjectOfType<SoundController>();
     }
 
     void Update() {
@@ -74,16 +77,20 @@ public class BulletScript : MonoBehaviour, IDamageble, IFreezable
     {
         if(healthPoints<=0)
         {
+            sc.HitSound();
             Destroy(this.gameObject);
         }
     }
 
     public void Freeze(float freezeTime)
     {
-        this.freezeTime = freezeTime;
-        rb.velocity = Vector2.zero;
-        rb.angularVelocity = 0f;   
-        isFreezed = true;
+        if(gameObject!=null)
+        {
+            this.freezeTime = freezeTime;
+            rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+            isFreezed = true;
+        }
     }
 
     private void Unfreeze()

@@ -7,16 +7,20 @@ public class GoliathAimWeaponController : WeaponScript
 
     private static PlayerController Player;
 
+    private SoundController sc;
+
     void Start()
     {
         lastShot = Time.time;
         startAttackTime = Time.time - attackTime;
+        sc = FindObjectOfType<SoundController>();
     }
 
     void Update()
     {
         if(IsReadyForFire())
         {
+            sc.EnemyShotSound();
             HandleFire();
         }
     }

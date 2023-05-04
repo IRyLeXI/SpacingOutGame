@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 3348915236779395109}
   - component: {fileID: 3348915236779395108}
   - component: {fileID: 8590056285129660806}
+  - component: {fileID: -7206602110388181208}
   - component: {fileID: 8535452197959514935}
   - component: {fileID: 8162904031615398498}
-  - component: {fileID: -7206602110388181208}
+  - component: {fileID: 1190442802887101534}
   m_Layer: 0
   m_Name: Meteor_Gray_Small
   m_TagString: SmallMeteorite
@@ -106,6 +107,18 @@ MonoBehaviour:
   pushForce: 1
   pushDirection: {x: 0, y: -1}
   scoreValue: 150
+--- !u!114 &-7206602110388181208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3348915236779395290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31d9d3a92b0c7dc4f8e660a527cd5cca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!60 &8535452197959514935
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -166,7 +179,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &-7206602110388181208
+--- !u!114 &1190442802887101534
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,6 +188,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3348915236779395290}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31d9d3a92b0c7dc4f8e660a527cd5cca, type: 3}
+  m_Script: {fileID: 11500000, guid: 71199808cc065374183a36ed341be24c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropChance: 5
+  buffs:
+  - {fileID: 7045020587499424857, guid: 8ff828624e466eb479f27e7f40447fbc, type: 3}
+  - {fileID: 2400301217708033856, guid: 193ec011ed883d644b15404c0729f4ad, type: 3}
+  - {fileID: 3746974227742557234, guid: 914b2bd4306d0e14aa3d57f054b76e61, type: 3}

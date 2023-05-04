@@ -17,7 +17,7 @@ public abstract class WeaponScript : MonoBehaviour, IFreezable
 
     protected float lastShot;
 
-    public float bulletDamage = 1f;
+    protected float bulletDamage = 1f;
 
     protected virtual void HandleFire()
     {
@@ -44,5 +44,10 @@ public abstract class WeaponScript : MonoBehaviour, IFreezable
     {
         lastShot = Time.time;
         fireRate = newShotSpeed;
+    }
+
+    public void SetNewDamage(float Damage)
+    {
+        bulletDamage = Damage;
     }
 }

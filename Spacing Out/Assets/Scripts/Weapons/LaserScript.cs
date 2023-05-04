@@ -72,17 +72,20 @@ public class LaserScript : MonoBehaviour, IFreezable
 
     private void RestoreDefault()
     {
-        laserCollider.size = new Vector2(0.001f, 0.001f);
-        laserCollider.offset =  new Vector2(0.001f, 0.001f);
+        if(gameObject!=null)
+        {
+            laserCollider.size = new Vector2(0.001f, 0.001f);
+            laserCollider.offset = new Vector2(0.001f, 0.001f);
 
-        Draw2DRay(transform.position, transform.position);
-        colliderGrowth = new Vector2(0f,0f);
-        colliderOffsetGrowth = new Vector2(0f,0f);
+            Draw2DRay(transform.position, transform.position);
+            colliderGrowth = new Vector2(0f, 0f);
+            colliderOffsetGrowth = new Vector2(0f, 0f);
 
-        attackTime = attackTimeBackup;
-        lineRenderer.startWidth = 0;
-        isFiring = false;
-        isRestored = true;
+            attackTime = attackTimeBackup;
+            lineRenderer.startWidth = 0;
+            isFiring = false;
+            isRestored = true;
+        }
     }
 
     private void GrowLaser()

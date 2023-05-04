@@ -25,10 +25,13 @@ public class PlayerController : MonoBehaviour, IDamageble
     public ShieldController shield;
 
     private Collider2D cd;
+    
+    private SoundController sc;
     private bool isDeathTriggered = false;
 
     void Start() {
         cd = GetComponent<Collider2D>();
+        sc = FindObjectOfType<SoundController>();
     }
 
     void Update()
@@ -86,7 +89,6 @@ public class PlayerController : MonoBehaviour, IDamageble
             else if ((other.CompareTag("BigMeteorite") || other.CompareTag("SmallMeteorite")))
             {
                 MeteorScript mt = other.GetComponent<MeteorScript>();
-                Debug.Log(shield.GetDurability());
                 if (shield.GetDurability() < 0)
                 {
                     HandleDamage(mt.Damage);
@@ -121,13 +123,14 @@ public class PlayerController : MonoBehaviour, IDamageble
     {
         if(healthPoints<=0)
         {
-            //Debug.Log(weaponsController.laserAbility.gameObject.activeSelf);
+            sc.PlayerDeathSound();
             if(weaponsController.laserAbility.gameObject.activeSelf) 
             {
                 weaponsController.laserAbility.ShootDown();
             }
             isDeathTriggered = true;    
             gameController.DestroyShuttle(this);
+            
         }
     }
 }

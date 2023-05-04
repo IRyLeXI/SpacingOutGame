@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class PlayerWeaponScript : WeaponScript
 {
+    private SoundController soundController;
+
+    void Start() {
+        soundController = FindObjectOfType<SoundController>();
+    }
 
     void Update()
     {
@@ -16,6 +21,7 @@ public class PlayerWeaponScript : WeaponScript
     {
         if(Input.GetButton("Fire"))
         {
+            soundController.PlayerShotSound();
             base.HandleFire();
         }
     }

@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
     private int shuttleLives = 3;
     
     [SerializeField]
-    private bool isScoreVisible = true, isLivesVisible = true;
+    private bool isScoreVisible = true, isLivesVisible = true, isWavesHandle = true;
 
     [SerializeField]
     private WaveController gameMode;
@@ -30,6 +30,8 @@ public class GameController : MonoBehaviour
 
     private LivesOverlayController livesOverlay;
 
+    private SoundController sc;
+
     private float deathTime;
 
     private bool isDead = false;
@@ -39,6 +41,8 @@ public class GameController : MonoBehaviour
     void Start()
     {
         StartGame();
+        sc = FindObjectOfType<SoundController>();
+        sc.PlayGameMusic();
     }
 
     void Update()
@@ -108,9 +112,10 @@ public class GameController : MonoBehaviour
     {
         scoreOverlay = GetComponent<ScoreOverlayController>();
         livesOverlay = GetComponent<LivesOverlayController>();
-        Debug.Log(gameOverScreenController);
+
         shuttleLivesBackup = shuttleLives;
         RespawnPlayer();
+
         if(isScoreVisible)
         {
             playerScore = 0;
@@ -118,12 +123,18 @@ public class GameController : MonoBehaviour
             scoreOverlay.UpdateScore(playerScore);
 
         }
+
         if(isLivesVisible) 
         {
             livesOverlay.EnableLives();       
             livesOverlay.SetLives(shuttleLivesBackup);
         }
-        Instantiate<WaveController>(gameMode);
+
+        if(isWavesHandle)
+        {
+            Instantiate<WaveController>(gameMode);
+        }
+
     }
 
     public void TryAgain()
@@ -131,6 +142,5 @@ public class GameController : MonoBehaviour
         gameOverScreenController.SetActive(false);
         StartGame();
     }
-
 
 }

@@ -8,10 +8,7 @@ public class SK09Controller : EnemyScript, IFreezable, IEnemyShuttle
     
     private float freezeTime = -1f;
 
-    void Start()
-    {
-        SetPositionProtected();
-    }
+
 
     void Update()
     {

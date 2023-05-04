@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 8398621900589569402}
   - component: {fileID: 8398621900589569400}
   - component: {fileID: 8398621900589569401}
+  - component: {fileID: -2993781601604519646}
   m_Layer: 0
   m_Name: MYXA94
   m_TagString: MYXA94
@@ -157,6 +158,7 @@ MonoBehaviour:
   minFaultX: -0.3
   maxFaultX: 0.3
   getPlayerPositionDelay: 1.4
+  SoundConroller: {fileID: 5728397988607967894, guid: e7295d6936eac68428d7ec4b237ed722, type: 3}
   scoreValue: 500
   frontWeapon: {fileID: 2353475291963993834}
   leftWeapon: {fileID: 2256629378470376994}
@@ -225,6 +227,23 @@ PolygonCollider2D:
       - {x: 0.08629805, y: 0.015734302}
       - {x: 0.09995575, y: 0.028028093}
       - {x: 0.09957604, y: 0.12183565}
+--- !u!114 &-2993781601604519646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8398621900589569381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71199808cc065374183a36ed341be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropChance: 20
+  buffs:
+  - {fileID: 7045020587499424857, guid: 8ff828624e466eb479f27e7f40447fbc, type: 3}
+  - {fileID: 2400301217708033856, guid: 193ec011ed883d644b15404c0729f4ad, type: 3}
+  - {fileID: 3746974227742557234, guid: 914b2bd4306d0e14aa3d57f054b76e61, type: 3}
 --- !u!1 &8398621900643233342
 GameObject:
   m_ObjectHideFlags: 0

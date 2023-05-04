@@ -5,7 +5,6 @@ public class ShieldController : MonoBehaviour, IDamageble
     [SerializeField]
     private int shieldDurability = 0;
 
-    //[SerializeField]
     private SpriteRenderer shieldSprite;
 
     private bool isActive => shieldDurability > 0;
@@ -16,6 +15,8 @@ public class ShieldController : MonoBehaviour, IDamageble
     {
         cd = GetComponent<Collider2D>();
         shieldSprite = this.GetComponent<SpriteRenderer>();
+        if(!isActive)
+            cd.enabled = false;
     }
 
     void Update()
@@ -37,10 +38,10 @@ public class ShieldController : MonoBehaviour, IDamageble
         {
             if(!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("PlayerBullet") && !other.gameObject.CompareTag("PlayerLaser") && !other.gameObject.CompareTag("Buff"))
             {
-                HandleDamage(1);
-                if(other.gameObject.CompareTag("BigMeteorite") || other.gameObject.CompareTag("SmallMeteorite"))
+                if(!other.CompareTag("EnemyLaser"))
                 {
                     Destroy(other.gameObject);
+                    HandleDamage(1);
                 }  
             }
         }
@@ -68,10 +69,5 @@ public class ShieldController : MonoBehaviour, IDamageble
     public int GetDurability()
     {
         return shieldDurability;
-    }
-
-    private bool IsActive()
-    {
-        return shieldDurability>0;
     }
 }

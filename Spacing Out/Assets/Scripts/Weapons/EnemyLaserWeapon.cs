@@ -7,12 +7,14 @@ public class EnemyLaserWeapon : WeaponScript
 
     protected LaserScript laser;
 
+    private SoundController sc;
 
     protected void Start()
     {
         lastShot = Time.time;
         GameObject bullet = Instantiate(Bullet);
         laser = bullet.GetComponent<LaserScript>();
+        sc = FindObjectOfType<SoundController>();
     }
 
     protected void Update()
@@ -26,6 +28,7 @@ public class EnemyLaserWeapon : WeaponScript
 
     protected override void HandleFire()
     {
+        sc.SmallLaser();
         laser.StartAttack(attackTime);
         lastShot = Time.time;
     }

@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 8317896670443038088}
   - component: {fileID: 7277540773944062726}
   - component: {fileID: 5218994642729348428}
+  - component: {fileID: 791215130688652268}
   m_Layer: 0
   m_Name: HS16
   m_TagString: HS16
@@ -155,6 +156,7 @@ MonoBehaviour:
   minFaultX: -0.1
   maxFaultX: 0.1
   getPlayerPositionDelay: 1
+  SoundConroller: {fileID: 5728397988607967894, guid: e7295d6936eac68428d7ec4b237ed722, type: 3}
   scoreValue: 300
 --- !u!60 &5218994642729348428
 PolygonCollider2D:
@@ -211,3 +213,20 @@ PolygonCollider2D:
       - {x: 0.10484809, y: 0.124955356}
       - {x: 0.083636954, y: 0.12705114}
       - {x: 0.06791612, y: 0.109823026}
+--- !u!114 &791215130688652268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8317896670443038094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71199808cc065374183a36ed341be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropChance: 15
+  buffs:
+  - {fileID: 7045020587499424857, guid: 8ff828624e466eb479f27e7f40447fbc, type: 3}
+  - {fileID: 2400301217708033856, guid: 193ec011ed883d644b15404c0729f4ad, type: 3}
+  - {fileID: 3746974227742557234, guid: 914b2bd4306d0e14aa3d57f054b76e61, type: 3}

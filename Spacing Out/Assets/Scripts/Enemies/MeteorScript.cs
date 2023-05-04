@@ -67,21 +67,15 @@ public class MeteorScript : MonoBehaviour, IDamageble, IFreezable
             BulletScript bullet = other.GetComponent<BulletScript>();
             HandleDamage(bullet.Damage);
             bullet.HandleDamage(Damage);
-            if(gameController!=null)
-                gameController.HandleScore(scoreValue);
         }
         else if(other.gameObject.tag == "Player")
         {
             HandleDamage(1);
-            if(gameController!=null)
-                gameController.HandleScore(scoreValue);
         }
         else if(other.gameObject.tag == "PlayerLaser")
         {
             LaserScript laser = other.GetComponent<LaserScript>();
             HandleDamage(laser.Damage);
-            if(gameController!=null)
-                gameController.HandleScore(scoreValue);
         }
     }
 
@@ -89,12 +83,6 @@ public class MeteorScript : MonoBehaviour, IDamageble, IFreezable
     {
         rb = GetComponent<Rigidbody2D>();
         rb.AddForce(pushDirection * pushForce, ForceMode2D.Impulse);
-    }
-
-    private void DestroyMeteor(Collider2D bullet)
-    {
-        Destroy(this.gameObject);
-        Destroy(bullet.gameObject);
     }
 
     public void HandleDamage(float Damage)
@@ -107,6 +95,8 @@ public class MeteorScript : MonoBehaviour, IDamageble, IFreezable
     {
         if(healthPoints<=0)
         {
+            if(gameController!=null)
+                gameController.HandleScore(scoreValue);
             Destroy(this.gameObject);
         }
     }

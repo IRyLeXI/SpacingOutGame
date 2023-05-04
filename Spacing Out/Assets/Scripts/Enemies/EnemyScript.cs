@@ -21,6 +21,8 @@ public abstract class EnemyScript : MonoBehaviour, IDamageble
     [SerializeField]
     private float getPlayerPositionDelay = 1f;
 
+    private SoundController SoundConroller;
+
     [SerializeField]
     protected int scoreValue = 10;
 
@@ -28,7 +30,16 @@ public abstract class EnemyScript : MonoBehaviour, IDamageble
 
     protected GameController gameController;
 
+    protected DropBuffController dropBuffController;
+
     protected float lastSetPos;
+
+    protected void Start()
+    {
+        SetPositionProtected();
+        dropBuffController = GetComponent<DropBuffController>();
+        SoundConroller = FindObjectOfType<SoundController>();
+    }
 
     protected void MoveShipProtected()
     {
@@ -102,6 +113,9 @@ public abstract class EnemyScript : MonoBehaviour, IDamageble
     {
         if(healthPoints<=0)
         {
+            if(dropBuffController!=null)
+                dropBuffController.DropBuff();
+            SoundConroller.EnemyDeathSound();
             Destroy(this.gameObject);
         }
     }

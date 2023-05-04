@@ -38,12 +38,16 @@ public class GalaxyGoliathController : BossScript, IFreezable, IEnemyShuttle
 
     private bool isFreezed = false;
 
+    private SoundController sc;
+
     void Start()
     {
         distY = 2.6f - transform.position.y;
         SetPositionProtected();
         lastAttackTime = Time.time - attackTime;
         attackList = new List<Attack>() {HandleAttack1, HandleAttack2, HandleAttack3, HandleAttack4};
+        sc = FindObjectOfType<SoundController>();
+        sc.BossMusic();
     }
 
     void Update()
@@ -125,7 +129,9 @@ public class GalaxyGoliathController : BossScript, IFreezable, IEnemyShuttle
 
     private void HandleAttack4(float aTime)
     {
+        sc.GoliathLaserSound();
         weapon4.StartAttack(attackTime);
+        
     }
 
     protected override void MoveShipProtected()
@@ -177,6 +183,7 @@ public class GalaxyGoliathController : BossScript, IFreezable, IEnemyShuttle
     private void DestroyGoliath()
     {
         weapon4.ShutDown();
+        sc.PlayGameMusic();
         Destroy(this.gameObject);
     }
     
@@ -191,11 +198,13 @@ public class GalaxyGoliathController : BossScript, IFreezable, IEnemyShuttle
         //Debug.Log(attackTime - (Time.time - lastAttackTime));
         lastAttackTime = lastAttackTime + freezeTime;
         isFreezed = true;
+        sc.PauseLaser();
     }
 
     private void Unfreeze()
     {
-        if(lastAttack!=null && IsAttacking())
+        sc.UnPauseLaser();
+        if(lastAttack!=null && IsAttacking() && lastAttack != HandleAttack4)
         {
             lastAttack(attackTime - (Time.time - lastAttackTime));
             isFreezed = false;

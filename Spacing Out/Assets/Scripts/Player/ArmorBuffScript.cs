@@ -1,7 +1,17 @@
 using UnityEngine;
 
-public class ArmorBuffScript : MonoBehaviour
+public class ArmorBuffScript : PlayerBuffController
 {
+
+    protected override void Start()
+    {
+        base.Start();
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.CompareTag("Player"))

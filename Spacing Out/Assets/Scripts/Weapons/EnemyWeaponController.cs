@@ -2,10 +2,19 @@ using UnityEngine;
 
 public class EnemyWeaponController : WeaponScript
 {
+
+    private SoundController sc;
+
+    void Start()
+    {
+        sc = FindObjectOfType<SoundController>();
+    }
+
     void Update()
     {
         if(IsReadyForFire())
         {
+            sc.EnemyShotSound();
             HandleFire();
         }
     }

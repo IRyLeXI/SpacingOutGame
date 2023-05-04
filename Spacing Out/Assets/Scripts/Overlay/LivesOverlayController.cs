@@ -13,7 +13,6 @@ public class LivesOverlayController : MonoBehaviour
 
     private List<Image> lives = new List<Image>();
 
-
     public void SetLives(int amount)
     {
         for(int i=0; i<amount; i++)
@@ -28,6 +27,7 @@ public class LivesOverlayController : MonoBehaviour
     public void ReduceLives(int num)
     {
         lives[num].gameObject.SetActive(false);
+        lives.RemoveAt(num);
     }
 
 

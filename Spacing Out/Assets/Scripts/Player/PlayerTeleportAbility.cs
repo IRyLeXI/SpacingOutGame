@@ -6,9 +6,12 @@ public class PlayerTeleportAbility : WeaponScript
 
     private BulletScript tpBullet;
 
+    private SoundController sc;
+
     void Start()
     {
         lastShot = Time.time - fireRate;
+        sc = FindObjectOfType<SoundController>();
 
     }
 
@@ -20,6 +23,7 @@ public class PlayerTeleportAbility : WeaponScript
         }
         else if(isSpawned)
         {
+            sc.TeleportSound();
             HandleTeleport();
         }
     }
@@ -47,5 +51,10 @@ public class PlayerTeleportAbility : WeaponScript
             Destroy(tpBullet.gameObject);
             lastShot = Time.time;
         }
+    }
+
+    private void OnDestroy() {
+        if(isSpawned)
+            Destroy(tpBullet.gameObject);
     }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3162925864598031799}
   - component: {fileID: 3162925864598031798}
   - component: {fileID: 3346122782285607009}
+  - component: {fileID: 7842098545424529900}
   - component: {fileID: 3834886344327804726}
   - component: {fileID: 7228640587654823991}
   - component: {fileID: -520779622660646317}
@@ -106,6 +107,23 @@ MonoBehaviour:
   pushForce: 1
   pushDirection: {x: 0, y: -1}
   scoreValue: 75
+--- !u!114 &7842098545424529900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3162925864598031792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71199808cc065374183a36ed341be24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropChance: 5
+  buffs:
+  - {fileID: 7045020587499424857, guid: 8ff828624e466eb479f27e7f40447fbc, type: 3}
+  - {fileID: 2400301217708033856, guid: 193ec011ed883d644b15404c0729f4ad, type: 3}
+  - {fileID: 3746974227742557234, guid: 914b2bd4306d0e14aa3d57f054b76e61, type: 3}
 --- !u!50 &3834886344327804726
 Rigidbody2D:
   serializedVersion: 4

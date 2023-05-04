@@ -21,13 +21,16 @@ public class FreezeAbility : MonoBehaviour
 
     private float expandSpeed, reduceSpeed, curExpandTime = -1f;
 
-    private bool isExpanding;
+    private bool isExpanding, isMusicPaused = false;
+
+    private SoundController sc;
 
     void Start()
     {
         originalScale = field.transform.localScale;
         expandSpeed = maxSize / expandTime;  
         reduceSpeed = maxSize / reduceTime;
+        sc = FindObjectOfType<SoundController>();
     }
 
     private void Update()
@@ -45,6 +48,11 @@ public class FreezeAbility : MonoBehaviour
         }
         else
         {
+            if(isMusicPaused)
+            {
+                sc.UnPauseMusic();
+                isMusicPaused = false;
+            }
             if(isExpanding)
             {
                 Reduce();
@@ -59,6 +67,9 @@ public class FreezeAbility : MonoBehaviour
 
     private void FreezeObjects()
     {
+        sc.PauseMusic();
+        isMusicPaused = true;
+        sc.TimeStop();
         GameObject[] allObjects = FindObjectsOfType<GameObject>();
         foreach (GameObject obj in allObjects)
         {
@@ -67,7 +78,7 @@ public class FreezeAbility : MonoBehaviour
             {
                 continue;
             }
-            if(freezable != null )
+            if(freezable != null)
             {
                 freezable.Freeze(freezeTime);
             }

@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5cb468889222334199eab77989f4bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 7
   invincibleTime: 3
   gameController: {fileID: 0}
   Velocity: {x: 0, y: 0}
@@ -307,6 +307,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8040294902954331372}
     m_Modifications:
+    - target: {fileID: 2318630151064977404, guid: 3656881bf5feb7a4c91e251fb4a92408, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.19
+      objectReference: {fileID: 0}
     - target: {fileID: 2853191590869003461, guid: 3656881bf5feb7a4c91e251fb4a92408, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -350,6 +354,10 @@ PrefabInstance:
     - target: {fileID: 2853191590869003461, guid: 3656881bf5feb7a4c91e251fb4a92408, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4555994806742877365, guid: 3656881bf5feb7a4c91e251fb4a92408, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.19
       objectReference: {fileID: 0}
     - target: {fileID: 6886023680343514175, guid: 3656881bf5feb7a4c91e251fb4a92408, type: 3}
       propertyPath: m_Name

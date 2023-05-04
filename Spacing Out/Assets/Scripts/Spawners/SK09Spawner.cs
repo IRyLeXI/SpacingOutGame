@@ -51,5 +51,6 @@ public class SK09Spawner : SpawnerScript, IEnemyShuttleSpawner, IFreezable
     public void Freeze(float freezeTime)
     {
         this.freezeTime = freezeTime;
+        lastSpawn = Mathf.Max(Time.time + freezeTime, lastSpawn);
     }
 }

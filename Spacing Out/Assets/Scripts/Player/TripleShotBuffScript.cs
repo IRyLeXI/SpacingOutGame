@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TripleShotBuffScript : MonoBehaviour
+public class TripleShotBuffScript : PlayerBuffController
 {
 
     [SerializeField]
@@ -9,6 +9,16 @@ public class TripleShotBuffScript : MonoBehaviour
     [SerializeField]
     private float newShotSpeed = 0.2f;
     
+    protected override void Start()
+    {
+        base.Start();
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.CompareTag("Player"))

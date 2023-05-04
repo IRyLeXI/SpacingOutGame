@@ -25,13 +25,13 @@ public class PlayerBuffController : MonoBehaviour
 
     private Rigidbody2D rb;
    
-    void Start()
+    protected virtual void Start()
     {
         Push();
         sprite = GetComponent<SpriteRenderer>();
     }
 
-    void Update()
+    protected virtual void Update()
     {
         existingTime -= Time.deltaTime;
         sprite.enabled = isVisible;
@@ -41,7 +41,7 @@ public class PlayerBuffController : MonoBehaviour
         }
     }
 
-    protected void Push()
+    protected virtual void Push()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.AddForce(pushDirection * pushForce, ForceMode2D.Impulse);

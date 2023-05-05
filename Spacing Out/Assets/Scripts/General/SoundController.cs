@@ -33,6 +33,15 @@ public class SoundController : MonoBehaviour
     private AudioClip teleportSound;
 
     [SerializeField]
+    private AudioClip deathSound;
+
+    [SerializeField]
+    private AudioClip buttonClick;
+
+    [SerializeField]
+    private AudioClip menuMusic;
+
+    [SerializeField]
     private AudioClip gameMusic;
 
     [SerializeField]
@@ -40,7 +49,7 @@ public class SoundController : MonoBehaviour
 
     private AudioSource sfxShotSource, musicSource, sfxDestroyEnemySource, sfxDestroyPlayer, sfxHitSource;
 
-    private AudioSource sfxGoliathLaser, sfxTimeStop, sfxSmallLaser, sfxTeleportSource;
+    private AudioSource sfxGoliathLaser, sfxTimeStop, sfxSmallLaser, sfxTeleportSource, sfxDeathSound, sfxButtonClick;
 
     private AudioSource[] sfxEnemyShot;
 
@@ -56,15 +65,16 @@ public class SoundController : MonoBehaviour
         sfxTimeStop = gameObject.AddComponent<AudioSource>();
         sfxSmallLaser = gameObject.AddComponent<AudioSource>();
         sfxTeleportSource = gameObject.AddComponent<AudioSource>();
+        sfxButtonClick = gameObject.AddComponent<AudioSource>();
+
         musicSource = gameObject.AddComponent<AudioSource>();
+        musicSource.loop = true;
 
         sfxEnemyShot = new AudioSource[10];
         for (int i = 0; i < 10; i++)
         {
             sfxEnemyShot[i] = gameObject.AddComponent<AudioSource>();
         }
-        
-        musicSource.loop = true;
     }
 
     public void PlayerShotSound()
@@ -112,6 +122,8 @@ public class SoundController : MonoBehaviour
 
     public void PlayGameMusic()
     {
+        if(musicSource == null)
+            musicSource = gameObject.AddComponent<AudioSource>();
         musicSource.clip = gameMusic;
         musicSource.volume = musicVolume;
         musicSource.Play();
@@ -180,5 +192,41 @@ public class SoundController : MonoBehaviour
         sfxTeleportSource.volume = effectsVolume;
         sfxTeleportSource.Play();
     }
+
+    public void DeathSound()
+    {
+        musicSource.clip = deathSound;
+        musicSource.volume = musicVolume;
+        musicSource.Play();
+    }
+
+    public void ButtonClick()
+    {
+        sfxButtonClick.clip = buttonClick;
+        sfxButtonClick.volume = effectsVolume;
+        sfxButtonClick.Play();
+    }
+
+    public void MenuMusic()
+    {
+        //Debug.Log(musicSource);
+        musicSource.clip = menuMusic;
+        musicSource.volume = musicVolume;
+        musicSource.Play();
+    }
+
+    public void ChangeMusicVolume(float value)
+    {
+        if(musicSource == null)
+            musicSource = gameObject.AddComponent<AudioSource>();
+        musicVolume = value;
+        musicSource.volume = musicVolume;
+    }
+
+    public void ChangeEffectsVolume(float value)
+    {
+        effectsVolume = value;
+    }
+
 
 }

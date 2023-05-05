@@ -21,6 +21,9 @@ public abstract class EnemyScript : MonoBehaviour, IDamageble
     [SerializeField]
     private float getPlayerPositionDelay = 1f;
 
+    [SerializeField]
+    private HealthBarController healthBar;
+
     private SoundController SoundConroller;
 
     [SerializeField]
@@ -39,6 +42,8 @@ public abstract class EnemyScript : MonoBehaviour, IDamageble
         SetPositionProtected();
         dropBuffController = GetComponent<DropBuffController>();
         SoundConroller = FindObjectOfType<SoundController>();
+        healthBar.SetMaxHealth(healthPoints);
+        healthBar.transform.position = new Vector2(transform.position.x, transform.position.y - 1f);
     }
 
     protected void MoveShipProtected()
@@ -47,7 +52,8 @@ public abstract class EnemyScript : MonoBehaviour, IDamageble
         float newY = transform.position.y + (Velocity.y * Speed * Time.deltaTime);
         newX = Mathf.Clamp(newX, Min.x, Max.x);
         newY = Mathf.Clamp(newY, Min.y, Max.y);
-        transform.position = new Vector2(newX, newY); 
+        transform.position = new Vector2(newX, newY);
+        healthBar.transform.position = new Vector2(transform.position.x, transform.position.y - 1f);
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
@@ -106,6 +112,7 @@ public abstract class EnemyScript : MonoBehaviour, IDamageble
     public void HandleDamage(float Damage)
     {
         healthPoints -= Damage;
+        healthBar.SetHealth(Mathf.Max(healthPoints, 0));
         CheckForDeath();
     }
 

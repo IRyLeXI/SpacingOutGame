@@ -29,11 +29,14 @@ public class PlayerWeaponsController : MonoBehaviour
 
     private bool isDamageChanged = true, isShotSpeedChanged = true;
 
+    //private DataSaverScript ds;
+
     void Start()
     {
         SetDamage(weaponsDamage);
         SetShotSpeed(weaponsShotSpeed);
-
+        //ds.GetComponent<DataSaverScript>();
+        SetAbility();
         if(!IsStrongWeapon)
             strongShotAbility.gameObject.SetActive(false);
 
@@ -112,6 +115,26 @@ public class PlayerWeaponsController : MonoBehaviour
         foreach (PlayerWeaponScript weapon in Weapons)
         {
             weapon.SetNewShotSpeed(shotSpeed);
+        }
+    }
+
+    private void SetAbility()
+    {
+        if(DataSaverScript.AbilityNumber == 1)
+        {
+            IsStrongWeapon = true;
+        }
+        else if(DataSaverScript.AbilityNumber == 2)
+        {
+            IsLaserAbility = true;
+        }
+        else if(DataSaverScript.AbilityNumber == 3)
+        {
+            IsTeleportAbility = true;
+        }
+        else if(DataSaverScript.AbilityNumber == 4)
+        {
+            IsTimeStopAbility = true;
         }
     }
 

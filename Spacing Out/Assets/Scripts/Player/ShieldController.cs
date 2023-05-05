@@ -1,15 +1,20 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ShieldController : MonoBehaviour, IDamageble
 {
     [SerializeField]
     private int shieldDurability = 0;
 
+    [SerializeField]
+    private UnityEvent<int> shieldControl;
+
     private SpriteRenderer shieldSprite;
 
     private bool isActive => shieldDurability > 0;
 
     private Collider2D cd;
+
 
     void Start()
     {
@@ -49,6 +54,7 @@ public class ShieldController : MonoBehaviour, IDamageble
 
     public void HandleDamage(float Damage)
     {
+        shieldControl.Invoke(shieldDurability);
         shieldDurability-=(int)Damage;
         if(shieldDurability<=0)
         {
@@ -63,7 +69,10 @@ public class ShieldController : MonoBehaviour, IDamageble
             cd.enabled = true;
         }
         shieldDurability += shieldDurability == -1 ? 2 : 1;
+        if(shieldDurability<=5)
+            shieldControl.Invoke(shieldDurability);
         shieldDurability = Mathf.Clamp(shieldDurability, -1, 5);
+
     }
 
     public int GetDurability()

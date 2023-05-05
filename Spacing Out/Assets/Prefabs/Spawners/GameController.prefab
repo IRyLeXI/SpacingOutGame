@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8687072050042151303}
   - component: {fileID: 8687072050042151302}
+  - component: {fileID: 7663449393089335261}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -82,4 +83,18 @@ MonoBehaviour:
   shuttleLives: 3
   isScoreVisible: 1
   isLivesVisible: 1
+  isWavesHandle: 1
   gameMode: {fileID: 0}
+  gameOverScreenController: {fileID: 3433165540293357115, guid: a5217fe1ef8059f4abcac5ccda52bba2, type: 3}
+--- !u!114 &7663449393089335261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8687072050042151297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d86a7484eff46a4ea3b335515243567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -30,7 +30,7 @@ public class FreezeAbility : MonoBehaviour
         originalScale = field.transform.localScale;
         expandSpeed = maxSize / expandTime;  
         reduceSpeed = maxSize / reduceTime;
-        sc = FindObjectOfType<SoundController>();
+        SetSC();
     }
 
     private void Update()
@@ -100,5 +100,10 @@ public class FreezeAbility : MonoBehaviour
     public void StopTime()
     {
         freeze = true;
+    }
+
+    private void SetSC()
+    {
+        sc = FindObjectOfType<SoundController>();
     }
 }

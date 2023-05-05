@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71199808cc065374183a36ed341be24c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropChance: 5
+  dropChance: 10
   buffs:
   - {fileID: 7045020587499424857, guid: 8ff828624e466eb479f27e7f40447fbc, type: 3}
   - {fileID: 2400301217708033856, guid: 193ec011ed883d644b15404c0729f4ad, type: 3}

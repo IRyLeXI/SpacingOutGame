@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WaveController : MonoBehaviour
 {
@@ -14,8 +15,14 @@ public class WaveController : MonoBehaviour
 
     private WaveTemplate currentWave;
 
+    [SerializeField]
+    private UnityEvent<int> nextWave;
+
+    public int Wave;
+
     void Start()
     {
+        Wave = 1;
         NextWave();
     }
 
@@ -33,7 +40,9 @@ public class WaveController : MonoBehaviour
     }
 
     private void NextWave()
-    {
+    {   
+        if(nextWave!=null)
+            nextWave.Invoke(Wave);
         if(Waves.Count == 0)
         {
             Destroy(this.gameObject);
@@ -43,6 +52,7 @@ public class WaveController : MonoBehaviour
         currentWave.EnableWave();
         Waves.RemoveAt(0);
         lastSpawn = Time.time + currentWave.waveTime;
+        Wave++;
     }
 
     private bool IsEnemiesLeft()
@@ -51,5 +61,7 @@ public class WaveController : MonoBehaviour
         if(enemies.Length == 0) lastSpawn = Time.time;
         return enemies.Length > 0;
     }
+
+
 
 }

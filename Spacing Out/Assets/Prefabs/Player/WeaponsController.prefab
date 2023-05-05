@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2853191590869003461}
   - component: {fileID: 1720086533549491518}
+  - component: {fileID: 9125858634285040033}
   m_Layer: 0
   m_Name: WeaponsController
   m_TagString: Untagged
@@ -63,9 +64,21 @@ MonoBehaviour:
   laserAbility: {fileID: 2692271654636404296}
   timeStopAbility: {fileID: 4775060212206864215}
   IsStrongWeapon: 0
-  IsTeleportAbility: 1
+  IsTeleportAbility: 0
   IsLaserAbility: 0
   IsTimeStopAbility: 0
+--- !u!114 &9125858634285040033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6886023680343514175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d86a7484eff46a4ea3b335515243567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1277802322693870511
 PrefabInstance:
   m_ObjectHideFlags: 0

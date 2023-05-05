@@ -17,9 +17,9 @@ public class BulletScript : MonoBehaviour, IDamageble, IFreezable
 
     private Rigidbody2D rb;
 
-    private float freezeTime = -1f;
+    //private float freezeTime = -1f;
     
-    private bool isFreezed = false;
+    //private bool isFreezed = false;
 
     private SoundController sc;
 
@@ -30,17 +30,7 @@ public class BulletScript : MonoBehaviour, IDamageble, IFreezable
     }
 
     void Update() {
-        if(freezeTime < 0)
-        {
-            if(isFreezed)
-            {
-                Unfreeze();
-            }
-        }
-        else
-        {
-            freezeTime -= Time.deltaTime;
-        }
+
     }   
 
     private void OnTriggerEnter2D(Collider2D other) 
@@ -86,17 +76,18 @@ public class BulletScript : MonoBehaviour, IDamageble, IFreezable
     {
         if(gameObject!=null)
         {
-            this.freezeTime = freezeTime;
+            //this.freezeTime = freezeTime;
             rb.velocity = Vector2.zero;
             rb.angularVelocity = 0f;
-            isFreezed = true;
+            //isFreezed = true;
+            Invoke(nameof(Unfreeze), freezeTime);
         }
     }
 
     private void Unfreeze()
     {
         PushBullet();
-        isFreezed = false;
+        //isFreezed = false;
     }
 
 }

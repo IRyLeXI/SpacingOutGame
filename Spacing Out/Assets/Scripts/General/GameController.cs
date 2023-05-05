@@ -41,8 +41,6 @@ public class GameController : MonoBehaviour
     void Start()
     {
         StartGame();
-        sc = FindObjectOfType<SoundController>();
-        sc.PlayGameMusic();
     }
 
     void Update()
@@ -84,6 +82,7 @@ public class GameController : MonoBehaviour
         if(shuttleLivesBackup <= 0 && isLivesVisible)
         {
             gameOverScreenController.SetActive(true);
+            sc.DeathSound();
             DestroyAll();
         }
     }
@@ -93,7 +92,7 @@ public class GameController : MonoBehaviour
         var objects = FindObjectsOfType<GameObject>();
         foreach(GameObject obj in objects)
         {
-            if(obj.CompareTag("GameController") || obj.CompareTag("SmallMeteorite") || obj.CompareTag("BigMeteorite") || obj.CompareTag("MainCamera"))
+            if(obj.CompareTag("GameController") || obj.CompareTag("SmallMeteorite") || obj.CompareTag("BigMeteorite") || obj.CompareTag("MainCamera") || obj.CompareTag("EnemyLaser"))
             {
                 continue;
             }
@@ -135,6 +134,8 @@ public class GameController : MonoBehaviour
             Instantiate<WaveController>(gameMode);
         }
 
+        SetSC();
+        sc.PlayGameMusic();
     }
 
     public void TryAgain()
@@ -142,5 +143,14 @@ public class GameController : MonoBehaviour
         gameOverScreenController.SetActive(false);
         StartGame();
     }
+
+    private void SetSC()
+    {
+        sc = FindObjectOfType<SoundController>();
+        sc.ChangeEffectsVolume(DataSaverScript.EffectsVolume);
+        sc.ChangeMusicVolume(DataSaverScript.MusicVolume);
+    }
+
+
 
 }

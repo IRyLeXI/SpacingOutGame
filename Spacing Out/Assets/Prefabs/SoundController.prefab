@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5728397988607967894}
   m_Layer: 0
   m_Name: SoundController
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a02c8c2addf04d045a9d1d9d1004dc61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectsVolume: 0
-  musicVolume: 0
-  playerShootSound: {fileID: 8300000, guid: f926b2be127ea944c87389d7a239cd39, type: 3}
+  effectsVolume: 1
+  musicVolume: 1
+  playerShootSound: {fileID: 8300000, guid: f49a6b4e9421a6b45bd7e6f729256721, type: 3}
   enemyDeathSound: {fileID: 8300000, guid: 48eda7febd4cd7d4b9274ff52a58fbfa, type: 3}
   playerDeathSound: {fileID: 8300000, guid: 8c4b653aef8119641bef56846c041d02, type: 3}
   hitSound: {fileID: 8300000, guid: fb61155659edd674c82d6cf99d822d04, type: 3}
@@ -55,5 +55,8 @@ MonoBehaviour:
   timeStopSound: {fileID: 8300000, guid: 360049b3b8c99214a9d83cc87d47b3b5, type: 3}
   smallLaserSound: {fileID: 8300000, guid: 17939908d2d16344b8bc0925ee977389, type: 3}
   teleportSound: {fileID: 8300000, guid: b392a374a4319b048a6f73187e7890c7, type: 3}
+  deathSound: {fileID: 8300000, guid: 4d8ba8f719b535f4eb2a18ee205d8cd9, type: 3}
+  buttonClick: {fileID: 8300000, guid: 40e3e0f8265b32a4da72774832802dc7, type: 3}
+  menuMusic: {fileID: 8300000, guid: c1047a58c914ffc4a97fb276789b172c, type: 3}
   gameMusic: {fileID: 8300000, guid: cc945df0656f70649a71dda6837f0b98, type: 3}
   bossMusic: {fileID: 8300000, guid: 11e5b52bb8878094abe8a8a521dbef44, type: 3}

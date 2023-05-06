@@ -40,7 +40,10 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        sc = FindObjectOfType<SoundController>();
+        SetSC();
         StartGame();
+        
     }
 
     void Update()
@@ -87,7 +90,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void DestroyAll()
+    public void DestroyAll()
     {
         var objects = FindObjectsOfType<GameObject>();
         foreach(GameObject obj in objects)
@@ -131,10 +134,10 @@ public class GameController : MonoBehaviour
 
         if(isWavesHandle)
         {
-            Instantiate<WaveController>(gameMode);
+            WaveController waves = Instantiate<WaveController>(gameMode);
+            waves.gameObject.SetActive(true);
         }
 
-        SetSC();
         sc.PlayGameMusic();
     }
 
@@ -146,7 +149,6 @@ public class GameController : MonoBehaviour
 
     private void SetSC()
     {
-        sc = FindObjectOfType<SoundController>();
         sc.ChangeEffectsVolume(DataSaverScript.EffectsVolume);
         sc.ChangeMusicVolume(DataSaverScript.MusicVolume);
     }

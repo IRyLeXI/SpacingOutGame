@@ -17,7 +17,7 @@ public class DropBuffController : MonoBehaviour
     public void DropBuff() {
         if(isBuffDrop)
         {
-            Debug.Log("I am droping");
+            //Debug.Log("I am droping");
             buff = Instantiate(buffs[Random.Range(0, buffs.Count)]);
             buff.transform.position = this.gameObject.transform.position;
         }

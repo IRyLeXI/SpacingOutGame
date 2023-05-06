@@ -55,6 +55,7 @@ MonoBehaviour:
   timeStopSound: {fileID: 8300000, guid: 360049b3b8c99214a9d83cc87d47b3b5, type: 3}
   smallLaserSound: {fileID: 8300000, guid: 17939908d2d16344b8bc0925ee977389, type: 3}
   teleportSound: {fileID: 8300000, guid: b392a374a4319b048a6f73187e7890c7, type: 3}
+  strongShotSound: {fileID: 8300000, guid: c2a69878be0a37d4894436e3ce8feb33, type: 3}
   deathSound: {fileID: 8300000, guid: 4d8ba8f719b535f4eb2a18ee205d8cd9, type: 3}
   buttonClick: {fileID: 8300000, guid: 40e3e0f8265b32a4da72774832802dc7, type: 3}
   menuMusic: {fileID: 8300000, guid: c1047a58c914ffc4a97fb276789b172c, type: 3}

@@ -9,6 +9,9 @@ public class EngineController : MonoBehaviour, IDamageble
     [SerializeField]
     private GalaxyGoliathController Goliath;
 
+    [SerializeField]
+    private HealthBarController healthBar;
+
     private float startHP;
 
     public bool Opened = false;
@@ -22,11 +25,8 @@ public class EngineController : MonoBehaviour, IDamageble
         b_Collider = GetComponent<BoxCollider2D>();
         b_Collider.enabled = false;
         startHP = healthPoints;
-    }
-
-    void Update()
-    {
-        
+        healthBar.SetMaxHealth(healthPoints);
+        healthBar.transform.position = new Vector2(transform.position.x, transform.position.y - 1f);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -46,6 +46,7 @@ public class EngineController : MonoBehaviour, IDamageble
     public void HandleDamage(float Damage)
     {
         healthPoints -= Damage;
+        healthBar.SetHealth(Mathf.Max(healthPoints, 0));
         CheckForDeath();
     }
 
@@ -75,6 +76,7 @@ public class EngineController : MonoBehaviour, IDamageble
 
     public void OpenUp()
     {
+        gameObject.SetActive(true);
         Opened = true;
         b_Collider.enabled = true;
     }

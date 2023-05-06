@@ -32,7 +32,7 @@ public abstract class SpawnerScript : MonoBehaviour
 
     protected bool IsReadyForSpawnWithAmount()
     {
-        return Time.time >= (lastSpawn + spawnRate) && (Amount>0 || isInfinite);
+        return (Time.time >= (lastSpawn + spawnRate) && (Amount>0 || isInfinite));
     }
 
     public void SetSpawnRate(int amount, float time)

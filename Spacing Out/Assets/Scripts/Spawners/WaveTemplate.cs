@@ -12,15 +12,10 @@ public class WaveTemplate : MonoBehaviour, IFreezable
     [SerializeField]
     private List<int> Amounts;
 
-    private List<GameObject> spawnedObjects = new List<GameObject>();
+    //private List<GameObject> spawnedObjects = new List<GameObject>();
 
     [SerializeField]
-    public bool Enabled;
-
-    void Start()
-    {
-
-    }
+    private bool Enabled, isEndless = false;
 
     void Update()
     {
@@ -39,15 +34,16 @@ public class WaveTemplate : MonoBehaviour, IFreezable
         Destroy(this.gameObject);
     }
 
-    public void EnableWave()
+    public virtual void EnableWave()
     {
         Enabled = true;
         int i = 0;
         foreach(SpawnerScript obj in Spawners)
         {
             var Obj = Instantiate(obj);
-            Obj.SetSpawnRate(Amounts[i], waveTime);
-            spawnedObjects.Add(Obj.gameObject);
+            if(!isEndless)
+                Obj.SetSpawnRate(Amounts[i], waveTime);
+            //spawnedObjects.Add(Obj.gameObject);
             i++;
         }
     }

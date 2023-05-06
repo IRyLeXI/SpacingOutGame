@@ -40,5 +40,6 @@ public class PlayerLaserAbility : WeaponScript
     public void ShootDown()
     {
         laser.ShutDown();
+        sc.StopSmallLaser();
     }
 }

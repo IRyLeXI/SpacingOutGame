@@ -9,16 +9,19 @@ public class GoliathSpawner : SpawnerScript, IFreezable
 
     protected override void Start()
     {
-        base.Start();
-        lastSpawn = Time.time - spawnRate;
+        lastSpawn = Time.time;
+        base.Start();    
     }
 
     void Update()
     {
         if(freezeTime<0)
         {
+            //Debug.Log(IsReadyForSpawnWithAmount());
             if (IsReadyForSpawnWithAmount())
             {
+                
+                //Debug.Log(IsReadyForSpawnWithAmount());
                 SpawnPrivate();
             }
             if (Amount <= 0 && !isInfinite)

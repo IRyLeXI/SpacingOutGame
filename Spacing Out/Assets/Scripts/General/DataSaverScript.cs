@@ -10,7 +10,7 @@ public class DataSaverScript : MonoBehaviour
 
     public void SetAbility(int num)
     {
-        Debug.Log(num);
+        //Debug.Log(num);
         AbilityNumber = num;
     }
 

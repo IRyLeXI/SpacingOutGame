@@ -977,7 +977,7 @@ PrefabInstance:
     - target: {fileID: 7028614073355889700, guid: adfbbeb40ce21a24caf2855447370125, type: 3}
       propertyPath: Spawners.Array.data[0]
       value: 
-      objectReference: {fileID: 2242568589168720422, guid: a6da95a4c03bc9242ba33459373e1ab2, type: 3}
+      objectReference: {fileID: 8806725401026109045, guid: fa0d599a65172c24bb249570a0b92ec4, type: 3}
     - target: {fileID: 7028614073355889700, guid: adfbbeb40ce21a24caf2855447370125, type: 3}
       propertyPath: Spawners.Array.data[1]
       value: 

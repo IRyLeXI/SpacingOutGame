@@ -6,6 +6,7 @@ public class HS16Spawner : SpawnerScript, IEnemyShuttleSpawner, IFreezable
     private HS16Controller Template;
 
     private float freezeTime = -1f;
+    
     protected override void Start()
     {
         base.Start();

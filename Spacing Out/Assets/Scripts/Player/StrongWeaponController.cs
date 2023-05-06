@@ -14,7 +14,6 @@ public class StrongWeaponController : WeaponScript
     {
         if(IsReadyForFire())
         {
-            sc.PlayerShotSound();
             HandleFire();
         }
     }
@@ -23,6 +22,7 @@ public class StrongWeaponController : WeaponScript
     {
         if(Input.GetButton("Special"))
         {
+            sc.StrongShot();
             base.HandleFire();
         }
     }

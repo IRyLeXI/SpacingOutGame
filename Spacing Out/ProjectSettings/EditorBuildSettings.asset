@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 50e19601170295e4e8b9e944733f99ff
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/DefaultGame.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/EndlessGame.unity
+    guid: eed492bcf9caadb43bcd616d77b654a2
+  - enabled: 1
+    path: Assets/Scenes/BossRush.unity
+    guid: bed604121596d6e4e80e5b7ef9cc63da
   m_configObjects: {}

@@ -33,6 +33,9 @@ public class SoundController : MonoBehaviour
     private AudioClip teleportSound;
 
     [SerializeField]
+    private AudioClip strongShotSound;
+
+    [SerializeField]
     private AudioClip deathSound;
 
     [SerializeField]
@@ -49,7 +52,7 @@ public class SoundController : MonoBehaviour
 
     private AudioSource sfxShotSource, musicSource, sfxDestroyEnemySource, sfxDestroyPlayer, sfxHitSource;
 
-    private AudioSource sfxGoliathLaser, sfxTimeStop, sfxSmallLaser, sfxTeleportSource, sfxDeathSound, sfxButtonClick;
+    private AudioSource sfxGoliathLaser, sfxTimeStop, sfxTeleportSource, sfxSmallLaser, sfxDeathSound, sfxButtonClick;
 
     private AudioSource[] sfxEnemyShot;
 
@@ -63,10 +66,9 @@ public class SoundController : MonoBehaviour
         sfxHitSource = gameObject.AddComponent<AudioSource>();
         sfxGoliathLaser = gameObject.AddComponent<AudioSource>();
         sfxTimeStop = gameObject.AddComponent<AudioSource>();
-        sfxSmallLaser = gameObject.AddComponent<AudioSource>();
         sfxTeleportSource = gameObject.AddComponent<AudioSource>();
         sfxButtonClick = gameObject.AddComponent<AudioSource>();
-
+        sfxSmallLaser = gameObject.AddComponent<AudioSource>();
         musicSource = gameObject.AddComponent<AudioSource>();
         musicSource.loop = true;
 
@@ -79,24 +81,18 @@ public class SoundController : MonoBehaviour
 
     public void PlayerShotSound()
     {
-        sfxShotSource.clip = playerShootSound;
-        sfxShotSource.volume = effectsVolume;
-        sfxShotSource.Play();
+        PlaySound(sfxShotSource, playerShootSound);
 
     }
 
     public void PlayerDeathSound()
     {
-        sfxDestroyPlayer.clip = playerDeathSound;
-        sfxDestroyPlayer.volume = effectsVolume;
-        sfxDestroyPlayer.Play();
+        PlaySound(sfxDestroyPlayer, playerDeathSound);
     }
 
     public void EnemyDeathSound()
     {
-        sfxDestroyEnemySource.clip = enemyDeathSound;
-        sfxDestroyEnemySource.volume = effectsVolume;
-        sfxDestroyEnemySource.Play();
+        PlaySound(sfxDestroyEnemySource, enemyDeathSound);
     }
 
     public void EnemyShotSound()
@@ -105,9 +101,7 @@ public class SoundController : MonoBehaviour
         {
             if (!sfxEnemyShot[i].isPlaying)
             {
-                sfxEnemyShot[i].clip = enemyShotSound;
-                sfxEnemyShot[i].volume = effectsVolume;
-                sfxEnemyShot[i].Play();
+                PlaySound(sfxEnemyShot[i], enemyShotSound);
                 break;
             }
         }
@@ -115,9 +109,7 @@ public class SoundController : MonoBehaviour
 
     public void HitSound()
     {
-        sfxHitSource.clip = hitSound;
-        sfxHitSource.volume = effectsVolume;
-        sfxHitSource.Play();
+        PlaySound(sfxHitSource, hitSound);
     }
 
     public void PlayGameMusic()
@@ -131,9 +123,7 @@ public class SoundController : MonoBehaviour
 
     public void GoliathLaserSound()
     {
-        sfxGoliathLaser.clip = goliathLaserSound;
-        sfxGoliathLaser.volume = effectsVolume;
-        sfxGoliathLaser.Play();
+        PlaySound(sfxGoliathLaser, goliathLaserSound);
     }
 
     public void PauseLaser()
@@ -174,25 +164,26 @@ public class SoundController : MonoBehaviour
 
     public void TimeStop()
     {
-        sfxTimeStop.clip = timeStopSound;
-        sfxTimeStop.volume = effectsVolume;
-        sfxTimeStop.Play();
+        PlaySound(sfxTimeStop, timeStopSound);
     }
 
     public void SmallLaser()
     {
-        sfxSmallLaser.clip = smallLaserSound;
-        sfxSmallLaser.volume = effectsVolume;
-        sfxSmallLaser.Play();
+        PlaySound(sfxSmallLaser, smallLaserSound);
+    }
+
+    public void StopSmallLaser()
+    {
+        if(sfxSmallLaser.isPlaying && sfxSmallLaser != null)
+        {
+            sfxSmallLaser.Stop();
+        }
     }
 
     public void TeleportSound()
     {
-        sfxTeleportSource.clip = teleportSound;
-        sfxTeleportSource.volume = effectsVolume;
-        sfxTeleportSource.Play();
+        PlaySound(sfxTeleportSource, teleportSound);
     }
-
     public void DeathSound()
     {
         musicSource.clip = deathSound;
@@ -200,16 +191,20 @@ public class SoundController : MonoBehaviour
         musicSource.Play();
     }
 
+    public void StrongShot()
+    {
+        PlaySound(sfxTeleportSource, strongShotSound);
+    }
+
     public void ButtonClick()
     {
-        sfxButtonClick.clip = buttonClick;
-        sfxButtonClick.volume = effectsVolume;
-        sfxButtonClick.Play();
+        PlaySound(sfxButtonClick, buttonClick);
     }
 
     public void MenuMusic()
     {
-        //Debug.Log(musicSource);
+        if(musicSource == null)
+            musicSource = gameObject.AddComponent<AudioSource>();
         musicSource.clip = menuMusic;
         musicSource.volume = musicVolume;
         musicSource.Play();
@@ -228,5 +223,13 @@ public class SoundController : MonoBehaviour
         effectsVolume = value;
     }
 
+    private void PlaySound(AudioSource source, AudioClip cl)
+    {
+        if(source == null)
+            source = gameObject.AddComponent<AudioSource>();
+        source.clip = cl;
+        source.volume = effectsVolume;
+        source.Play();
+    }
 
 }

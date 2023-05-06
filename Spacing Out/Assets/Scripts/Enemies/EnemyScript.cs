@@ -53,7 +53,6 @@ public abstract class EnemyScript : MonoBehaviour, IDamageble
         newX = Mathf.Clamp(newX, Min.x, Max.x);
         newY = Mathf.Clamp(newY, Min.y, Max.y);
         transform.position = new Vector2(newX, newY);
-        healthBar.transform.position = new Vector2(transform.position.x, transform.position.y - 1f);
     }
 
     private void OnTriggerEnter2D(Collider2D other) 

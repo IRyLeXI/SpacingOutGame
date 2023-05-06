@@ -36,7 +36,10 @@ public class EnemyLaserWeapon : WeaponScript
     private void OnDestroy()
     {
         if(laser != null)
+        {
+            sc.StopSmallLaser();
             Destroy(laser.gameObject);
+        }
     }
 
 }

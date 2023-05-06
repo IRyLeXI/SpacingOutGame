@@ -49,7 +49,7 @@ public class LS500Controller : EnemyScript, IFreezable, IEnemyShuttle
     private void OnDestroy() 
     {
         if(gameController!=null)
-            gameController.HandleScore(scoreValue);
+            gameController.HandleScore(scoreValue); 
     }
 
 }

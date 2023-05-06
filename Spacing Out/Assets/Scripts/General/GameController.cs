@@ -30,6 +30,8 @@ public class GameController : MonoBehaviour
 
     private LivesOverlayController livesOverlay;
 
+    private MusicController mc;
+
     private SoundController sc;
 
     private float deathTime;
@@ -40,6 +42,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        mc = FindObjectOfType<MusicController>();
         sc = FindObjectOfType<SoundController>();
         SetSC();
         StartGame();
@@ -85,7 +88,7 @@ public class GameController : MonoBehaviour
         if(shuttleLivesBackup <= 0 && isLivesVisible)
         {
             gameOverScreenController.SetActive(true);
-            sc.DeathSound();
+            mc.DeathSound();
             DestroyAll();
         }
     }
@@ -138,7 +141,7 @@ public class GameController : MonoBehaviour
             waves.gameObject.SetActive(true);
         }
 
-        sc.PlayGameMusic();
+        mc.PlayGameMusic();
     }
 
     public void TryAgain()
@@ -150,7 +153,7 @@ public class GameController : MonoBehaviour
     private void SetSC()
     {
         sc.ChangeEffectsVolume(DataSaverScript.EffectsVolume);
-        sc.ChangeMusicVolume(DataSaverScript.MusicVolume);
+        mc.ChangeMusicVolume(DataSaverScript.MusicVolume);
     }
 
 

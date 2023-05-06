@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Events;
+
 public class SoundController : MonoBehaviour
 {
 
@@ -36,21 +36,10 @@ public class SoundController : MonoBehaviour
     private AudioClip strongShotSound;
 
     [SerializeField]
-    private AudioClip deathSound;
-
-    [SerializeField]
     private AudioClip buttonClick;
 
-    [SerializeField]
-    private AudioClip menuMusic;
 
-    [SerializeField]
-    private AudioClip gameMusic;
-
-    [SerializeField]
-    private AudioClip bossMusic;
-
-    private AudioSource sfxShotSource, musicSource, sfxDestroyEnemySource, sfxDestroyPlayer, sfxHitSource;
+    private AudioSource sfxShotSource, sfxDestroyEnemySource, sfxDestroyPlayer, sfxHitSource;
 
     private AudioSource sfxGoliathLaser, sfxTimeStop, sfxTeleportSource, sfxSmallLaser, sfxDeathSound, sfxButtonClick;
 
@@ -69,8 +58,6 @@ public class SoundController : MonoBehaviour
         sfxTeleportSource = gameObject.AddComponent<AudioSource>();
         sfxButtonClick = gameObject.AddComponent<AudioSource>();
         sfxSmallLaser = gameObject.AddComponent<AudioSource>();
-        musicSource = gameObject.AddComponent<AudioSource>();
-        musicSource.loop = true;
 
         sfxEnemyShot = new AudioSource[10];
         for (int i = 0; i < 10; i++)
@@ -112,15 +99,6 @@ public class SoundController : MonoBehaviour
         PlaySound(sfxHitSource, hitSound);
     }
 
-    public void PlayGameMusic()
-    {
-        if(musicSource == null)
-            musicSource = gameObject.AddComponent<AudioSource>();
-        musicSource.clip = gameMusic;
-        musicSource.volume = musicVolume;
-        musicSource.Play();
-    }
-
     public void GoliathLaserSound()
     {
         PlaySound(sfxGoliathLaser, goliathLaserSound);
@@ -136,11 +114,6 @@ public class SoundController : MonoBehaviour
 
     }
 
-    public void PauseMusic()
-    {
-        musicSource.Pause();
-    }
-
     public void UnPauseLaser()
     {
         if(isLaserPaused)
@@ -148,18 +121,6 @@ public class SoundController : MonoBehaviour
             sfxGoliathLaser.UnPause();
             isLaserPaused = false;
         }
-    }
-
-    public void UnPauseMusic()
-    {
-        musicSource.UnPause();
-    } 
-
-    public void BossMusic()
-    {
-        musicSource.clip = bossMusic;
-        musicSource.volume = musicVolume;
-        musicSource.Play();
     }
 
     public void TimeStop()
@@ -184,12 +145,6 @@ public class SoundController : MonoBehaviour
     {
         PlaySound(sfxTeleportSource, teleportSound);
     }
-    public void DeathSound()
-    {
-        musicSource.clip = deathSound;
-        musicSource.volume = musicVolume;
-        musicSource.Play();
-    }
 
     public void StrongShot()
     {
@@ -199,23 +154,6 @@ public class SoundController : MonoBehaviour
     public void ButtonClick()
     {
         PlaySound(sfxButtonClick, buttonClick);
-    }
-
-    public void MenuMusic()
-    {
-        if(musicSource == null)
-            musicSource = gameObject.AddComponent<AudioSource>();
-        musicSource.clip = menuMusic;
-        musicSource.volume = musicVolume;
-        musicSource.Play();
-    }
-
-    public void ChangeMusicVolume(float value)
-    {
-        if(musicSource == null)
-            musicSource = gameObject.AddComponent<AudioSource>();
-        musicVolume = value;
-        musicSource.volume = musicVolume;
     }
 
     public void ChangeEffectsVolume(float value)

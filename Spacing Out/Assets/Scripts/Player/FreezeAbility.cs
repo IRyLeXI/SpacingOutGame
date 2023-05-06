@@ -25,6 +25,8 @@ public class FreezeAbility : MonoBehaviour
 
     private SoundController sc;
 
+    private MusicController mc;
+
     void Start()
     {
         originalScale = field.transform.localScale;
@@ -50,7 +52,7 @@ public class FreezeAbility : MonoBehaviour
         {
             if(isMusicPaused)
             {
-                sc.UnPauseMusic();
+                mc.UnPauseMusic();
                 isMusicPaused = false;
             }
             if(isExpanding)
@@ -67,7 +69,7 @@ public class FreezeAbility : MonoBehaviour
 
     private void FreezeObjects()
     {
-        sc.PauseMusic();
+        mc.PauseMusic();
         isMusicPaused = true;
         sc.TimeStop();
         GameObject[] allObjects = FindObjectsOfType<GameObject>();
@@ -105,5 +107,6 @@ public class FreezeAbility : MonoBehaviour
     private void SetSC()
     {
         sc = FindObjectOfType<SoundController>();
+        mc = FindObjectOfType<MusicController>();
     }
 }

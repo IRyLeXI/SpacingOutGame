@@ -40,6 +40,8 @@ public class GalaxyGoliathController : BossScript, IFreezable, IEnemyShuttle
 
     private SoundController sc;
 
+    private MusicController mc;
+
     void Start()
     {
         distY = 2.6f - transform.position.y;
@@ -47,7 +49,8 @@ public class GalaxyGoliathController : BossScript, IFreezable, IEnemyShuttle
         lastAttackTime = Time.time - attackTime;
         attackList = new List<Attack>() {HandleAttack1, HandleAttack2, HandleAttack3, HandleAttack4};
         sc = FindObjectOfType<SoundController>();
-        sc.BossMusic();
+        mc = FindObjectOfType<MusicController>();
+        mc.BossMusic();
     }
 
     void Update()
@@ -183,7 +186,6 @@ public class GalaxyGoliathController : BossScript, IFreezable, IEnemyShuttle
     private void DestroyGoliath()
     {
         weapon4.ShutDown();
-        sc.PlayGameMusic();
         Destroy(this.gameObject);
     }
     

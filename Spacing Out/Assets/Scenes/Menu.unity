@@ -354,7 +354,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1335941771}
+      - m_Target: {fileID: 180570582}
         m_TargetAssemblyTypeName: SoundController, Assembly-CSharp
         m_MethodName: ButtonClick
         m_Mode: 1
@@ -455,7 +455,7 @@ MonoBehaviour:
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 500, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -473,16 +473,16 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1091122745}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: -1
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_TargetDisplay: 0
 --- !u!224 &21435190
 RectTransform:
@@ -496,7 +496,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 136343947}
   - {fileID: 1456662570}
   - {fileID: 120774743}
   - {fileID: 1138041557}
@@ -681,7 +680,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1335941771}
+      - m_Target: {fileID: 180570582}
         m_TargetAssemblyTypeName: SoundController, Assembly-CSharp
         m_MethodName: ButtonClick
         m_Mode: 1
@@ -740,7 +739,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 39350446}
-  - component: {fileID: 39350445}
+  - component: {fileID: 39350448}
+  - component: {fileID: 39350447}
   m_Layer: 0
   m_Name: MusicPlayer
   m_TagString: Untagged
@@ -748,19 +748,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &39350445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39350444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1604c89ed2a37c14e9d14caaa39733fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundController: {fileID: 1335941771}
 --- !u!4 &39350446
 Transform:
   m_ObjectHideFlags: 0
@@ -774,8 +761,38 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &39350447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39350444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1604c89ed2a37c14e9d14caaa39733fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundController: {fileID: 39350448}
+--- !u!114 &39350448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39350444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9e319c696fd8c247a4532c4a523c9cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicVolume: 1
+  deathSound: {fileID: 0}
+  menuMusic: {fileID: 8300000, guid: c1047a58c914ffc4a97fb276789b172c, type: 3}
+  gameMusic: {fileID: 0}
+  bossMusic: {fileID: 0}
 --- !u!1 &119228395
 GameObject:
   m_ObjectHideFlags: 0
@@ -945,11 +962,11 @@ RectTransform:
   - {fileID: 872846648}
   - {fileID: 946712747}
   m_Father: {fileID: 21435190}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.899994, y: 30.399994}
+  m_AnchoredPosition: {x: -2.9000244, y: 30.399994}
   m_SizeDelta: {x: -202.29071, y: -302.2907}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &120774744
@@ -964,82 +981,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117a445558a89654ba695e7d7eec3777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &136343946
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 136343947}
-  - component: {fileID: 136343949}
-  - component: {fileID: 136343948}
-  m_Layer: 5
-  m_Name: BG
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &136343947
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 136343946}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 21435190}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &136343948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 136343946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 727d9a79ad29ae24097a6db2a7713919, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &136343949
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 136343946}
-  m_CullTransparentMesh: 1
 --- !u!1 &140921886
 GameObject:
   m_ObjectHideFlags: 0
@@ -1283,7 +1224,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1335941771}
+      - m_Target: {fileID: 180570582}
         m_TargetAssemblyTypeName: SoundController, Assembly-CSharp
         m_MethodName: ButtonClick
         m_Mode: 1
@@ -1333,6 +1274,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179813562}
   m_CullTransparentMesh: 1
+--- !u!1 &180570581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 180570583}
+  - component: {fileID: 180570582}
+  m_Layer: 0
+  m_Name: SoundController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &180570582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180570581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a02c8c2addf04d045a9d1d9d1004dc61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectsVolume: 1
+  musicVolume: 1
+  playerShootSound: {fileID: 0}
+  enemyDeathSound: {fileID: 0}
+  playerDeathSound: {fileID: 0}
+  hitSound: {fileID: 0}
+  goliathLaserSound: {fileID: 0}
+  enemyShotSound: {fileID: 0}
+  timeStopSound: {fileID: 0}
+  smallLaserSound: {fileID: 0}
+  teleportSound: {fileID: 0}
+  strongShotSound: {fileID: 0}
+  buttonClick: {fileID: 8300000, guid: 40e3e0f8265b32a4da72774832802dc7, type: 3}
+--- !u!4 &180570583
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180570581}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.736817, y: -0.89923656, z: -0.36264682}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &185733739
 GameObject:
   m_ObjectHideFlags: 0
@@ -1849,7 +1847,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 2.899994, y: 20.200005}
+  m_AnchoredPosition: {x: 2.899994, y: 20.200012}
   m_SizeDelta: {x: 160, y: -245.96027}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &543376995
@@ -1908,7 +1906,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1335941771}
+      - m_Target: {fileID: 180570582}
         m_TargetAssemblyTypeName: SoundController, Assembly-CSharp
         m_MethodName: ButtonClick
         m_Mode: 1
@@ -1995,7 +1993,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 2.899994, y: -94.2}
+  m_AnchoredPosition: {x: 2.899994, y: -94.20001}
   m_SizeDelta: {x: 160, y: -318.422}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &638036681
@@ -2042,7 +2040,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1335941771}
+      - m_Target: {fileID: 180570582}
         m_TargetAssemblyTypeName: SoundController, Assembly-CSharp
         m_MethodName: ButtonClick
         m_Mode: 1
@@ -2176,7 +2174,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -94.1, y: -0.2000122}
+  m_AnchoredPosition: {x: -94.100006, y: -0.2000122}
   m_SizeDelta: {x: -140.05621, y: 20.2345}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &763511194
@@ -2448,7 +2446,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1335941771}
+      - m_Target: {fileID: 180570582}
         m_TargetAssemblyTypeName: SoundController, Assembly-CSharp
         m_MethodName: ButtonClick
         m_Mode: 1
@@ -2602,8 +2600,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1335941771}
-        m_TargetAssemblyTypeName: SoundController, Assembly-CSharp
+      - m_Target: {fileID: 39350448}
+        m_TargetAssemblyTypeName: MusicController, Assembly-CSharp
         m_MethodName: ChangeMusicVolume
         m_Mode: 0
         m_Arguments:
@@ -2651,7 +2649,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 2.899994, y: -54.799995}
+  m_AnchoredPosition: {x: 2.899994, y: -54.799988}
   m_SizeDelta: {x: 160, y: -245.96027}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &872846649
@@ -2710,7 +2708,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1335941771}
+      - m_Target: {fileID: 180570582}
         m_TargetAssemblyTypeName: SoundController, Assembly-CSharp
         m_MethodName: ButtonClick
         m_Mode: 1
@@ -2797,7 +2795,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 2.899994, y: -132.2}
+  m_AnchoredPosition: {x: 2.899994, y: -132.19998}
   m_SizeDelta: {x: 99.2993, y: -265.59283}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &946712748
@@ -2868,7 +2866,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1335941771}
+      - m_Target: {fileID: 180570582}
         m_TargetAssemblyTypeName: SoundController, Assembly-CSharp
         m_MethodName: ButtonClick
         m_Mode: 1
@@ -2955,7 +2953,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 2.899994, y: 56.030895}
+  m_AnchoredPosition: {x: 2.899994, y: 56.0309}
   m_SizeDelta: {x: 160, y: -318.422}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &964458012
@@ -3026,7 +3024,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1335941771}
+      - m_Target: {fileID: 180570582}
         m_TargetAssemblyTypeName: SoundController, Assembly-CSharp
         m_MethodName: ButtonClick
         m_Mode: 1
@@ -3111,7 +3109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -94.9, y: -0.4999771}
+  m_AnchoredPosition: {x: -94.899994, y: -0.4999771}
   m_SizeDelta: {x: -137.14313, y: 23.1478}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &998381107
@@ -3152,6 +3150,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998381105}
   m_CullTransparentMesh: 1
+--- !u!1 &1001654285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1001654287}
+  - component: {fileID: 1001654286}
+  m_Layer: 0
+  m_Name: Starter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1001654286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001654285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ea3f6e54bf4c440a3e6f584071d6f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1001654287
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001654285}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.1354145, y: -1.2718903, z: -4.2731867}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1029647520
 GameObject:
   m_ObjectHideFlags: 0
@@ -3248,7 +3290,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1335941771}
+      - m_Target: {fileID: 180570582}
         m_TargetAssemblyTypeName: SoundController, Assembly-CSharp
         m_MethodName: ButtonClick
         m_Mode: 1
@@ -3406,7 +3448,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1335941771}
+      - m_Target: {fileID: 180570582}
         m_TargetAssemblyTypeName: SoundController, Assembly-CSharp
         m_MethodName: ButtonClick
         m_Mode: 1
@@ -3820,11 +3862,11 @@ RectTransform:
   - {fileID: 1484794225}
   - {fileID: 179813563}
   m_Father: {fileID: 21435190}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00022888184, y: -5.830902}
+  m_AnchoredPosition: {x: -0.00024414062, y: -5.8309326}
   m_SizeDelta: {x: -0.0005188, y: -229.829}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1138041558
@@ -4050,66 +4092,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1263794976}
   m_CullTransparentMesh: 1
---- !u!1 &1335941770
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1335941772}
-  - component: {fileID: 1335941771}
-  m_Layer: 0
-  m_Name: SoundController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1335941771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1335941770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a02c8c2addf04d045a9d1d9d1004dc61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effectsVolume: 1
-  musicVolume: 1
-  playerShootSound: {fileID: 0}
-  enemyDeathSound: {fileID: 0}
-  playerDeathSound: {fileID: 0}
-  hitSound: {fileID: 0}
-  goliathLaserSound: {fileID: 0}
-  enemyShotSound: {fileID: 0}
-  timeStopSound: {fileID: 0}
-  smallLaserSound: {fileID: 0}
-  teleportSound: {fileID: 0}
-  deathSound: {fileID: 0}
-  buttonClick: {fileID: 8300000, guid: 40e3e0f8265b32a4da72774832802dc7, type: 3}
-  menuMusic: {fileID: 8300000, guid: c1047a58c914ffc4a97fb276789b172c, type: 3}
-  gameMusic: {fileID: 0}
-  bossMusic: {fileID: 0}
---- !u!4 &1335941772
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1335941770}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.736817, y: -0.89923656, z: -0.36264682}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1345776616
 GameObject:
   m_ObjectHideFlags: 0
@@ -4279,11 +4261,11 @@ RectTransform:
   - {fileID: 2033713785}
   - {fileID: 638036680}
   m_Father: {fileID: 21435190}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.899994, y: -5.8309}
+  m_AnchoredPosition: {x: -2.9000244, y: -5.8309326}
   m_SizeDelta: {x: -202.2907, y: -229.829}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1456662571
@@ -4394,7 +4376,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1335941771}
+      - m_Target: {fileID: 180570582}
         m_TargetAssemblyTypeName: SoundController, Assembly-CSharp
         m_MethodName: ButtonClick
         m_Mode: 1
@@ -5107,7 +5089,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1335941771}
+      - m_Target: {fileID: 180570582}
         m_TargetAssemblyTypeName: SoundController, Assembly-CSharp
         m_MethodName: ButtonClick
         m_Mode: 1
@@ -5608,7 +5590,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1335941771}
+      - m_Target: {fileID: 180570582}
         m_TargetAssemblyTypeName: SoundController, Assembly-CSharp
         m_MethodName: ChangeEffectsVolume
         m_Mode: 0
@@ -6009,11 +5991,11 @@ RectTransform:
   - {fileID: 1876720146}
   - {fileID: 850605872}
   m_Father: {fileID: 21435190}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.899994, y: 30.399994}
+  m_AnchoredPosition: {x: -2.9000244, y: 30.399994}
   m_SizeDelta: {x: -202.29071, y: -302.2907}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1983825093
@@ -6136,7 +6118,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1335941771}
+      - m_Target: {fileID: 180570582}
         m_TargetAssemblyTypeName: SoundController, Assembly-CSharp
         m_MethodName: ButtonClick
         m_Mode: 1
